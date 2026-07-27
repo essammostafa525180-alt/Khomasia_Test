@@ -1,0 +1,79 @@
+<div class="container search-results-page">
+    @if (isLoading) {
+    <div class="loading-results animate-fade-in">
+        <div class="spinner"></div>
+        <p>جاري البحث في الأحاديث الشريفة...</p>
+    </div>
+    } @else {
+    @if (results.data.items && results.data.items.length > 0) {
+    <div class="results-meta animate-fade-in">
+        <div class="meta-content">
+            <i class="fas fa-search"></i>
+            <span>نتائج البحث: تم العثور على <strong>{{ results.data.totalItems }}</strong> أحاديث متطابقة</span>
+        </div>
+        <div class="meta-divider"></div>
+    </div>
+
+    <div class="results-list">
+        @for(HadithResult of results.data.items; track $index) {
+        <div class="search-result-wrapper animate-slide-up" [style.animation-delay]="$index * 0.1 + 's'">
+            <div class="search-result-container">
+                <header class="result-header">
+                    <nav class="breadcrumbs-modern">
+                        <a [routerLink]="['/classification', HadithResult.classificationId]" class="crumb">
+                            <i class="fas fa-layer-group"></i>
+                            <span>{{ HadithResult.classificationName }}</span>
+                        </a>
+                        <span class="separator"><i class="fas fa-chevron-left"></i></span>
+                        <a [routerLink]="['/book', HadithResult.bookId, 'babs']" class="crumb">
+                            <i class="fas fa-book"></i>
+                            <span>{{ HadithResult.bookName }}</span>
+                        </a>
+                        <span class="separator"><i class="fas fa-chevron-left"></i></span>
+                        <span class="crumb active">
+                            <i class="fas fa-bookmark"></i>
+                            <span>{{ HadithResult.babName }}</span>
+                        </span>
+                    </nav>
+                </header>
+
+                <div class="result-body">
+                    <div class="book-info">
+                        <app-book-template [bookName]="HadithResult.classificationName"
+                            [scale]="0.8"></app-book-template>
+
+                        <a [routerLink]="['/bab', HadithResult.babId, 'hadith']"
+                            [fragment]="'hadith-' + HadithResult.hadith.id" class="btn-go-to">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>الانتقال لهذا الحديث</span>
+                        </a>
+                    </div>
+
+                    <div class="hadith-content">
+                        <app-hadith-card [babId]="HadithResult.babId" [id]="'hadith-' + HadithResult.hadith.id"
+                            [hadithContant]="HadithResult.hadith" class="hadith-item">
+                        </app-hadith-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+    <div class="pagination-container-refined animate-fade-in" *ngIf="totalItems > pagination.pageSize">
+        <mat-paginator [length]="totalItems" [pageSize]="pagination.pageSize" [pageIndex]="pagination.pageNumber - 1"
+            [pageSizeOptions]="[5, 10, 25, 50]" (page)="onPageChange($event)" aria-label="اختر الصفحة">
+        </mat-paginator>
+    </div>
+    } @else {
+    <div class="empty-search-state animate-fade-in">
+        <div class="empty-icon-wrapper">
+            <i class="fas fa-search"></i>
+            <div class="forbidden-mark"><i class="fas fa-times"></i></div>
+        </div>
+        <h2>لا توجد نتائج مطابقة</h2>
+        <p>عذراً، لا يوجد أحاديث متطابقة مع النص المدخل. يرجى التأكد من صحة الكلمات المدخلة أو تجربة كلمات بحث أخرى.</p>
+    </div>
+    }
+    }
+</div>

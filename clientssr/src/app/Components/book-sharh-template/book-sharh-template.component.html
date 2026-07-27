@@ -1,0 +1,54 @@
+<div class="sharh-book-container animate-fade-in" [style.--book-scale]="scale">
+    <div class="sharh-book-cover">
+        <div class="gloss-effect"></div>
+
+        <div class="gold-frame"></div>
+        <div class="inner-frame-line"></div>
+
+        <div class="corner-ornament top-right"></div>
+        <div class="corner-ornament top-left"></div>
+        <div class="corner-ornament bottom-right"></div>
+        <div class="corner-ornament bottom-left"></div>
+
+        <div class="central-pattern"></div>
+
+        <div class="sharh-content">
+            <div class="top-badge">
+                <span class="badge-text">شرح وتوضيح</span>
+            </div>
+
+            <div class="center-seal">
+                <div class="seal-geometry">
+                    <div class="star-shape"></div>
+                    <div class="star-shape-inner"></div>
+                    <div class="inner-circle">
+                        <span class="seal-icon">📜</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="titles-wrapper">
+                <h2 class="sharh-main-title">{{bookName | wordsLimit: 0:3}}</h2>
+                <div class="decorative-separator">
+                    <svg width="100" height="20" viewBox="0 0 100 20">
+                        <path d="M0 10 Q25 0 50 10 Q75 20 100 10" fill="none" stroke="currentColor"
+                            stroke-width="1.8" />
+                    </svg>
+                </div>
+                <p class="sharh-author">{{bookName | splitTaxt }}</p>
+            </div>
+
+            <div class="bottom-label">
+                <div class="volume-info">شرح ميسر</div>
+            </div>
+        </div>
+
+        <div class="book-spine-detailed">
+            <div class="accent-band top"></div>
+            <div class="accent-band middle"></div>
+            <div class="accent-band bottom"></div>
+        </div>
+
+        <div class="paper-texture-overlay"></div>
+    </div>
+</div>

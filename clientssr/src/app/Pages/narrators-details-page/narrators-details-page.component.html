@@ -1,0 +1,235 @@
+<div class="page-wrapper">
+  <button class="dialog-close-btn" mat-dialog-close aria-label="إغلاق">
+    <i class="fas fa-times"></i>
+  </button>
+
+  <div class="islamic-pattern-overlay"></div>
+  <div class="floating-ornament top-right"></div>
+  <div class="floating-ornament bottom-left"></div>
+
+  <div class="animate-slide-up">
+    <section class="hero-section">
+      <div class="container hero-container text-center">
+        <div class="hero-frame-refined">
+          <div class="page-label">بطاقة التعريف بالراوي</div>
+          <h1 class="narrator-main-name" [innerHTML]="NarratorDetails.name | emptyValue"></h1>
+          <div class="ornamental-divider">
+            <span class="line"></span>
+            <i class="fas fa-id-card"></i>
+            <span class="line"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="details-section">
+      <div class="container">
+
+        <div class="tabs-modern-navigator-container">
+          <div class="tabs-modern-navigator scrollable-tabs">
+            @for (tab of tabs; track tab.id) {
+            <button class="nav-tab-btn" [class.active]="activeTab === tab.id" (click)="switchTab(tab.id)">
+              @if (tab.icon) {
+              <i class="{{ tab.icon }}"></i>
+              }
+              <span>{{ tab.title }}</span>
+            </button>
+            }
+          </div>
+        </div>
+
+        <div class="info-card-premium">
+          <div class="card-header">
+            <i class="fas fa-file-alt"></i>
+            <span>بيانات الراوي</span>
+          </div>
+
+          <div class="card-content-area fade-in">
+
+            @if (activeTab === 'general' && NarratorDetails) {
+            <div class="info-grid-modern">
+              <div class="info-group">
+                <div class="info-box">
+                  <span class="label">اسم الراوي:</span>
+                  <span class="value rank-badge" [innerHTML]="NarratorDetails.name | emptyValue"></span>
+                </div>
+                <div class="info-box">
+                  <span class="label">رقم الراوي:</span>
+                  <span class="value rank-badge highlight" [innerHTML]="'#' + (NarratorDetails.number || '0')"></span>
+                </div>
+                <div class="info-box">
+                  <span class="label">الكنية:</span>
+                  <span class="value rank-badge" [innerHTML]="NarratorDetails.kunya | emptyValue"></span>
+                </div>
+                <div class="info-box">
+                  <span class="label">اسم الشهرة:</span>
+                  <span class="value rank-badge" [innerHTML]="NarratorDetails.nickname | emptyValue"></span>
+                </div>
+              </div>
+
+              <div class="info-group">
+                <div class="info-box">
+                  <span class="label">النسب:</span>
+                  <span class="value rank-badge" [innerHTML]="NarratorDetails.nasab | emptyValue"></span>
+                </div>
+                <div class="info-box">
+                  <span class="label">اللقب:</span>
+                  <span class="value rank-badge" [innerHTML]="NarratorDetails.title | emptyValue"></span>
+                </div>
+                <div class="info-box">
+                  <span class="label">الرتبة:</span>
+                  <span class="value rank-badge" [innerHTML]="NarratorDetails.rank | emptyValue"></span>
+                </div>
+                <div class="info-box">
+                  <span class="label">الطبقة:</span>
+                  <span class="value rank-badge" [innerHTML]="NarratorDetails.layer | emptyValue"></span>
+                </div>
+              </div>
+
+              <div class="info-group">
+                <div class="info-box">
+                  <span class="label">سنة الميلاد:</span>
+                  <span class="value rank-badge" [innerHTML]="NarratorDetails.birthYear | emptyValue"></span>
+                </div>
+                <div class="info-box">
+                  <span class="label">سنة الوفاة:</span>
+                  <span class="value rank-badge date-value" [innerHTML]="NarratorDetails.deathYear | emptyValue"></span>
+                </div>
+                <div class="info-box">
+                  <span class="label">عمر الراوي:</span>
+                  <span class="value rank-badge" [innerHTML]="NarratorDetails.age | emptyValue"></span>
+                </div>
+                <div class="info-box">
+                  <span class="label">المذهب:</span>
+                  <span class="value rank-badge" [innerHTML]="NarratorDetails.madhhab | emptyValue"></span>
+                </div>
+              </div>
+
+              <div class="info-group">
+                <div class="info-box">
+                  <span class="label">هيئه الراوي/ة:</span>
+                  <span class="value rank-badge" [innerHTML]="NarratorDetails.gender | emptyValue"></span>
+                </div>
+
+                <div class="info-box">
+                  <span class="label">الوصف:</span>
+                  <span class="value rank-badge" [innerHTML]="NarratorDetails.description | emptyValue"></span>
+                </div>
+              </div>
+              <!-- 
+              <div class="info-row-full">
+                <span class="label">الوصف:</span>
+                <p class="description-text rank-badge" [innerHTML]="NarratorDetails.description | emptyValue"></p>
+              </div> -->
+            </div>
+            }
+
+            @if (activeTab === 'jarh' && NarratorDetails && NarratorDetails.narratorsCriticisms) {
+            <div class="table-container">
+              <table class="premium-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>العالم الناقد</th>
+                    <th>قوله في الراوي</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (item of NarratorDetails.narratorsCriticisms; track $index) {
+                  <tr>
+                    <td class="index-col">{{ $index + 1 }}</td>
+                    <td class="name-col" [innerHTML]="item.criticName | emptyValue"></td>
+                    <td class="statement-col" [innerHTML]="item.criticStatement | emptyValue"></td>
+                  </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+            }
+
+            @if (activeTab === 'sheikhs' && NarratorDetails && NarratorDetails.narratorTeachers) {
+            <div class="table-container">
+              <table class="premium-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>الشيخ</th>
+                    <th>الكنية</th>
+                    <th>النسب</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @if(NarratorDetails.narratorTeachers.length === 0){
+                  <tr>
+                    <td colspan="4" class="no-data">لا يوجد شيوخ مسجلين لهذا الراوي.</td>
+                  </tr>
+                  } @else {
+                  @for (item of NarratorDetails.narratorTeachers; track $index) {
+                  <tr>
+                    <td class="index-col">{{ $index + 1 }}</td>
+                    <td class="name-col" [innerHTML]="item.name | emptyValue"></td>
+                    <td [innerHTML]="item.kunya | emptyValue"></td>
+                    <td [innerHTML]="item.lineage | emptyValue"></td>
+                  </tr>
+                  }
+                  }
+                </tbody>
+              </table>
+            </div>
+            }
+
+            @if (activeTab === 'students' && NarratorDetails && NarratorDetails.narratorStudents) {
+            <div class="table-container">
+              <table class="premium-table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>التلميذ</th>
+                    <th>الكنية</th>
+                    <th>النسب</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @if(NarratorDetails.narratorStudents.length === 0){
+                  <tr>
+                    <td colspan="4" class="no-data">لا يوجد تلاميذ مسجلين لهذا الراوي.</td>
+                  </tr>
+                  } @else {
+                  @for (item of NarratorDetails.narratorStudents; track $index) {
+                  <tr>
+                    <td class="index-col">{{ $index + 1 }}</td>
+                    <td class="name-col" [innerHTML]="item.name | emptyValue"></td>
+                    <td [innerHTML]="item.kunya | emptyValue"></td>
+                    <td [innerHTML]="item.lineage | emptyValue"></td>
+                  </tr>
+                  }
+                  }
+                </tbody>
+              </table>
+            </div>
+            }
+
+            @if (['tahzeeb', 'siyar', 'sifat'].includes(activeTab)) {
+            <div class="biography-content">
+              <div class="bio-text-wrapper">
+                @if (activeTab === 'tahzeeb') {
+                <p [innerHTML]="(NarratorDetails.kamal ?? '' | emptyValue)"></p>
+                }
+                @if (activeTab === 'siyar') {
+                <p [innerHTML]="NarratorDetails.sirAlamAlNubala | emptyValue"></p>
+                }
+                @if (activeTab === 'sifat') {
+                <p [innerHTML]="NarratorDetails.sifatAlSafwa | emptyValue"></p>
+                }
+              </div>
+            </div>
+            }
+          </div>
+
+          <div class="corner-ornament top-left"></div>
+          <div class="corner-ornament bottom-right"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

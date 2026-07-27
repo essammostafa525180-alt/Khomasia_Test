@@ -1,0 +1,72 @@
+<div class="page-wrapper">
+  <div class="islamic-pattern-overlay"></div>
+  <div class="floating-ornament top-right"></div>
+  <div class="floating-ornament bottom-left"></div>
+
+  <div class="animate-slide-up">
+    <section class="hero-section">
+      <div class="container text-center">
+        <div class="hero-frame-refined">
+          <div class="page-label">مكتبة الشروح</div>
+          <h1 class="page-main-title" [innerHTML]="BookSharh.name | emptyValue"></h1>
+          <div class="ornamental-divider">
+            <span class="line"></span>
+            <i class="fas fa-book-open"></i>
+            <span class="line"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="subtitle-container">
+      <div class="subtitle-badge animate-bounce-soft">
+        <i class="fas fa-layer-group"></i>
+        <span class="subtitle-text">
+          هذا المصنف لديه <strong class="subtitle-highlight">{{ BookSharh.sharhBook.length || 0 }}</strong> من كتب الشرح
+        </span>
+      </div>
+    </div>
+    <section class="books-section">
+      <div class="container">
+        <div class="books-grid-modern">
+          @for (item of BookSharh.sharhBook; track $index) {
+          <div class="book-card-premium" [routerLink]="['/BookSharh',item.id]">
+            <div class="book-cover-wrapper">
+              <app-book-sharh-template [bookName]="item.name"></app-book-sharh-template>
+              <div class="book-overlay">
+                <div class="overlay-content">
+                  <!-- <div class="link-badge">
+                    <i class="fas fa-book-reader"></i>
+                  </div> -->
+                  <button class="read-btn-modern">
+                    <i class="fas fa-book-reader"></i>
+                    <span>اقرأ الشرح</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="book-info-card">
+              <h3 class="book-title" [title]="item.name" [innerHTML]="item.name | wordsLimit: 0:3 "></h3>
+              <div class="book-meta">
+                <span class="meta-badge">
+                  <i class="fas fa-book"></i>
+                  شرح
+                </span>
+              </div>
+            </div>
+
+            <div class="card-corner-ornament"></div>
+          </div>
+          }
+        </div>
+
+        @if (BookSharh.sharhBook.length === 0) {
+        <div class="empty-state">
+          <i class="fas fa-book-open"></i>
+          <p>لا توجد شروح متاحة حالياً</p>
+        </div>
+        }
+      </div>
+    </section>
+  </div>
+</div>

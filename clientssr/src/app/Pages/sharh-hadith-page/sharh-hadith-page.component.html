@@ -1,0 +1,89 @@
+@if (data) {
+<div class="page-wrapper">
+  <button class="dialog-close-btn" mat-dialog-close aria-label="إغلاق">
+    <i class="fas fa-times"></i>
+  </button>
+
+  <div class="islamic-pattern-overlay"></div>
+  <div class="floating-ornament top-right"></div>
+  <div class="floating-ornament bottom-left"></div>
+
+  <div class="animate-fade-in">
+    <div class="sharh-card-premium">
+      <div class="sharh-header-section">
+        <div class="book-info-badge">
+          <div class="ornamental-top">
+            <span class="ornament-symbol">﴿</span>
+            <div class="decorative-line"></div>
+            <span class="ornament-symbol">﴾</span>
+          </div>
+
+          <h1 class="book-title-main">
+            {{ data.bookName | wordsLimit: 0:3 }}
+          </h1>
+
+          <div class="author-badge">
+            <i class="fas fa-feather-alt"></i>
+            <h2 class="author-name">{{ data.bookName | splitTaxt }}</h2>
+          </div>
+
+          <div class="ornamental-divider">
+            <span class="line"></span>
+            <i class="fas fa-star"></i>
+            <span class="line"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sharh-count-section">
+        <div class="count-badge">
+          <i class="fas fa-book-open"></i>
+          <span class="count-text">
+            تم شرح هذا الحديث ب
+            <span class="count-number">
+              <span *ngIf="data.sharhWithSign.length === 1">طريقة واحدة</span>
+              <span *ngIf="data.sharhWithSign.length === 2">طريقتان</span>
+              <span *ngIf="data.sharhWithSign.length > 2">{{ data.sharhWithSign.length }} طرق</span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <div class="sharh-content-area">
+        <div class="content-header">
+          <i class="fas fa-scroll"></i>
+          <h3>شروح الحديث</h3>
+        </div>
+
+        @if(data.sharhWithSign && data.sharhWithSign.length > 0) {
+        @for (item of data.sharhWithSign; track $index) {
+        <div class="sharh-item">
+          <div class="sharh-item-header">
+            <div class="sharh-number-badge">
+              <i class="fas fa-book-reader"></i>
+              <span>الشرح رقم {{ $index + 1 }}</span>
+            </div>
+          </div>
+
+          <div class="sharh-text-content" [innerHTML]="item|highlightText"></div>
+        </div>
+        }
+        } @else {
+        <div class="empty-state">
+          <i class="fas fa-book-open"></i>
+          <p>لا توجد شروح متاحة لهذا الحديث</p>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+} @else {
+<div class="loading-state">
+  <button class="dialog-close-btn" mat-dialog-close aria-label="إغلاق">
+    <i class="fas fa-times"></i>
+  </button>
+  <div class="spinner"></div>
+  <p>جاري تحميل الشرح...</p>
+</div>
+}

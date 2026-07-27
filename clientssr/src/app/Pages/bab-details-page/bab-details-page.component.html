@@ -1,0 +1,108 @@
+@if(BookWithNavigation){
+@if(BookWithNavigation.data && BookWithNavigation.data.babs && BookWithNavigation.data.babs.length > 0){
+<div class="page-wrapper">
+  <div class="islamic-pattern-overlay"></div>
+  <div class="floating-ornament top-right"></div>
+  <div class="floating-ornament bottom-left"></div>
+
+  <div class="animate-slide-up">
+    <section class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-frame-refined">
+          <div class="frame-corner top-right"></div>
+          <div class="frame-corner top-left"></div>
+          <div class="frame-corner bottom-right"></div>
+          <div class="frame-corner bottom-left"></div>
+
+          <div class="hero-content-refined">
+            <div class="breadcrumb-nav" dir="rtl">
+              <a [routerLink]="['/']" class="bc-item">الرئيسية</a>
+              <span class="bc-sep">/</span>
+              <a [routerLink]="['/classification',BookWithNavigation.data.classificationId]" class="bc-item">
+                {{BookWithNavigation.data.classificationName}}
+              </a>
+              <span class="bc-sep">/</span>
+              <span class="bc-current">فهرس الأبواب</span>
+            </div>
+
+            <h1 class="hero-title-main" dir="rtl">
+              تصفح أبواب <span class="highlight text-gradient">{{BookWithNavigation.data.name}}</span>
+            </h1>
+
+            <div class="book-nav-wrapper">
+              <div class="paganition-refined">
+                @if(BookWithNavigation.previousId){
+                <a [routerLink]="['/book', BookWithNavigation.previousId, 'babs']" class="nav-btn prev">
+                  <i class="fa-solid fa-chevron-right"></i>
+                  <div class="btn-info">
+                    <span class="btn-label">الكتاب السابق</span>
+                  </div>
+                </a>
+                } @else { <div class="nav-btn-placeholder"></div> }
+
+                <div class="current-book-badge">
+                  <i class="fas fa-book-open"></i>
+                  <span>{{BookWithNavigation.data.name}}</span>
+                </div>
+
+                @if(BookWithNavigation.nextId){
+                <a [routerLink]="['/book', BookWithNavigation.nextId, 'babs']" class="nav-btn next">
+                  <div class="btn-info">
+                    <span class="btn-label">الكتاب التالي</span>
+                  </div>
+                  <i class="fa-solid fa-chevron-left"></i>
+                </a>
+                } @else { <div class="nav-btn-placeholder"></div> }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-icon">
+        <i class="fas fa-scroll"></i>
+      </div>
+      <div class="divider-line"></div>
+    </div>
+
+    <section class="babs-explorer-section" dir="rtl">
+      <div class="container">
+        <div class="section-header-refined">
+          <h2 class="section-title-ornamental">أبواب الكتاب</h2>
+          <div class="title-underline">
+            <span class="dot"></span>
+            <span class="line"></span>
+            <span class="dot"></span>
+          </div>
+          <p class="section-subtitle">قائمة الأبواب الواردة في {{BookWithNavigation.data.name}}</p>
+        </div>
+
+        <div class="babs-modern-grid">
+          @for(item of BookWithNavigation.data.babs; track item.id){
+          <div class="bab-card-item">
+            <a [routerLink]="['/bab',item.id,'hadith']" class="bab-link">
+              <div class="bab-index-circle">{{ item.babIndex }}</div>
+              <div class="bab-info">
+                <span class="bab-label">باب</span>
+                <span class="bab-name-text"  [matTooltip]="item.name" matTooltipClass="custom-tooltip">{{ item.name  }}</span>
+              </div>
+              <div class="bab-action">
+                <i class="fas fa-arrow-left"></i>
+              </div>
+            </a>
+          </div>
+          }
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+} @else if (BookWithNavigation.data) {
+<app-empty-state icon="fas fa-scroll" title="عذراً، لا توجد أبواب لهذا الكتاب حالياً"
+  message="نعمل على تحديث وإضافة المزيد من المحتوى قريباً" [showBackButton]="true" [showHomeButton]="true">
+</app-empty-state>
+}
+}

@@ -1,0 +1,72 @@
+@if (isMobile()) {
+<div class="accordion">
+  <div class="menu-decoration">
+    <div class="ornament-line"></div>
+    <i class="fa-solid fa-kaaba"></i>
+    <div class="ornament-line"></div>
+  </div>
+
+  @for (item of partitions; track item.id) {
+  <div class="item" [class.open]="item.hasCollection">
+
+    <a class="title" (click)="item.hadithCollections.length ? $event.preventDefault() : null; onLinkClick(item)"
+      [routerLink]="item.id === Menu.Narrators ? ['/narrators'] : item.id === Menu.Home ? ['/'] : ['/partition', item.id, 'collections']">
+      {{ item.name }}
+      @if(item.hadithCollections.length && item.hadithCollections[0].name !=null ) {
+      <i class="fa-solid fa-caret-right arrow" [class.open]="item.hasCollection">
+      </i>
+      }
+    </a>
+
+    @if (item?.hadithCollections?.length) {
+    <div class="content" [class.show]="!item.hasCollection">
+
+      @for (child of item.hadithCollections; track child.id) {
+      <div class="item" [class.open]="child.mainMenuEnabled">
+
+        <button class="title sub" (click)="toggleSub(child);">
+          {{ child.name }}
+          <i class="fa-solid fa-caret-right arrow" [class.open]="child.mainMenuEnabled">
+          </i>
+        </button>
+
+        @if (child.classifications) {
+        <div class="content" [class.show]="!child.mainMenuEnabled">
+          @for (sub of getTopClassifications(child.classifications); track sub.id) {
+          <a (click)="closeAccordion()"
+            [routerLink]=" item.id === Menu.Commentaries? ['/sharh',sub.id]: ['/classification',sub.id]">{{
+            sub.name }}</a>
+            @if(sub.type==0)
+            {
+               - <span class="death-year"> (ت {{ sub.deathYear }})</span>
+            }
+          }
+
+          @if(item.id !== Menu.Commentaries) {
+          <a class="view-all-link" (click)="closeAccordion()"
+            [routerLink]="['/partition', item.id, 'collection', child.id]">
+            <span>شاهد الكل</span>
+            <i class="fa-solid fa-arrow-left"></i>
+          </a>
+          }
+        </div>
+        }
+
+      </div>
+      }
+
+      <div class="item">
+        <a class="title sub view-all-folders-link" (click)="closeAccordion()"
+          [routerLink]="['/partition', item.id, 'collections']">
+          <span>شاهد كل المجلدات</span>
+          <i class="fa-solid fa-th-list arrow"></i>
+        </a>
+      </div>
+
+    </div>
+    }
+
+  </div>
+  }
+</div>
+}

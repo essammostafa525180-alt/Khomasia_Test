@@ -1,0 +1,68 @@
+#Core
+	- Domain(Class Library)
+		- Core of the system 
+		- Has Domain Entity, Business Role, Aggregate, Value Object , Domain Events (Domain Driven Design), IUnitOfWork, IRepository, Factory Interfaces , Domain Services , Custom Exceptions 
+		- Domain should be an independent project.
+		- All Other layers can access domain layer but not oppposite
+		- Packages
+			- Microsoft.AspNetCore.Identity.EntityFrameworkCore
+			- Microsoft.AspNetCore.Identity.UI
+	- Application(Class Library)
+		- should depend on Domain.
+		- Has Use Cases, Application Services , Commands and Queries (CQRS pattern)
+		- packages
+			- Install-Package MediatR
+			- Install-Package FluentValidation.DependencyInjectionExtension
+#External
+	- Infrastructure(Class Library)
+		- should depend on Application and Domain.
+		- Anything is related to external systems 
+		- Hiding The implementation details for any External system to interact with it
+		- Has Databases Access, Messages Queues (RabbitMQ, Kafka), Email & Notification Service, Storage Service
+		- split into two seperate layers 
+		- persistance layer that we would handle anything related to database access
+		- Infrastructure layer would handle other external systems like email notifcation message Queues, Storage Service
+		- Add ApplicationDbContext
+		- Add Implementation of IUnitOfWork, IRepository
+		- packages
+			- Install-Package Microsoft.Extensions.DependencyInjection
+			- Install-Package Microsoft.EntityFrameworkCore
+			- Install-Package Microsoft.EntityFrameworkCore.SqlServer
+			- Install-Package Microsoft.AspNetCore.Authentication.JwtBearer
+			- Install-Package System.IdentityModel.Tokens.Jwt
+			- Install-Package AutoMapper
+	- Presentation(Class Library) WebApi
+		- should depend on Infrastructure and Application.
+		- Define the entry point for outer users to be able to interact with system 
+		- Implemented Restful Api, grpc
+		- packages
+			- Install-Package Microsoft.Extensions.DependencyInjection
+			- Install-Package Microsoft.AspNetCore.Mvc.NewtonsoftJson
+		- Add Controllers
+WebApi(Web API)
+	- instead of define controller in web api layer, we define in presentation layer because if 
+		we define all controllers in web layer, we reference all other layers in web layer, and then we can access dbcontext in web layer and its break using the CQRS pattern
+		so we define all controllers in presentation layer 
+	- Add Middlewares
+	- packages
+		- Install-Package Microsoft.EntityFrameworkCore
+		- Install-Package Microsoft.EntityFrameworkCore.SqlServer
+		- Install-Package Microsoft.EntityFrameworkCore.Tools
+
+#How to start
+	- In Domain layer 
+		- In Entities folder Add Domain Entity
+		- In Abstractions/IUnitOfWork Add Repository 
+	- In Infrastructure layer 
+		- In ApplicationDbContext.cs Add DbSet<Entity>
+		- In Repositories/UnitOfWork Implement IUnitOfWork
+		- Add migration, update database using Package Manager Console
+	- In Application layer
+		- in DTOs create dto for entity
+		- create commands and queries for this entity
+		- mapping profile
+		- in Extensions/DependencyInjection in MapperConfiguration add mapping profile
+	- Presentation layer
+		- 
+
+

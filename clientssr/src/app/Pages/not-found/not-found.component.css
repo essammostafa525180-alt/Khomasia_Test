@@ -1,0 +1,308 @@
+/* ============================================
+   NotFound Page - Serene & Sublime (Revised for 'WOW' factor)
+   ============================================ */
+.not-found-page {
+    position: relative;
+    min-height: 100vh;
+    background-color: #fdfdfb;
+    /* Eye-comfort light cream */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    overflow: hidden;
+    direction: rtl;
+    font-family: var(--font-main, 'Cairo', sans-serif);
+}
+
+/* --- Animated Background Elements --- */
+.serene-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(201, 162, 39, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+    animation: backgroundShift 15s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundShift {
+    0% {
+        transform: scale(1) translate(0, 0);
+    }
+
+    100% {
+        transform: scale(1.2) translate(2%, 2%);
+    }
+}
+
+/* --- Premium 'WOW' Minimal Card --- */
+.minimal-card {
+    position: relative;
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    max-width: 620px;
+    width: 100%;
+    padding: 80px 60px;
+    border-radius: 50px;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.04),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    text-align: center;
+    border: 1.5px solid rgba(201, 162, 39, 0.12);
+    animation: cardFloat 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes cardFloat {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* --- Golden Symbolic Header --- */
+/* --- Golden Symbolic Header (Animated) --- */
+.symbol-header {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
+    animation: iconFloat 4s ease-in-out infinite;
+}
+
+.soft-glow {
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(circle, rgba(201, 162, 39, 0.15) 0%, transparent 70%);
+    animation: gentlePulse 3s ease-in-out infinite;
+    border-radius: 50%;
+}
+
+.symbol-header i {
+    font-size: 48px;
+    color: var(--color-accent-main, #c9a227);
+    filter: drop-shadow(0 4px 12px rgba(201, 162, 39, 0.3));
+    animation: quillWrite 3s ease-in-out infinite;
+    transform-origin: bottom right;
+}
+
+/* Ink Particle Effect */
+.symbol-header::after {
+    content: '•';
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: var(--color-accent-main);
+    font-size: 20px;
+    animation: inkDrop 3s infinite;
+    opacity: 0;
+}
+
+/* --- Clear Content & Typography --- */
+.label-quiet {
+    display: block;
+    font-family: var(--font-amiri, serif);
+    font-size: 22px;
+    color: #a8a08c;
+    margin-bottom: 25px;
+    letter-spacing: 3px;
+    font-weight: 500;
+}
+
+.title-wrapper {
+    margin: 40px 0;
+    padding: 45px 30px;
+    background: linear-gradient(135deg, #fdfbf7 0%, #f7f3ea 100%);
+    border-radius: 120px;
+    border: 1px solid rgba(201, 162, 39, 0.15);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.02),
+        inset 0 2px 5px rgba(255, 255, 255, 1);
+    transition: transform 0.3s ease;
+}
+
+.title-wrapper:hover {
+    transform: scale(1.02);
+}
+
+.main-title {
+    font-family: var(--font-amiri, serif);
+    font-size: 34px;
+    color: #1a1a1a;
+    margin: 0;
+    font-weight: 700;
+    line-height: 1.5;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.description-text {
+    font-size: 17px;
+    line-height: 2.2;
+    color: #6d695d;
+    max-width: 480px;
+    margin: 0 auto 60px;
+}
+
+.actions-minimal {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-serene-filled {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 50px;
+    background: var(--color-primary-main, #000);
+    color: #fff;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.btn-serene-filled:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+}
+
+.btn-serene-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 35px;
+    background: transparent;
+    border: 1.5px solid #eae7de;
+    color: #555;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-main);
+}
+
+.btn-serene-ghost:hover {
+    background: #fdfdfb;
+    border-color: var(--color-accent-main);
+    color: var(--color-accent-main);
+}
+
+/* --- Final Decorative Leaf --- */
+.final-decoration {
+    margin-top: 60px;
+    opacity: 0.3;
+}
+
+.ornament-leaf {
+    font-size: 28px;
+    color: var(--color-accent-main, #c9a227);
+    animation: leafFloat 3s ease-in-out infinite alternate;
+}
+
+/* --- Animations (The 'WOW' factors) --- */
+@keyframes quillWrite {
+
+    0%,
+    100% {
+        transform: rotate(-5deg) translateX(0);
+    }
+
+    50% {
+        transform: rotate(15deg) translateX(5px) translateY(-2px);
+    }
+}
+
+@keyframes iconFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes inkDrop {
+    0% {
+        transform: translateY(0) scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: translateY(15px) scale(1);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(30px) scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes gentlePulse {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes leafFloat {
+    from {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    to {
+        transform: translateY(-10px) rotate(5deg);
+    }
+}
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 768px) {
+    .minimal-card {
+        padding: 60px 25px 40px;
+        border-radius: 40px;
+    }
+
+    .main-title {
+        font-size: 28px;
+    }
+
+    .title-wrapper {
+        padding: 30px 15px;
+    }
+
+    .actions-minimal {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .btn-serene-filled,
+    .btn-serene-ghost {
+        width: 100%;
+    }
+}

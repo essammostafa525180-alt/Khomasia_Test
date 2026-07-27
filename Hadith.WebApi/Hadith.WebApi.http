@@ -1,0 +1,6 @@
+@Hadith.WebApi_HostAddress = http://localhost:5262
+
+GET {{Hadith.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

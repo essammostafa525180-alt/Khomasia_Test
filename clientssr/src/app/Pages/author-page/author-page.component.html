@@ -1,0 +1,100 @@
+<div class="page-wrapper">
+  <button class="dialog-close-btn" mat-dialog-close aria-label="إغلاق">
+    <i class="fas fa-times"></i>
+  </button>
+
+  <div class="islamic-pattern-overlay"></div>
+  <div class="floating-ornament top-right"></div>
+  <div class="floating-ornament bottom-left"></div>
+
+  <div class="animate-slide-up">
+    <section class="hero-section">
+      <div class="container hero-container text-center">
+        <div class="hero-frame-refined">
+          <div class="page-label">بطاقة التعريف بالمصنف</div>
+          <h1 class="author-main-name" [title]="AuthorDetails.name">{{ AuthorDetails.name }}</h1>
+          <div class="ornamental-divider">
+            <span class="line"></span>
+            <i class="fas fa-feather-alt"></i>
+            <span class="line"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="details-section">
+      <div class="container container-narrow">
+
+        <div class="tabs-modern-navigator">
+          <button class="nav-tab-btn" [class.active]="activeTab === 'book'" (click)="setTab('book')">
+            <i class="fas fa-book"></i>
+            <span>اسم الكتاب</span>
+          </button>
+          <button class="nav-tab-btn" [class.active]="activeTab === 'author'" (click)="setTab('author')">
+            <i class="fas fa-user-edit"></i>
+            <span>المؤلف</span>
+          </button>
+          <button class="nav-tab-btn" [class.active]="activeTab === 'about'" (click)="setTab('about')">
+            <i class="fas fa-info-circle"></i>
+            <span>عن الكتاب</span>
+          </button>
+        </div>
+
+        <div class="info-card-premium">
+          <div class="card-header">
+            <i class="fas fa-scroll"></i>
+            <span>بيان التفاصيل والمعلومات</span>
+          </div>
+
+          <div class="card-content-area">
+            @if (activeTab === 'book') {
+            <div class="info-grid fade-in">
+              <div class="info-row">
+                <div class="info-label">اسم الكتاب بالكامل:</div>
+                <div class="info-value highlight-text">{{ AuthorDetails.fullName }}</div>
+              </div>
+              <div class="info-row">
+                <div class="info-label">اسم شهير:</div>
+                <div class="info-value">{{ AuthorDetails.name }}</div>
+              </div>
+            </div>
+            }
+
+            @if (activeTab === 'author') {
+            <div class="info-grid fade-in">
+              <div class="info-row">
+                <div class="info-label">اسم المؤلف الكامل:</div>
+                <div class="info-value highlight-text">{{ AuthorDetails.fullWriterName }}</div>
+              </div>
+              <div class="info-row">
+                <div class="info-label">العمر وتاريخ الوفاة:</div>
+                <div class="info-value date-value">{{ AuthorDetails.writerDeath }}</div>
+              </div>
+              <div class="info-row-stack">
+                <div class="info-label">نبذة وترجمة:</div>
+                <div class="info-value bio-text" [innerHTML]="AuthorDetails.writer |lineBreak"></div>
+              </div>
+            </div>
+            }
+
+            @if (activeTab === 'about') {
+            <div class="info-grid fade-in">
+              <div class="info-row">
+                <div class="info-label">تعريف الكتاب:</div>
+                <div class="info-value highlight-text">{{ AuthorDetails.name }}</div>
+              </div>
+              <div class="info-row-stack">
+                <div class="info-label">مكانة الكتاب وأهميته:</div>
+                <div class="info-value bio-text" [innerHTML]="AuthorDetails.aboutBook |lineBreak "></div>
+              </div>
+            </div>
+            }
+          </div>
+
+          <div class="corner-ornament top-left"></div>
+          <div class="corner-ornament bottom-right"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

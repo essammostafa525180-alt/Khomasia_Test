@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Commons\**" />
+    <Compile Remove="CQRS\Partations\REQ-RES\**" />
+    <Compile Remove="CQRS\Shared\Request-Response\**" />
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="Commons\**" />
+    <EmbeddedResource Remove="CQRS\Partations\REQ-RES\**" />
+    <EmbeddedResource Remove="CQRS\Shared\Request-Response\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Commons\**" />
+    <None Remove="CQRS\Partations\REQ-RES\**" />
+    <None Remove="CQRS\Shared\Request-Response\**" />
+    <None Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Mapping\Regulator_RegulatorDtoProfile.cs~RF1c29482.TMP" />
+    <None Remove="Regulators\Commands\vk2i3yyl.ip0~" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
+    <PackageReference Include="MailKit" Version="4.8.0" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="MimeKit" Version="4.8.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Resources\Resources.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="CQRS\ContactMessages\Queries\" />
+    <Folder Include="CQRS\Narrators\Commands\" />
+    <Folder Include="CQRS\Takhreej\Commands\" />
+  </ItemGroup>
+
+</Project>

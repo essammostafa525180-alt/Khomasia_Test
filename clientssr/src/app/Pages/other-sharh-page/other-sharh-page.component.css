@@ -1,0 +1,706 @@
+
+.takhreej-page-wrapper {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 80px;
+  background-color: var(--bg-body);
+  overflow-x: hidden;
+}
+
+
+.container.relative-z {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* --- Header Section --- */
+.page-header-ornamental {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  padding-top: 20px;
+}
+
+.header-decoration-top {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 15px;
+  background: var(--bg-surface);
+  border: 1px solid var(--color-accent-main);
+  border-radius: 50%;
+  /* Octagon like shape can be CSS clipped, but circle is safe */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-main);
+  font-size: 24px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.main-title {
+  font-family: var(--font-main);
+  font-size: 3rem;
+  color: var(--color-primary-main);
+  margin-bottom: 20px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  line-height: 2;
+
+}
+
+.hadith-badge {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 50px;
+  padding: 5px 20px;
+  /* Split padding logic */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  gap: 10px;
+}
+
+.note-badge {
+  margin-top: 15px;
+  background-color: var(--color-accent-pale);
+  border-color: var(--color-accent-main);
+  direction: rtl;
+
+}
+
+.badge-label {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.badge-number {
+  background: var(--color-primary-main);
+  color: var(--text-light);
+  padding: 2px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-family: var(--font-main);
+}
+
+/* --- Comparison Area (Split Panels) --- */
+.comparison-area {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 50px;
+  direction: rtl;
+}
+
+.panel {
+  flex: 1;
+  background: var(--bg-surface);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  /* For header background */
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.panel:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+}
+
+/* Panel Header */
+.panel-header {
+  background: linear-gradient(to left, var(--color-primary-pale), var(--bg-surface));
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.panel-header i {
+  color: var(--color-primary-main);
+  font-size: 1.2rem;
+}
+
+.panel-header span {
+  font-weight: 700;
+  color: var(--color-primary-main);
+  font-size: 1.1rem;
+}
+
+/* Panel Body */
+.panel-body {
+  padding: 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+}
+
+.centered-panel-body {
+  align-items: center;
+  /* justify-content: center; */
+  text-align: center;
+}
+
+.hadith-number-display {
+  font-size: 1.5rem;
+  color: var(--color-primary-main);
+  font-family: var(--font-main);
+}
+
+.number-large {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.hadith-text {
+  font-family: var(--font-main);
+  font-size: 1.4rem;
+  line-height: 2.2;
+  color: var(--text-main);
+  text-align: justify;
+}
+
+/* Source Panel Specifics */
+.source-panel {
+  border-top: 4px solid var(--color-accent-main);
+}
+
+.dest-panel {
+  border-top: 4px solid var(--color-primary-main);
+}
+
+.corner-decoration {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--color-accent-main);
+  opacity: 0.2;
+}
+
+.corner-decoration.top-right {
+  top: 15px;
+  right: 15px;
+  border-bottom: none;
+  border-left: none;
+}
+
+.corner-decoration.bottom-left {
+  bottom: 15px;
+  left: 15px;
+  border-top: none;
+  border-right: none;
+}
+
+/* Empty State in Panel */
+.empty-selection-state {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 40px 20px;
+}
+
+.empty-selection-state i {
+  font-size: 3rem;
+  color: var(--border-light);
+  margin-bottom: 15px;
+  display: block;
+}
+
+.empty-selection-state p {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+/* Action Footer */
+.action-footer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  border-top: 1px solid var(--border-light);
+  padding-top: 25px;
+  flex-wrap: wrap;
+}
+
+.btn-go-to-hadith {
+  position: relative;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-family: var(--font-main);
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: none;
+  font-size: 0.95rem;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.btn-go-to-hadith.primary-variant {
+  background: linear-gradient(135deg, var(--color-primary-main), var(--color-primary-light));
+  color: white;
+  box-shadow: 0 8px 20px rgba(44, 122, 123, 0.25);
+}
+
+.btn-go-to-hadith.secondary-variant {
+  background: white;
+  color: var(--color-primary-main);
+  border: 2px solid var(--color-primary-main);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.btn-go-to-hadith:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.btn-go-to-hadith.primary-variant:hover {
+  filter: brightness(1.1);
+}
+
+.btn-go-to-hadith.secondary-variant:hover {
+  background: var(--color-primary-pale);
+}
+
+.btn-go-to-hadith i {
+  font-size: 1.1rem;
+}
+
+/* --- Controls Section --- */
+.controls-section {
+  margin-bottom: 40px;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  opacity: 0.3;
+}
+
+.section-divider .line {
+  height: 1px;
+  width: 100px;
+  background: var(--text-secondary);
+}
+
+.section-divider .dot {
+  width: 5px;
+  height: 5px;
+  background: var(--color-accent-main);
+  border-radius: 50%;
+  transform: rotate(45deg);
+}
+
+.mode-selector {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background: var(--bg-surface);
+  padding: 15px 30px;
+  border-radius: 50px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--border-light);
+  width: fit-content;
+  margin: 0 auto;
+  direction: rtl;
+}
+
+.selector-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-weight: bold;
+}
+
+.selector-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.mode-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 8px 20px;
+  border-radius: 30px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.mode-btn i {
+  font-size: 0.9rem;
+}
+
+.mode-btn:hover {
+  background: var(--bg-body);
+  color: var(--color-primary-main);
+}
+
+.mode-btn.active {
+  background: var(--color-primary-main);
+  color: var(--text-light);
+  box-shadow: 0 4px 10px rgba(44, 122, 123, 0.2);
+}
+
+/* --- Takhreej Results Grid --- */
+.takhreej-results-container {
+  margin-top: 40px;
+}
+
+.results-title {
+  text-align: center;
+  font-family: var(--font-main);
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: var(--color-primary-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  flex-direction: column;
+  line-height: 2;
+
+}
+
+.results-title i {
+  opacity: 0.3;
+  font-size: 1.5rem;
+}
+
+.takhreej-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* Card Design */
+.takhreej-card {
+  background: var(--bg-surface);
+  border-radius: 16px;
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.takhreej-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-primary-light);
+}
+
+.takhreej-card.selected {
+  border: 2px solid var(--color-primary-main);
+  background: var(--color-primary-pale);
+}
+
+.card-content {
+  padding: 20px;
+  flex: 1;
+  direction: rtl;
+
+}
+
+/* Meta Rows inside Card */
+.meta-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 5px;
+  /* padding-bottom: 5px; */
+  border-bottom: 1px dashed var(--border-light);
+}
+
+.meta-row:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.book-header-row {
+  border-bottom: 2px solid var(--border-light);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.book-title-text {
+  font-size: 1.1rem;
+}
+
+.meta-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--bg-body);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-main);
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+.takhreej-card:hover .meta-icon {
+  background: var(--color-primary-main);
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.meta-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.meta-value {
+  font-size: 0.95rem;
+  color: var(--text-main);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.meta-number {
+  font-size: 0.8rem;
+  color: var(--color-accent-dark);
+  background: var(--color-accent-pale);
+  padding: 2px 8px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.number-highlight {
+  font-size: 1.1rem;
+  color: var(--color-primary-main);
+  font-family: system-ui;
+  /* Use numbers font */
+}
+
+/* Hadith List in Card */
+.list-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.hadith-buttons-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* .hadith-number-btn {
+  color: var(--text-main); 
+  background: var(--bg-surface); 
+  border: 1px solid var(--border-light);
+  padding: 5px 15px;
+  font-size: 0.9rem;
+} */
+
+
+.hadith-number-btn {
+
+  padding: 5px 15px;
+  font-size: 0.9rem;
+  border: 1px solid var(--border-light);
+}
+
+/* Hover Indicator */
+.card-action-indicator {
+  background: var(--color-primary-main);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.takhreej-card:hover .card-action-indicator {
+  transform: translateY(0);
+}
+
+/* .takhreej-card:hover .card-content {
+  padding-bottom: 50px; 
+} */
+
+/* --- Empty Page State --- */
+.empty-state-wrapper {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-body);
+}
+
+.empty-content {
+  text-align: center;
+  background: var(--bg-surface);
+  padding: 60px;
+  border-radius: 30px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+  max-width: 500px;
+  width: 90%;
+}
+
+.empty-icon-box {
+  width: 100px;
+  height: 100px;
+  background: var(--color-primary-pale);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px;
+  color: var(--color-primary-main);
+  font-size: 40px;
+}
+
+.empty-content h2 {
+  font-family: var(--font-main);
+  font-size: 2rem;
+  color: var(--text-main);
+  margin-bottom: 10px;
+  line-height: 2;
+}
+
+.empty-content p {
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+}
+
+.empty-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.btn-action {
+  padding: 12px 25px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  font-size: 1rem;
+}
+
+.btn-action.primary {
+  background: var(--color-primary-main);
+  color: white;
+  box-shadow: 0 5px 15px rgba(44, 122, 123, 0.3);
+}
+
+.btn-action.primary:hover {
+  background: var(--color-primary-light);
+  transform: translateY(-3px);
+}
+
+.btn-action.secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-light);
+}
+
+.btn-action.secondary:hover {
+  background: var(--bg-body);
+  color: var(--text-main);
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+  .comparison-area {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2.2rem;
+  }
+
+  .mode-selector {
+    flex-direction: column;
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  .selector-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .takhreej-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Highlight Effect for Selected Panel --- */
+#hadith-compare-target {
+  scroll-margin-top: 100px;
+  transition: all 0.5s ease;
+}
+
+#hadith-compare-target.highlight-pulse-active {
+  animation: highlight-pulse-panel 2s ease-in-out;
+}
+
+@keyframes highlight-pulse-panel {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  }
+
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px rgba(43, 170, 177, 0.4);
+    border-color: var(--color-primary-main);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  }
+}

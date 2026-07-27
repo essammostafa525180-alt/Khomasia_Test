@@ -1,0 +1,35 @@
+<div class="font-container" [class.open]="isOpen">
+    <div class="pen-btn" (click)="toggleSettings()" [class.active]="isOpen" [matTooltip]="'إعدادات الخط'" matTooltipClass="custom-tooltip" >
+        <i class="fas" [ngClass]="isOpen ? 'fa-times' : 'fa-pen-fancy'"></i>
+    </div>
+
+    <div class="options-wrapper" *ngIf="isOpen">
+        <div class="glass-bg animate-fade-in" (click)="closeSettings()"></div>
+
+        <div class="options-header animate-slide-down">
+            <i class="fas fa-magic"></i>
+            <span>تنسيق الخطوط</span>
+        </div>
+
+        <div class="options-list">
+
+            <button class="reset-card pop-in" [style.--index]="0" (click)="resetFont()">
+                <div class="font-icon reset-icon"><i class="fas fa-sync-alt"></i></div>
+                <div class="font-info">
+                    <span class="font-label">إعادة الوضع الافتراضي</span>
+                </div>
+            </button>
+            @for (font of fonts; track font.name; let i = $index) {
+            <button class="font-card pop-in" [style.--index]="i + 1" (click)="changeFont(font.family)">
+                <div class="font-icon">
+                    <i class="fas" [class]="font.icon"></i>
+                </div>
+                <div class="font-info">
+                    <span class="font-label" [style.font-family]="font.family">{{ font.name }}</span>
+                    <span class="font-preview">نموذج للنص العربي</span>
+                </div>
+            </button>
+            }
+        </div>
+    </div>
+</div>

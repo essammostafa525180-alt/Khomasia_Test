@@ -1,0 +1,15 @@
+:host {
+  display: contents;
+}
+
+.floating-ornament.top-right {
+  top: -50px;
+  right: -50px;
+  transform: rotate(-15deg);
+}
+
+.floating-ornament.bottom-left {
+  bottom: 100px;
+  left: -100px;
+  transform: rotate(165deg);
+}

@@ -1,0 +1,160 @@
+@if(HadithTakhreejList.length > 0 ){
+<div class="takhreej-page-wrapper">
+    <div class="islamic-pattern-overlay"></div>
+
+    <div class="container relative-z">
+        <div class="page-header-ornamental">
+            <div class="header-decoration-top"><i class="fas fa-quran"></i></div>
+            <h1 class="main-title">تخريج الحديث الشريف</h1>
+            <div class="hadith-badge">
+                <span class="badge-label">حديث رقم</span>
+                <span class="badge-number">{{HadithTakhreejList[0].hadithFromNumber}}</span>
+            </div>
+        </div>
+
+        <div class="comparison-area">
+            <div class="panel source-panel">
+                <div class="panel-header">
+                    <i class="fas fa-scroll"></i>
+                    <span>نــص الحديث (الأصل)</span>
+                </div>
+                <div class="panel-body">
+                    <div [innerHTML]="HadithTakhreejList[0].hadithTextFrom | hadithFormatter" class="hadith-text"></div>
+                </div>
+                <div class="corner-decoration top-right"></div>
+                <div class="corner-decoration bottom-left"></div>
+            </div>
+
+            <div id="comparison-area" class="panel dest-panel animated-fade"
+                [class.highlight-pulse-active]="highlightTrigger">
+                <div class="panel-header">
+                    <i class="fas fa-file-alt"></i>
+                    <span>النص المقابل (التخريج)</span>
+                </div>
+                <div class="panel-body">
+                    @if(hadithTextToShow.hadithTextTo == null){
+                    <div class="empty-selection-state">
+                        <i class="fas fa-hand-pointer"></i>
+                        <p>يرجى اختيار أحد مسارات التخريج أدناه لعرض النص المقابل</p>
+                    </div>
+                    }
+                    @else{
+                    <div [innerHTML]="hadithTextToShow.hadithTextTo | hadithFormatter"
+                        class="hadith-text animated-fade"></div>
+                    <div class="action-footer">
+                        <button (click)="goToHadith(hadithTextToShow.babId!, hadithTextToShow.hadithIdTo!)"
+                            class="btn-go-to-hadith">
+                            <i class="fa fa-book-open"></i>
+                            <span>الانتقال إلى موضع الحديث</span>
+                        </button>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-section">
+            <div class="section-divider">
+                <span class="line"></span>
+                <span class="dot"></span>
+                <span class="line"></span>
+            </div>
+
+            <div class="mode-selector">
+                <div class="selector-label">
+                    <i class="fas fa-sliders-h"></i>
+                    <span>طريقة العرض :</span>
+                </div>
+                <div class="selector-buttons">
+                    <button [class.active]="activeTab=='complate'" (click)="activeTab='complate'" class="mode-btn">
+                        <i class="fa fa-list-ul"></i>
+                        <span>التخريج الكامل</span>
+                    </button>
+                    <button [class.active]="activeTab=='number'" (click)="activeTab='number'" class="mode-btn">
+                        <i class="fa fa-hashtag"></i>
+                        <span>رقمي</span>
+                    </button>
+                    <button [class.active]="activeTab=='sumary'" (click)="activeTab='sumary'" class="mode-btn">
+                        <i class="fa fa-compress-alt"></i>
+                        <span>مختصر</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="takhreej-results-container">
+            <h2 class="results-title">
+                <i class="fas fa-project-diagram"></i>
+                مسارات التخريج ({{HadithTakhreejList.length}})
+            </h2>
+
+            <div class="takhreej-grid">
+                @for (item of HadithTakhreejList; track $index) {
+                <div (click)="selectTakhreej(item)" class="takhreej-card" [class.selected]="hadithTextToShow === item">
+                    <div class="card-content">
+                        <div class="meta-row classification">
+                            <div class="meta-icon"><i class="fa fa-layer-group"></i></div>
+                            <div class="meta-details">
+                                <span class="meta-label">التصنيف</span>
+                                <span class="meta-value">{{item.classificationName}}</span>
+                                <span *ngIf="activeTab=='sumary'" class="meta-number">#{{item.classificationId}}</span>
+                            </div>
+                        </div>
+
+                        <div *ngIf="activeTab!=='sumary'" class="meta-row book">
+                            <div class="meta-icon"><i class="fa fa-book"></i></div>
+                            <div class="meta-details">
+                                <span class="meta-label">الكتـاب</span>
+                                <span *ngIf="activeTab=='complate'" class="meta-value">{{item.bookName}}</span>
+                                <span *ngIf="activeTab=='number'" class="meta-number">رقم #{{item.bookIndex}}</span>
+                            </div>
+                        </div>
+
+                        <div *ngIf="activeTab!=='sumary'" class="meta-row bab">
+                            <div class="meta-icon"><i class="fa fa-door-open"></i></div>
+                            <div class="meta-details">
+                                <span class="meta-label">البــاب</span>
+                                <span *ngIf="activeTab=='complate'" class="meta-value">{{item.babName}}</span>
+                                <span *ngIf="activeTab=='number'" class="meta-number">رقم #{{item.babIndex}}</span>
+                            </div>
+                        </div>
+
+                        <div class="meta-row hadith-no">
+                            <div class="meta-icon"><i class="fa fa-hashtag"></i></div>
+                            <div class="meta-details">
+                                <span class="meta-label">الحديث</span>
+                                <span class="meta-value number-highlight">{{item.hadithToNumber}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action-indicator">
+                        <i class="fas fa-eye"></i>
+                        <span>عرض</span>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+} @else {
+<div class="empty-state-wrapper">
+    <div class="empty-content">
+        <div class="empty-icon-box">
+            <i class="fas fa-search"></i>
+        </div>
+        <h2>عذراً، هذا الحديث لم يتم تخريجه بعد</h2>
+        <p>نعمل حالياً على إضافة المزيد من التخريجات</p>
+        <div class="empty-actions">
+            <button class="btn-action primary" (click)="goBack()">
+                <i class="fa fa-arrow-right"></i>
+                <span>العودة للخلف</span>
+            </button>
+            <a routerLink="/" class="btn-action secondary">
+                <i class="fa fa-home"></i>
+                <span>الرئيسية</span>
+            </a>
+        </div>
+    </div>
+</div>
+}

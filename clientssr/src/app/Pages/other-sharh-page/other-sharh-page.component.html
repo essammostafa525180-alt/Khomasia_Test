@@ -1,0 +1,131 @@
+@if(otherBookSharh && otherBookSharh.length > 0){
+<div class="takhreej-page-wrapper">
+    <div class="islamic-pattern-overlay"></div>
+
+    <div class="container relative-z">
+        <div class="page-header-ornamental">
+            <div class="header-decoration-top"><i class="fas fa-book-reader"></i></div>
+            <h1 class="main-title">شروحات أخرى للحديث</h1>
+
+            <div class="hadith-badge note-badge">
+                <i class="fas fa-info-circle"></i>
+                <span class="badge-label">تنبية: تم توفير هذه الشروح اعتمادًا على شروح لأحاديث مشابهة وردت في تخريج
+                    الحديث</span>
+            </div>
+        </div>
+
+        <div class="comparison-area">
+            <div class="panel source-panel">
+                <div class="panel-header">
+                    <i class="fas fa-file-alt"></i>
+                    <span>نص الحديث </span>
+                </div>
+                <div class="panel-body centered-panel-body">
+                    @if(firstHadith){
+                    <div class="hadith-number-display">
+                        <div [innerHTML]="firstHadith.hadithWithSign | hadithFormatter"
+                            class="hadith-text animated-fade">
+                        </div>
+                    </div>
+                    } @else {
+                    <div class="empty-selection-state">
+                        <p>يرجى اختيار حديث لعرض التفاصيل</p>
+                    </div>
+                    }
+                </div>
+                <div class="corner-decoration top-right"></div>
+                <div class="corner-decoration bottom-left"></div>
+            </div>
+
+
+            <div class="panel dest-panel animated-fade" id="hadith-compare-target"
+                [class.highlight-pulse-active]="highlightTrigger">
+                <div class="panel-header">
+                    <i class="fas fa-file-alt"></i>
+                    <span>الحديث الأخر</span>
+                </div>
+                <div class="panel-body">
+                    @if(selectedHadith){
+                    <div [innerHTML]="selectedHadith.hadithWithSign | hadithFormatter"
+                        class="hadith-text animated-fade">
+                    </div>
+                    <div class="action-footer">
+                        <button (click)="sharhDetails(selectedHadith.id)" class="btn-go-to-hadith secondary-variant">
+                            <i class="fas fa-book-reader"></i>
+                            <span>عرض شرح الحديث</span>
+                        </button>
+                        <button (click)="goToHadith(selectedHadith.babId,selectedHadith.id)"
+                            class="btn-go-to-hadith primary-variant">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>الانتقال إلى موضع الحديث</span>
+                        </button>
+                    </div>
+                    } @else {
+                    <div class="empty-selection-state">
+                        <i class="fas fa-hand-pointer"></i>
+                        <p>يرجى اختيار أحد ارقام الاحديث أدناه لعرض النص</p>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="takhreej-results-container">
+            <h2 class="results-title">
+                <i class="fas fa-books"></i>
+                كتب الشروح الأخرى المتوفرة ({{otherBookSharh.length}})
+                <div class="hadith-badge note-badge">
+                    <i class="fas fa-info-circle"></i>
+                    <span class="badge-label">يرجى الضغط على رقم الحديث الذي ترغب في عرض شروحه</span>
+                </div>
+            </h2>
+
+            <div class="takhreej-grid">
+                @for (book of otherBookSharh; track book.bookId) {
+                <div class="takhreej-card" [class.selected]="selectedBookId === book.bookId">
+                    <div class="card-content">
+                        <div class="meta-row book book-header-row">
+                            <div class="meta-icon"><i class="fa fa-book"></i></div>
+                            <div class="meta-details">
+                                <span class="meta-label">الكتـاب</span>
+                                <span class="meta-value book-title-text">{{book.bookName}}</span>
+                            </div>
+                        </div>
+
+                        <div class="hadith-list-container">
+                            <span class="meta-label list-label">أرقام الأحاديث
+                                المتوفرة:</span>
+                            <div class="hadith-buttons-wrapper">
+                                @for (item of book.contant; track item.hadithId) {
+                                <button [class.active]="item?.hadithId == selectedHadith?.id"
+                                    (click)="getHadithById(item.hadithId);selectSharh(book.bookId)"
+                                    class="mode-btn hadith-number-btn">
+                                    {{item.hadithNumber}}
+                                </button>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+} @else {
+<div class="empty-state-wrapper">
+    <div class="empty-content">
+        <div class="empty-icon-box">
+            <i class="fas fa-search"></i>
+        </div>
+        <h2>لا توجد شروح أخرى متاحة لهذا الحديث</h2>
+        <div class="empty-actions">
+            <button class="btn-action primary" (click)="goBack()">
+                <i class="fa fa-arrow-right"></i>
+                <span>العودة للخلف</span>
+            </button>
+        </div>
+    </div>
+</div>
+}

@@ -1,0 +1,90 @@
+<div class="container">
+  <footer class="modern-footer">
+    <div class="footer-wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path
+          d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+          class="shape-fill"></path>
+      </svg>
+    </div>
+
+    <div class="footer-ornament"></div>
+
+    <div class="container footer-content">
+      <div class="footer-grid">
+        <div class="footer-section brand-section">
+          <div class="footer-logo">
+            <img [routerLink]="['/']" src="assets/images/hadith-logo.webp" alt="Logo" class="logo-img" width="180"
+              height="53" loading="lazy">
+            <span [routerLink]="['/']" class="logo-text">جامع السنة</span>
+          </div>
+          <p class="brand-desc">
+            المرجع الشامل للأحاديث النبوية الشريفة ومشروحاتها، نهدف لتقديم العلم الشرعي بطريقة حديثة وميسرة.
+          </p>
+          <div class="social-links">
+            <a href="https://facebook.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="تويتر"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="إنستغرام"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtu.be/I9FMqj4kAE0?si=NTScLNyajqbywzmj" target="_blank" rel="noopener noreferrer"
+              class="social-icon" aria-label="يوتيوب">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-section links-section">
+          <h2>روابط سريعة</h2>
+          <ul>
+            <li><a [routerLink]="['/']"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+            <li><a [routerLink]="['/library']"><i class="fas fa-chevron-left"></i> المكتبة</a></li>
+            <li><a [routerLink]="['/narrators']"><i class="fas fa-chevron-left"></i> الرواة</a></li>
+            <li><a [routerLink]="['/aboutUs']"><i class="fas fa-chevron-left"></i> من نحن</a></li>
+            <li>
+              <button (click)="contactUs()" class="footer-contact-btn">
+                <i class="fas fa-chevron-left"></i> اتصل بنا
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-section apps-section">
+          <h2>حمل التطبيق الآن</h2>
+          <p>استمتع بتجربة أفضل عبر تطبيقنا للهواتف الذكية</p>
+          <div class="store-buttons">
+            <a (click)="$event.stopPropagation()"
+              href="https://play.google.com/store/apps/details?id=com.Islamics.HadithPortal&pcampaignid=web_share"
+              target="_blank" rel="noopener noreferrer" class="store-btn google-play">
+              <i class="fab fa-google-play"></i>
+              <div class="btn-text">
+                <span>GET IT ON</span>
+                <strong>Google Play</strong>
+              </div>
+            </a>
+            <a (click)="$event.stopPropagation()"
+              href="https://apps.apple.com/sa/app/hadith-portal-جامع-السنة/id6605934911" target="_blank"
+              rel="noopener noreferrer" class="store-btn app-store">
+              <i class="fab fa-apple"></i>
+              <div class="btn-text">
+                <span>Download on the</span>
+                <strong>App Store</strong>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container bottom-container">
+        <div class="copyright">
+          جميع الحقوق محفوظة © 2026 <span>جامع السنة وشروحها</span>
+        </div>
+        <div class="execution-info">
+          <i class="fas fa-bolt"></i>
+          <span>استغرق الطلب:</span>
+          <strong class="time-value">{{ executionTime }} ثانية</strong>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

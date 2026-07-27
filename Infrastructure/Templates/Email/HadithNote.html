@@ -1,0 +1,158 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #eef2ef;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            direction: rtl;
+        }
+
+        .wrapper {
+            max-width: 640px;
+            margin: 40px auto;
+            padding: 0 15px;
+        }
+
+        .container {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .header {
+            background: #0e3b2e;
+            padding: 35px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+            .header::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 6px;
+                background: linear-gradient(to right, #c8a74e, #e5d08b, #c8a74e);
+            }
+
+            .header h1 {
+                margin: 0;
+                color: #ffffff;
+                font-size: 22px;
+                letter-spacing: 0.5px;
+            }
+
+        .content {
+            padding: 30px;
+            color: #444;
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .hadith-card {
+            background: #f8faf9;
+            border: 1px solid #e4ebe7;
+            padding: 18px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .hadith-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #145c43;
+            color: #ffffff !important;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+            .hadith-btn:hover {
+                background: #0e3b2e;
+            }
+
+        .info {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+            .info span {
+                font-weight: bold;
+                color: #145c43;
+            }
+
+        .note-box {
+            margin-top: 25px;
+            padding: 18px;
+            background: #fffdf6;
+            border: 1px solid #f1e6c8;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .note-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #b38b2e;
+        }
+
+        .footer {
+            background: #f8faf9;
+            padding: 18px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            border-top: 1px solid #e4ebe7;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+
+            <div class="header">
+                <h1>ملاحظة واردة على حديث</h1>
+            </div>
+
+            <div class="content">
+
+                <p>
+                    تم استلام ملاحظة جديدة بخصوص أحد الأحاديث في المنصة.
+                </p>
+
+                <div class="hadith-card">
+                    <a href="{{HadithUrl}}" class="hadith-btn">
+                        عرض الحديث
+                    </a>
+                </div>
+
+                <div class="info">
+                    <span>البريد المرسل:</span> {{UserEmail}}
+                </div>
+
+                <div class="note-box">
+                    <div class="note-title">نص الملاحظة</div>
+                    {{Note}}
+                </div>
+
+            </div>
+
+            <div class="footer">
+                © {{Year}} منصة الحديث الشريف
+                <br>
+                نسأل الله أن يجعل هذا العمل خالصًا لوجهه الكريم
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

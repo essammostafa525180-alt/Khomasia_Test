@@ -1,0 +1,2 @@
+import './polyfills.server.mjs';
+var t=(a=>(a[a.Home=1]="Home",a[a.SunnahBooks=2]="SunnahBooks",a[a.Parts=3]="Parts",a[a.Raqaiq=4]="Raqaiq",a[a.HadithSciences=5]="HadithSciences",a[a.Biography=6]="Biography",a[a.Ahkam=7]="Ahkam",a[a.FabricatedHadith=8]="FabricatedHadith",a[a.PopularHadith=9]="PopularHadith",a[a.GharibHadith=10]="GharibHadith",a[a.RefutingDoubts=11]="RefutingDoubts",a[a.Commentaries=12]="Commentaries",a[a.Narrators=13]="Narrators",a))(t||{});export{t as a};

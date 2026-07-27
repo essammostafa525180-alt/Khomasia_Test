@@ -1,0 +1,44 @@
+
+<html>
+<head>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; direction: rtl; }
+        .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); overflow: hidden; }
+        .header { background-color: #0F5132; color: #ffffff; padding: 20px; text-align: center; }
+        .header h1 { margin: 0; font-size: 24px; }
+        .content { padding: 20px; color: #333333; line-height: 1.6; }
+        .field { margin-bottom: 15px; border-bottom: 1px solid #eeeeee; padding-bottom: 10px; }
+        .field-label { font-weight: bold; color: #0F5132; display: block; margin-bottom: 5px; }
+        .field-value { display: block; }
+        .footer { background-color: #f9f9f9; padding: 15px; text-align: center; font-size: 12px; color: #777777; border-top: 1px solid #eeeeee; }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <div class='header'>
+            <h1>رسالة تواصل جديدة</h1>
+        </div>
+        <div class='content'>
+            <div class='field'>
+                <span class='field-label'>الاسم:</span>
+                <span class='field-value'>{{Name}}</span>
+            </div>
+            <div class='field'>
+                <span class='field-label'>البريد الإلكتروني:</span>
+                <span class='field-value'>{{Email}}</span>
+            </div>
+            <div class='field'>
+                <span class='field-label'>الموضوع:</span>
+                <span class='field-value'>{{Subject}}</span>
+            </div>
+            <div class='field'>
+                <span class='field-label'>الرسالة:</span>
+                <span class='field-value'>{{Message}}</span>
+            </div>
+        </div>
+        <div class='footer'>
+            &copy; {{Year}} منصة الحديث. جميع الحقوق محفوظة.
+        </div>
+    </div>
+</body>
+</html>

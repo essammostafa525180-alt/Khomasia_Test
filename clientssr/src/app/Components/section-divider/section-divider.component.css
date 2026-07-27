@@ -1,0 +1,26 @@
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 30px 0;
+}
+
+.divider-line {
+  height: 1px;
+  width: 100px;
+  background: linear-gradient(to left, transparent, var(--color-accent-main), transparent);
+}
+
+.divider-icon {
+  width: 45px;
+  height: 45px;
+  background: var(--color-primary-pale);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary-main);
+  font-size: 16px;
+  border: 1px solid rgba(43, 170, 177, 0.15);
+}
