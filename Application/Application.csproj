@@ -28,11 +28,9 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
-    <PackageReference Include="MailKit" Version="4.8.0" />
     <PackageReference Include="Mapster" Version="7.4.0" />
     <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
     <PackageReference Include="MediatR" Version="12.4.1" />
-    <PackageReference Include="MimeKit" Version="4.8.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.2" />
   </ItemGroup>
@@ -43,6 +41,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="CQRS\Auth\Commands\" />
+    <Folder Include="CQRS\Auth\Queries\" />
     <Folder Include="CQRS\ContactMessages\Queries\" />
     <Folder Include="CQRS\Narrators\Commands\" />
     <Folder Include="CQRS\Takhreej\Commands\" />
