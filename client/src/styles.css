@@ -1,0 +1,104 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --bs-primary: #2e7d32;      /* أخضر زراعي */
+  --bs-primary-rgb: 46, 125, 50;
+}
+.btn-success, .bg-success { background-color: #2e7d32 !important; }
+.table-primary th { background-color: #2e7d32 !important; color: white; }
+.card-primary.card-outline { border-top: 3px solid #2e7d32; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.feed-banner {
+  height: 140px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  background: url('/assets/images/banner.jpg') center/cover no-repeat;
+  position: relative;
+}
+
+.feed-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(46,125,50,0.75), rgba(46,125,50,0.15));
+  border-radius: 8px;
+}
+.info-box.bg-primary { background-color: #2e7d32 !important; color: #fff; }
+.info-box.bg-success { background-color: #558b2f !important; color: #fff; }
+.info-box.bg-warning { background-color: #fdd835 !important; color: #212121; }
+.info-box.bg-danger  { background-color: #e65100 !important; color: #fff; }
+
+/* ===== Sidebar الجديد ===== */
+.app-sidebar {
+  background: linear-gradient(180deg, #1b3a1e 0%, #14291a 100%) !important;
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+
+.sidebar-brand {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding: 1rem 0;
+}
+
+.sidebar-brand .brand-text {
+  color: #f5f5f0;
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+/* خانة البحث */
+.form-control-sidebar {
+  background-color: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  color: #fff !important;
+  border-radius: 6px 0 0 6px;
+}
+.form-control-sidebar::placeholder { color: rgba(255,255,255,0.5) !important; }
+.form-control-sidebar:focus {
+  background-color: rgba(255,255,255,0.12) !important;
+  border-color: #6cbf6c !important;
+  box-shadow: none !important;
+}
+.sidebar-wrapper .input-group-text {
+  background-color: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  color: #cfd8cf !important;
+  border-radius: 0 6px 6px 0;
+}
+
+/* عناصر القائمة */
+.sidebar-menu .nav-link {
+  color: #d5ddd5 !important;
+  border-radius: 8px;
+  margin: 2px 10px;
+  padding: 0.65rem 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.sidebar-menu .nav-link .nav-icon {
+  color: #8fbf8f;
+  margin-inline-end: 10px;
+  font-size: 1.05rem;
+}
+
+.sidebar-menu .nav-link:hover {
+  background-color: rgba(255,255,255,0.08) !important;
+  color: #fff !important;
+}
+
+.sidebar-menu .nav-link.active {
+  background-color: #2e7d32 !important;
+  color: #fff !important;
+  box-shadow: 0 2px 8px rgba(46,125,50,0.4);
+}
+.sidebar-menu .nav-link.active .nav-icon {
+  color: #fff;
+}
+
+/* سكرول بار أنضف */
+.sidebar-wrapper::-webkit-scrollbar { width: 6px; }
+.sidebar-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+}

@@ -1,8 +1,0 @@
-User-agent: *
-Allow: /
-
-Disallow: /api/
-Disallow: /swagger/
-Disallow: /admin/
-
-Sitemap: https://api.hadithportal.com/sitemap.xml

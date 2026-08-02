@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+
+namespace Infrastructure.Models.InventoryClasses;
+
+public partial class InventoryItemLocation
+{
+    public long Id { get; set; }
+
+    public long? InventoryItemFk { get; set; }
+
+    public long? StoreFk { get; set; }
+
+    public decimal? Quantity { get; set; }
+
+    public long? ItemQuantityTypeFk { get; set; }
+
+    public DateTime? CreatedOn { get; set; }
+
+    public DateTime? LastUpdatedOn { get; set; }
+
+    public long? CreatedBy { get; set; }
+
+    public long? LastUpdatedBy { get; set; }
+
+    public bool IsActive { get; set; }
+
+    public byte[] RowVersion { get; set; } = null!;
+
+    public decimal? AvgCost { get; set; }
+
+    public bool IsDisabled { get; set; }
+
+    public virtual InventoryItem? InventoryItemFkNavigation { get; set; }
+
+    public virtual ICollection<InventoryItemLocationBatch> InventoryItemLocationBatches { get; set; } = new List<InventoryItemLocationBatch>();
+
+    public virtual ICollection<InventoryItemLocationDetail> InventoryItemLocationDetails { get; set; } = new List<InventoryItemLocationDetail>();
+
+    public virtual ICollection<InventoryItemOpeningBalance> InventoryItemOpeningBalances { get; set; } = new List<InventoryItemOpeningBalance>();
+
+    public virtual ItemQuantityType? ItemQuantityTypeFkNavigation { get; set; }
+
+    public virtual Store? StoreFkNavigation { get; set; }
+}

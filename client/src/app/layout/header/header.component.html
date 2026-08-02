@@ -1,0 +1,124 @@
+<nav class="app-header navbar navbar-expand bg-body">
+  <div class="container-fluid">
+
+    <!-- يسار: زرار فتح/قفل السايدبار -->
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
+          <i class="bi bi-list"></i>
+        </a>
+      </li>
+    </ul>
+
+    <!-- يمين -->
+    <ul class="navbar-nav ms-auto align-items-center">
+
+      <!-- الرسائل -->
+      <li class="nav-item dropdown">
+        <a class="nav-link position-relative" data-bs-toggle="dropdown" href="#" role="button">
+          <i class="bi bi-chat-left-text"></i>
+          <span *ngIf="messages.length" class="badge text-bg-danger navbar-badge">
+            {{ messages.length }}
+          </span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
+          <a *ngFor="let msg of messages" href="#" class="dropdown-item d-flex align-items-start gap-2 py-2 border-bottom">
+            <img [src]="'https://ui-avatars.com/api/?name=' + msg.avatar + '&background=2e7d32&color=fff'"
+                 class="rounded-circle" width="40" height="40" alt="" />
+            <div class="flex-grow-1">
+              <div class="d-flex justify-content-between">
+                <span class="fw-bold">{{ msg.name }}</span>
+                <i class="bi" [class.bi-star-fill]="msg.starred" [class.text-warning]="msg.starred"
+                   [class.bi-star]="!msg.starred" [class.text-secondary]="!msg.starred"></i>
+              </div>
+              <div class="text-muted small">{{ msg.text }}</div>
+              <div class="text-muted small"><i class="bi bi-clock"></i> {{ msg.time }}</div>
+            </div>
+          </a>
+          <a href="#" class="dropdown-item text-center py-2">عرض كل الرسائل</a>
+        </div>
+      </li>
+
+      <!-- التنبيهات -->
+      <li class="nav-item dropdown">
+        <a class="nav-link position-relative" data-bs-toggle="dropdown" href="#" role="button">
+          <i class="bi bi-bell"></i>
+          <span *ngIf="notifications.length" class="badge text-bg-warning navbar-badge">
+            {{ notifications.length }}
+          </span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0">
+          <div class="dropdown-header text-center py-2 fw-bold border-bottom">
+            {{ notifications.length }} تنبيهات
+          </div>
+          <a *ngFor="let n of notifications" href="#" class="dropdown-item d-flex justify-content-between align-items-center py-2 border-bottom">
+            <span><i class="bi {{ n.icon }} me-2"></i>{{ n.text }}</span>
+            <span class="text-muted small">{{ n.time }}</span>
+          </a>
+          <a href="#" class="dropdown-item text-center py-2">عرض كل التنبيهات</a>
+        </div>
+      </li>
+
+      <!-- Fullscreen -->
+      <li class="nav-item">
+        <a class="nav-link" href="#" role="button" (click)="toggleFullscreen(); $event.preventDefault()">
+          <i class="bi bi-arrows-fullscreen"></i>
+        </a>
+      </li>
+
+      <!-- الوضع الليلي/النهاري/تلقائي -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-bs-toggle="dropdown" href="#" role="button">
+          <i class="bi" [class.bi-sun]="theme !== 'dark'" [class.bi-moon-stars]="theme === 'dark'"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-end">
+          <a href="#" class="dropdown-item d-flex justify-content-between align-items-center"
+             [class.active]="theme === 'light'"
+             (click)="setTheme('light'); $event.preventDefault()">
+            <span><i class="bi bi-sun me-2"></i>فاتح</span>
+            <i class="bi bi-check" *ngIf="theme === 'light'"></i>
+          </a>
+          <a href="#" class="dropdown-item d-flex justify-content-between align-items-center"
+             [class.active]="theme === 'dark'"
+             (click)="setTheme('dark'); $event.preventDefault()">
+            <span><i class="bi bi-moon-stars me-2"></i>داكن</span>
+            <i class="bi bi-check" *ngIf="theme === 'dark'"></i>
+          </a>
+          <a href="#" class="dropdown-item d-flex justify-content-between align-items-center"
+             [class.active]="theme === 'auto'"
+             (click)="setTheme('auto'); $event.preventDefault()">
+            <span><i class="bi bi-circle-half me-2"></i>تلقائي</span>
+            <i class="bi bi-check" *ngIf="theme === 'auto'"></i>
+          </a>
+        </div>
+      </li>
+
+      <!-- المستخدم (Profile Card) -->
+      <li class="nav-item dropdown">
+        <a class="nav-link d-flex align-items-center gap-2" data-bs-toggle="dropdown" href="#" role="button">
+          <img [src]="'https://ui-avatars.com/api/?name=' + userName + '&background=2e7d32&color=fff'"
+               class="rounded-circle" width="30" height="30" alt="" />
+          <span>{{ userName }}</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-end p-0" style="width: 280px;">
+          <div class="text-center text-white py-4 rounded-top" style="background-color: #2e7d32;">
+            <img [src]="'https://ui-avatars.com/api/?name=' + userName + '&background=fff&color=2e7d32&size=80'"
+                 class="rounded-circle mb-2" width="80" height="80" alt="" />
+            <div class="fw-bold">{{ userName }} - {{ userTitle }}</div>
+            <div class="small">عضو منذ {{ memberSince }}</div>
+          </div>
+          <div class="d-flex text-center border-bottom">
+            <a href="#" class="flex-fill py-2 text-primary border-end">المتابعين</a>
+            <a href="#" class="flex-fill py-2 text-primary border-end">المبيعات</a>
+            <a href="#" class="flex-fill py-2 text-primary">الأصدقاء</a>
+          </div>
+          <div class="d-flex justify-content-between p-2">
+            <a href="#" class="btn btn-outline-secondary btn-sm">الملف الشخصي</a>
+            <a href="#" class="btn btn-outline-danger btn-sm">تسجيل الخروج</a>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</nav>

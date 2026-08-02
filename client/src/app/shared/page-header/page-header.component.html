@@ -1,0 +1,22 @@
+<div class="app-content-header">
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-sm-6">
+        <h3 class="mb-0">{{ title }}</h3>
+      </div>
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-end">
+          <li class="breadcrumb-item">
+            <a routerLink="/dashboard">الرئيسية</a>
+          </li>
+          <li *ngFor="let item of breadcrumbs; let last = last"
+              class="breadcrumb-item"
+              [class.active]="last">
+            <a *ngIf="item.link && !last" [routerLink]="item.link">{{ item.label }}</a>
+            <span *ngIf="!item.link || last">{{ item.label }}</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>

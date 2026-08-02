@@ -1,0 +1,32 @@
+<aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+  <div class="sidebar-brand">
+    <a routerLink="/dashboard" class="brand-link">
+      <span class="brand-text fw-light">مصنع الأعلاف</span>
+    </a>
+  </div>
+
+  <div class="sidebar-wrapper">
+
+    <!-- خانة البحث -->
+    <div class="form-inline px-3 pt-3 pb-2">
+      <div class="input-group">
+        <input class="form-control form-control-sidebar" type="search"
+               placeholder="بحث..." [(ngModel)]="searchTerm" />
+        <span class="input-group-text">
+          <i class="bi bi-search"></i>
+        </span>
+      </div>
+    </div>
+
+    <nav class="mt-2">
+      <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu">
+        <li class="nav-item" *ngFor="let item of filteredMenu">
+          <a [routerLink]="item.link" routerLinkActive="active" class="nav-link">
+            <i class="nav-icon bi {{ item.icon }}"></i>
+            <p>{{ item.label }}</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>
