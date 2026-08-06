@@ -49,3 +49,7 @@ public class GetAllInventoryItemQueryHandler :
         return Result<PagingSortingFiltering<InventoryItemDetailsResponse>>.Success(result);
     }
 }
+
+
+
+

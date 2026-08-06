@@ -1,0 +1,12 @@
+.dg-search {
+  width: 220px;
+}
+
+.dg-action {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

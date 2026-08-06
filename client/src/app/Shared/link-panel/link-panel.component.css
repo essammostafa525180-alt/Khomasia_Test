@@ -1,0 +1,7 @@
+.lp-link {
+  color: inherit;
+}
+
+.lp-link:hover {
+  color: var(--page-accent, #2563eb);
+}

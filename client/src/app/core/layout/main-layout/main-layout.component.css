@@ -13,13 +13,13 @@
 .sidebar {
   width: 250px;
   flex-shrink: 0;
-  background: #333437;
-  color: #b8bfd6;
+  background: var(--sidebar-bg, #333437);
+  color: #1f2937;
   padding: 20px 14px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  transition: width 0.2s ease, padding 0.2s ease;
+  transition: width 0.2s ease, padding 0.2s ease, background 0.25s ease;
 }
 .sidebar--collapsed {
   width: 0;
@@ -54,7 +54,7 @@
   margin-right: 6px;
 }
 .sidebar__brand .brand-name {
-  color: #fff;
+  color: #1f2937;
   font-weight: 600;
   font-size: 16px;
   margin-left: 2px;
@@ -65,13 +65,14 @@
   gap: 10px;
   padding: 10px 10px;
   font-size: 14px;
-  color: #fff;
+  color: #1f2937;
   font-weight: 500;
 }
 .sidebar__dashboards mat-icon {
   font-size: 20px;
   width: 20px;
   height: 20px;
+  color: #1f2937;
 }
 .sidebar__dashboards .badge-count {
   background: #ef4444;
@@ -90,8 +91,26 @@
 .sidebar__section-label {
   font-size: 11px;
   letter-spacing: 0.06em;
-  color: #7c84a3;
+  color: #6b7280;
   padding: 16px 10px 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Elegant divider between sidebar sections — grows on hover */
+.sidebar__divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
+  width: 100%;
+  margin: 18px 0;
+  transition: height 0.25s ease, background 0.25s ease, opacity 0.25s ease;
+}
+.sidebar__divider:hover {
+  height: 3px;
+  background: var(--page-accent);
+  opacity: 0.9;
 }
 
 .main {
@@ -157,6 +176,26 @@
 .content {
   padding: 24px 24px 0;
   flex: 1;
+  /* Animated background shared by every routed page.
+     Gentle pastel gradient that slowly drifts — visible without
+     distracting from data, and picks up the active theme's soft accent. */
+  background: linear-gradient(
+      225deg,
+      var(--page-accent-soft) 0%,
+      #dcfce7 20%,
+      #fce7f3 40%,
+      #f3e8ff 60%,
+      #fef3c7 80%,
+      var(--page-accent-soft) 100%
+    );
+  background-size: 700% 700%;
+  animation: pageBgShift 30s ease-in-out infinite;
+}
+
+@keyframes pageBgShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .sidebar__nav {
@@ -170,12 +209,15 @@
   gap: 10px;
   padding: 9px 10px;
   font-size: 14px;
-  color: #7c84a3;
+  color: #374151;
   border-radius: 6px;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.15s ease;
   font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
       padding: 10px;
 
     margin-bottom: 5px;
@@ -183,7 +225,7 @@
 }
 .sidebar__link:hover {
   color: var(--page-accent);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.04);
 }
 .sidebar__link.active {
   color: var(--page-accent);

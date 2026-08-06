@@ -1,7 +1,15 @@
 export interface PagedResultModel<T> {
-  items      : T[];
-  totalCount : number;
-  pageNumber : number;
-  pageSize   : number;
-  totalPages : number;
+  items: T[];
+  currentPage: number;
+  itemsPerPage: number;
+  totalItems: number;
+  totalPages: number;
+  nextPage: boolean;
+}
+
+
+export interface ApiResponse<T> {
+  isSuccess: boolean;
+  data: T;
+  errorMessage: string | null;
 }

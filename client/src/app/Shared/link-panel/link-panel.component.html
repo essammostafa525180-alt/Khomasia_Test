@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center gap-2">
+    <i class="bi {{ icon }}" *ngIf="icon"></i>
+    <h3 class="card-title mb-0">{{ title | translate }}</h3>
+  </div>
+  <div class="card-body p-0">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let link of links">
+        <a [routerLink]="link.link" class="d-flex align-items-center text-decoration-none lp-link">
+          <i class="bi {{ link.icon }} me-2" *ngIf="link.icon"></i>
+          <span>{{ link.label | translate }}</span>
+          <i class="bi bi-chevron-right ms-auto"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

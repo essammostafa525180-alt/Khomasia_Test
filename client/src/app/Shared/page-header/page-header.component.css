@@ -1,0 +1,27 @@
+.ph-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: var(--app-surface, #fff);
+  border: 1px solid var(--app-border, #eceef4);
+  border-radius: 10px;
+}
+
+.ph-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--app-ink, #1e2233);
+}
+
+.ph-breadcrumb {
+  font-size: 13px;
+}
+
+.ph-breadcrumb .breadcrumb-item a {
+  color: var(--page-accent, #2563eb);
+  text-decoration: none;
+}

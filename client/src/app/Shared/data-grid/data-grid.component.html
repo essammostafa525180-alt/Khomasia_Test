@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+    <h3 class="card-title mb-0" *ngIf="title">{{ title | translate }}</h3>
+    <div class="d-flex align-items-center gap-2 flex-wrap">
+      <input type="search" class="form-control form-control-sm dg-search"
+        [placeholder]="'COMMON.SEARCH' | translate" (input)="onSearchInput($event)">
+      <button type="button" class="btn btn-sm btn-primary" (click)="onAdd()">
+        <i class="bi bi-plus-lg"></i> {{ 'COMMON.ADD' | translate }}
+      </button>
+      <div class="dropdown">
+        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-download"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="javascript:void(0)" (click)="exportPdf.emit()">
+            <i class="bi bi-file-earmark-pdf text-danger me-2"></i>{{ 'COMMON.EXPORT_PDF' | translate }}</a></li>
+          <li><a class="dropdown-item" href="javascript:void(0)" (click)="exportExcel.emit()">
+            <i class="bi bi-file-earmark-excel text-success me-2"></i>{{ 'COMMON.EXPORT_EXCEL' | translate }}</a></li>
+          <li><a class="dropdown-item" href="javascript:void(0)" (click)="exportWord.emit()">
+            <i class="bi bi-file-earmark-word text-primary me-2"></i>Word</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="javascript:void(0)" (click)="print.emit()">
+            <i class="bi bi-printer me-2"></i>{{ 'COMMON.PRINT' | translate }}</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="card-body p-0 table-responsive">
+    <table class="table table-hover table-striped align-middle mb-0">
+      <thead>
+        <tr>
+          <th *ngFor="let col of columns">{{ col.label | translate }}</th>
+          <th class="text-end">{{ 'COMMON.ACTIONS' | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of data">
+          <td *ngFor="let col of columns">{{ row[col.key] }}</td>
+          <td class="text-end text-nowrap">
+            <button type="button" class="btn btn-sm btn-outline-primary dg-action" (click)="onView(row)">
+              <i class="bi bi-eye"></i>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-warning dg-action" (click)="onEdit(row)">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-danger dg-action" (click)="onDelete(row)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="!data.length" class="text-center text-muted py-4">{{ 'COMMON.NO_DATA' | translate }}</div>
+  </div>
+</div>

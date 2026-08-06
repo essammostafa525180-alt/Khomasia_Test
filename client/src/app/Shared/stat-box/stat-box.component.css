@@ -1,0 +1,19 @@
+.sb .inner {
+  padding: 10px;
+}
+
+.sb h3 {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.sb p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.sb .icon {
+  font-size: 50px;
+  opacity: 0.35;
+}
