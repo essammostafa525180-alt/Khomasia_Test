@@ -1,0 +1,23 @@
+<mat-form-field appearance="outline" class="full-width">
+  <mat-label>{{ label }}</mat-label>
+
+  <input matInput [formControl]="control" [matAutocomplete]="auto" [placeholder]="placeholder" autocomplete="off" />
+
+
+  <mat-icon  matSuffix>
+    arrow_drop_down
+  </mat-icon>
+
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
+    (optionSelected)="onSelected($event.option.value)">
+
+    <mat-option *ngIf="searched()  && items().length === 0" disabled>
+      NO RESULTS </mat-option>
+
+    <mat-option *ngFor="let item of items()" [value]="item">
+      <span>{{ displayFn(item) }}</span>
+      
+    </mat-option>
+
+  </mat-autocomplete>
+</mat-form-field>

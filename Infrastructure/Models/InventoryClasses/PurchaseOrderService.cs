@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Domain.Aggregates.LocationAggregate;
+using Domain.Aggregates.VendorAggregate;
+using System;
 using System.Collections.Generic;
 
 namespace Infrastructure.Models.InventoryClasses;

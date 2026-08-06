@@ -1,5 +1,7 @@
-﻿using System;
+using Domain.Entities;
+using System;
 using System.Collections.Generic;
+using Domain.Aggregates.SiteAggregate;
 
 namespace Infrastructure.Models.InventoryClasses;
 

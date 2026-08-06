@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+/* Country code badge — uses theme tokens set by ThemeService */
+.code-badge {
+  display: inline-block;
+  background: var(--page-accent-soft);
+  color: var(--page-accent-dark);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+}

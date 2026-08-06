@@ -81,12 +81,13 @@ builder.Services.AddApiVersioning(options =>
 
 var corsOrigins = builder.Configuration
     .GetSection("Cors:AllowedOrigins")
-    .Get<string[]>();
+    .Get<string[]>()
+    ?? new[] { "http://localhost:4200", "http://localhost:5221" };
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngular", policy =>
-        policy.WithOrigins(corsOrigins!)
+        policy.WithOrigins(corsOrigins)
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials()

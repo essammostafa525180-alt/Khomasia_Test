@@ -1,5 +1,8 @@
-﻿using System;
+using Domain.Entities;
+using System;
 using System.Collections.Generic;
+using Domain.Aggregates.VendorOrderAggregate;
+using Domain.Aggregates.InventoryItemAggregate;
 
 namespace Infrastructure.Models.InventoryClasses;
 

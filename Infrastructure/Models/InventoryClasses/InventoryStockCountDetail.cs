@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Domain.Aggregates.InventoryItemAggregate;
+using Domain.Aggregates.InventoryStockCountAggregate;
+using System;
 using System.Collections.Generic;
 
 namespace Infrastructure.Models.InventoryClasses;

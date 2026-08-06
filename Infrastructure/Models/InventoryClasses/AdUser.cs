@@ -13,3 +13,5 @@ public partial class AdUser
 
     public virtual ICollection<User> Users { get; set; } = new List<User>();
 }
+
+

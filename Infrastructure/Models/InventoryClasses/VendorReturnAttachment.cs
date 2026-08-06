@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Aggregates.VendorReturnAggregate;
+using System;
 using System.Collections.Generic;
 
 namespace Infrastructure.Models.InventoryClasses;
