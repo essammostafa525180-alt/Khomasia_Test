@@ -41,7 +41,7 @@ namespace Domain.Aggregates.InventoryItemAggregate
          public bool IsDisabled { get; set; }
          public decimal? Density { get; set; }
          public decimal? VolumeSolid { get; set; }
-         public decimal? SpreadingRate { get; set; }
+         public decimal? SpreadingRate { get; set; } 
          public decimal? DFT { get; set; }
          public decimal? Packing { get; set; }
          public string? ItemCode { get; set; }

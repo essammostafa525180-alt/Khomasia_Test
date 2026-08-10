@@ -1,0 +1,199 @@
+<div class="page-card" [class.page-card--dialog]="isDialog">
+  <div class="banner" *ngIf="!isDialog">
+    <div class="banner__icon">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'grid_view' }}</mat-icon>
+    </div>
+    <div class="banner__title">{{ title }}</div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="form-page">
+    <div class="form-page__header" *ngIf="isDialog">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'grid_view' }}</mat-icon>
+      {{ title }}
+    </div>
+
+    <div class="form-page__loading" *ngIf="loading">Loading…</div>
+
+    <div class="field-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Code</mat-label>
+        <input matInput formControlName="code" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Barcode</mat-label>
+        <input matInput formControlName="barcode" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>RFID</mat-label>
+        <input matInput formControlName="rfid" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Equipment Type</mat-label>
+        <input matInput type="number" formControlName="equipmentTypeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Vehicle Type</mat-label>
+        <input matInput type="number" formControlName="vehicleTypeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Vehicle Brand</mat-label>
+        <input matInput type="number" formControlName="vehicleBrandFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Vehicle Model</mat-label>
+        <input matInput type="number" formControlName="vehicleModelFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Year</mat-label>
+        <input matInput type="number" formControlName="yearFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Serial Number</mat-label>
+        <input matInput formControlName="serialNumber" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Plate Number</mat-label>
+        <input matInput formControlName="plateNumber" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Color</mat-label>
+        <input matInput type="number" formControlName="colorFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Vehicle Status</mat-label>
+        <input matInput type="number" formControlName="vehicleStatusFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Ownership</mat-label>
+        <input matInput type="number" formControlName="ownershipFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Ou</mat-label>
+        <input matInput type="number" formControlName="oufk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Cost Center</mat-label>
+        <input matInput type="number" formControlName="costCenterFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Employee</mat-label>
+        <input matInput type="number" formControlName="employeeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Gross Weight</mat-label>
+        <input matInput type="number" formControlName="grossWeight" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Height</mat-label>
+        <input matInput type="number" formControlName="height" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Width</mat-label>
+        <input matInput type="number" formControlName="width" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Wheel Base</mat-label>
+        <input matInput type="number" formControlName="wheelBase" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Length</mat-label>
+        <input matInput type="number" formControlName="length" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Chassis Number</mat-label>
+        <input matInput formControlName="chassisNumber" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Engine Number</mat-label>
+        <input matInput formControlName="engineNumber" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Engine Size</mat-label>
+        <input matInput type="number" formControlName="engineSizeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Transmission Type</mat-label>
+        <input matInput type="number" formControlName="transmissionTypeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Cylinders Number</mat-label>
+        <input matInput type="number" formControlName="cylindersNumber" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Battery Type</mat-label>
+        <input matInput type="number" formControlName="batteryTypeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Air Filter Type</mat-label>
+        <input matInput type="number" formControlName="airFilterTypeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Sector</mat-label>
+        <input matInput type="number" formControlName="sectorFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Operation Date</mat-label>
+        <input matInput type="date" formControlName="operationDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Tag Number</mat-label>
+        <input matInput formControlName="tagNumber" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Retire Date</mat-label>
+        <input matInput type="date" formControlName="retireDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Book Value</mat-label>
+        <input matInput type="number" formControlName="bookValue" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Labor Rate Ratio</mat-label>
+        <input matInput type="number" formControlName="laborRateRatio" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Spare Part Rate Ratio</mat-label>
+        <input matInput type="number" formControlName="sparePartRateRatio" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Depreciation</mat-label>
+        <input matInput type="number" formControlName="depreciation" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Original Value</mat-label>
+        <input matInput type="number" formControlName="originalValue" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Service Life</mat-label>
+        <input matInput type="number" formControlName="serviceLife" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Vehicle Option</mat-label>
+        <input matInput type="number" formControlName="vehicleOptionFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Remaining Months</mat-label>
+        <input matInput type="number" formControlName="remainingMonths" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Company</mat-label>
+        <input matInput type="number" formControlName="companyFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Project</mat-label>
+        <input matInput type="number" formControlName="projectFk" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-page__actions">
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
+      <button mat-flat-button type="submit" class="btn-primary" [disabled]="form.invalid || saving || loading">
+        {{ saving ? 'Saving…' : 'Save' }}
+      </button>
+    </div>
+  </form>
+</div>

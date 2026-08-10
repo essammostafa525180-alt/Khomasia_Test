@@ -1,0 +1,185 @@
+<div class="page-card" [class.page-card--dialog]="isDialog">
+  <div class="banner" *ngIf="!isDialog">
+    <div class="banner__icon">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'edit' }}</mat-icon>
+    </div>
+    <div class="banner__title">{{ title }}</div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="form-page">
+    <div class="form-page__header" *ngIf="isDialog">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'edit' }}</mat-icon>
+      {{ title }}
+    </div>
+
+    <div class="form-page__loading" *ngIf="loading">Loading…</div>
+
+    <div class="field-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Asset Group</mat-label>
+        <input matInput type="number" formControlName="assetGroupFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Asset Type</mat-label>
+        <input matInput type="number" formControlName="assetTypeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Tools Type</mat-label>
+        <input matInput type="number" formControlName="toolsTypeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Code</mat-label>
+        <input matInput formControlName="code" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Name Ar</mat-label>
+        <input matInput formControlName="nameAr" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Zone</mat-label>
+        <input matInput type="number" formControlName="zoneFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Equipment Code</mat-label>
+        <input matInput type="number" formControlName="equipmentCodeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Equipment Location Code</mat-label>
+        <input matInput formControlName="equipmentLocationCode" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Functional Code</mat-label>
+        <input matInput formControlName="functionalCode" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Quantity</mat-label>
+        <input matInput type="number" formControlName="quantity" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Cost Per Hour</mat-label>
+        <input matInput type="number" formControlName="costPerHour" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Currency</mat-label>
+        <input matInput type="number" formControlName="currencyFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Warranty Status</mat-label>
+        <input matInput type="number" formControlName="warrantyStatusFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>RFID</mat-label>
+        <input matInput formControlName="rfid" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Remarks</mat-label>
+        <input matInput formControlName="remarks" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Possession Type</mat-label>
+        <input matInput type="number" formControlName="possessionTypeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Operation Date</mat-label>
+        <input matInput type="date" formControlName="operationDate" />
+      </mat-form-field>
+      <mat-checkbox formControlName="isOperational">Is Operational</mat-checkbox>
+      <mat-form-field appearance="outline">
+        <mat-label>Insurance Vendor</mat-label>
+        <input matInput type="number" formControlName="insuranceVendorFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Policy Number</mat-label>
+        <input matInput formControlName="policyNumber" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Policy Date</mat-label>
+        <input matInput type="date" formControlName="policyDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Policy Expiry Date</mat-label>
+        <input matInput type="date" formControlName="policyExpiryDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Policy Amount</mat-label>
+        <input matInput type="number" formControlName="policyAmount" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Manufacture</mat-label>
+        <input matInput type="number" formControlName="manufactureFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Model</mat-label>
+        <input matInput formControlName="model" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Model Year</mat-label>
+        <input matInput type="number" formControlName="modelYearFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Serial Number</mat-label>
+        <input matInput formControlName="serialNumber" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Guarantee Expiry Date</mat-label>
+        <input matInput type="date" formControlName="guaranteeExpiryDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Technical Information</mat-label>
+        <input matInput formControlName="technicalInformation" />
+      </mat-form-field>
+      <mat-checkbox formControlName="axsynced">Axsynced</mat-checkbox>
+      <mat-form-field appearance="outline">
+        <mat-label>Project</mat-label>
+        <input matInput type="number" formControlName="projectFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Asset Status</mat-label>
+        <input matInput type="number" formControlName="assetStatusFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Purchase Price</mat-label>
+        <input matInput type="number" formControlName="purchasePrice" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Purchase Date</mat-label>
+        <input matInput type="date" formControlName="purchaseDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Check Date</mat-label>
+        <input matInput type="date" formControlName="checkDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Life Time</mat-label>
+        <input matInput type="number" formControlName="lifeTime" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Depreciation Rate</mat-label>
+        <input matInput type="number" formControlName="depreciationRate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Planned Depreciation Date</mat-label>
+        <input matInput type="date" formControlName="plannedDepreciationDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Actual Depreciation Date</mat-label>
+        <input matInput type="date" formControlName="actualDepreciationDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Ou</mat-label>
+        <input matInput type="number" formControlName="oufk" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-page__actions">
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
+      <button mat-flat-button type="submit" class="btn-primary" [disabled]="form.invalid || saving || loading">
+        {{ saving ? 'Saving…' : 'Save' }}
+      </button>
+    </div>
+  </form>
+</div>

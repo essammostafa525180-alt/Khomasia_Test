@@ -10,17 +10,31 @@
   background: #f5f6fa;
 }
 
+/* =========================================================
+   SIDEBAR - CLEAN MODERN MENU
+   ========================================================= */
+
 .sidebar {
-  width: 250px;
+  width: 290px;
   flex-shrink: 0;
-  background: var(--sidebar-bg, #333437);
-  color: #1f2937;
-  padding: 20px 14px;
+
+  background: #ffffff;
+  color: #53657d;
+
+  padding: 28px 18px 20px;
+
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  transition: width 0.2s ease, padding 0.2s ease, background 0.25s ease;
+  gap: 8px;
+
+  transition:
+    width 0.2s ease,
+    padding 0.2s ease,
+    background 0.25s ease;
+
+  box-sizing: border-box;
 }
+
 .sidebar--collapsed {
   width: 0;
   padding-left: 0;
@@ -32,33 +46,48 @@
 .sidebar-backdrop {
   display: none;
 }
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
 .sidebar__brand {
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 4px 8px 20px;
+  gap: 5px;
+  padding: 4px 10px 24px;
 }
+
 .sidebar__brand .dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
 }
+
 .sidebar__brand .dot--red {
-  background: #ef4444;
+  background: #ef5350;
 }
+
 .sidebar__brand .dot--blue {
-  background: #3b82f6;
+  background: #4285f4;
 }
+
 .sidebar__brand .dot--green {
-  background: #22c55e;
-  margin-right: 6px;
+  background: #34a853;
+  margin-right: 7px;
 }
+
 .sidebar__brand .brand-name {
-  color: #1f2937;
-  font-weight: 600;
-  font-size: 16px;
+  color: #26364a;
+  font-size: 17px;
+  font-weight: 700;
   margin-left: 2px;
 }
+
+/* =========================================================
+   DASHBOARDS / OTHER TOPBAR SIDEBAR ELEMENTS
+   ========================================================= */
+
 .sidebar__dashboards {
   display: flex;
   align-items: center;
@@ -68,12 +97,14 @@
   color: #1f2937;
   font-weight: 500;
 }
+
 .sidebar__dashboards mat-icon {
   font-size: 20px;
   width: 20px;
   height: 20px;
   color: #1f2937;
 }
+
 .sidebar__dashboards .badge-count {
   background: #ef4444;
   color: #fff;
@@ -82,36 +113,46 @@
   padding: 1px 7px;
   margin-left: 4px;
 }
+
 .sidebar__dashboards .chev {
   margin-left: auto;
   font-size: 18px;
   width: 18px;
   height: 18px;
 }
+
 .sidebar__section-label {
   font-size: 11px;
   letter-spacing: 0.06em;
   color: #6b7280;
   padding: 16px 10px 6px;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: visible;
+  text-overflow: clip;
 }
 
-/* Elegant divider between sidebar sections — grows on hover */
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
 .sidebar__divider {
   height: 1px;
-  background: rgba(0, 0, 0, 0.08);
-  border-radius: 2px;
+  background: #e5e8ef;
+  border-radius: 1px;
   width: 100%;
-  margin: 18px 0;
-  transition: height 0.25s ease, background 0.25s ease, opacity 0.25s ease;
+  margin: 14px 0;
+  transition: height 0.2s ease, background 0.2s ease, opacity 0.2s ease;
 }
+
 .sidebar__divider:hover {
-  height: 3px;
+  height: 2px;
   background: var(--page-accent);
   opacity: 0.9;
 }
+
+/* =========================================================
+   MAIN CONTENT / TOPBAR
+   ========================================================= */
 
 .main {
   flex: 1;
@@ -128,10 +169,12 @@
   display: flex;
   align-items: center;
 }
+
 .topbar__menu-btn {
   margin-right: 4px;
   color: #6b7290;
 }
+
 .topbar__spacer {
   flex: 1;
 }
@@ -144,21 +187,25 @@
   color: #8a90a6;
   margin-right: 8px;
 }
+
 .viewmode-toggle__text {
   margin-left: 6px;
   font-size: 12.5px;
   font-weight: 600;
-  padding :0 5px
+  padding: 0 5px;
 }
+
 .viewmode-toggle {
   margin-right: 10px;
   border-radius: 8px;
 }
+
 .viewmode-toggle mat-icon {
   font-size: 18px;
   width: 18px;
   height: 18px;
 }
+
 .topbar__avatar {
   width: 32px;
   height: 32px;
@@ -173,109 +220,376 @@
   margin-left: 6px;
 }
 
+/* =========================================================
+   PAGE CONTENT
+   ========================================================= */
+
 .content {
   padding: 24px 24px 0;
   flex: 1;
-  /* Animated background shared by every routed page.
-     Gentle pastel gradient that slowly drifts — visible without
-     distracting from data, and picks up the active theme's soft accent. */
+
+  /* Animated background shared by every routed page. */
   background: linear-gradient(
-      225deg,
-      var(--page-accent-soft) 0%,
-      #dcfce7 20%,
-      #fce7f3 40%,
-      #f3e8ff 60%,
-      #fef3c7 80%,
-      var(--page-accent-soft) 100%
-    );
+    225deg,
+    var(--page-accent-soft) 0%,
+    #dcfce7 20%,
+    #fce7f3 40%,
+    #f3e8ff 60%,
+    #fef3c7 80%,
+    var(--page-accent-soft) 100%
+  );
+
   background-size: 700% 700%;
   animation: pageBgShift 30s ease-in-out infinite;
 }
 
 @keyframes pageBgShift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
 
 .sidebar__nav {
   display: flex;
   flex-direction: column;
+  gap: 5px;
 }
 
-.sidebar__link {
+/* =========================================================
+   MAIN MENU ITEMS
+   Inventory / Administration / Procurement / Reports
+   ========================================================= */
+
+.sidebar__nav > .sidebar__link,
+.sidebar__nav > app-accordion > .sidebar__link {
+  min-height: 50px;
+
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 9px 10px;
-  font-size: 14px;
-  color: #374151;
-  border-radius: 6px;
-  cursor: pointer;
+
+  gap: 12px;
+  padding: 0 16px;
+
+  border-radius: 8px;
+
+  color: #087f78;
+  background: #eeeeff;
+
+  font-size: 16px;
+  font-weight: 600;
+
   text-decoration: none;
-  transition: all 0.15s ease;
-  font-weight: 600;
+
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-      padding: 10px;
+  overflow: visible;
+  text-overflow: clip;
 
-    margin-bottom: 5px;
+  box-sizing: border-box;
 
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+
+  margin-bottom: 2px;
 }
-.sidebar__link:hover {
-  color: var(--page-accent);
-  background: rgba(0, 0, 0, 0.04);
-}
-.sidebar__link.active {
-  color: var(--page-accent);
-  background: var(--page-accent-shadow);
-  font-weight: 600;
-}
-.sidebar__link-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: currentColor;
-  opacity: 0.75;
+
+.sidebar__nav > .sidebar__link .sidebar__link-icon,
+.sidebar__nav > app-accordion > .sidebar__link .sidebar__link-icon {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  color: #08a49a;
+  opacity: 1;
   flex-shrink: 0;
 }
-.sidebar__link.router-link-active .sidebar__link-dot {
-  background: var(--page-accent);
-  opacity: 1;
+
+/* Main menu hover */
+.sidebar__nav > .sidebar__link:hover,
+.sidebar__nav > app-accordion > .sidebar__link:hover {
+  background: #e3e4fc;
+  color: #087f78;
+  transform: translateX(1px);
 }
 
-/* ===================== MOBILE =====================
-   Keep the breakpoint in sync with MOBILE_QUERY in main-layout.component.ts.
-   The sidebar leaves the flow and overlays the content, so a 250px menu never
-   squeezes the page on a narrow screen. */
+/* =========================================================
+   ACTIVE MAIN MENU
+   ========================================================= */
+
+.sidebar__nav > .sidebar__link.active,
+.sidebar__nav > .sidebar__link.router-link-active,
+.sidebar__nav > app-accordion > .sidebar__link.active {
+  background: #299c91;
+  color: #ffffff;
+  box-shadow: 0 3px 8px rgba(41, 156, 145, 0.18);
+}
+
+.sidebar__nav > .sidebar__link.active .sidebar__link-icon,
+.sidebar__nav > .sidebar__link.router-link-active .sidebar__link-icon,
+.sidebar__nav > app-accordion > .sidebar__link.active .sidebar__link-icon {
+  color: #ffffff;
+}
+
+/* =========================================================
+   ACCORDION MAIN HEADER
+   ========================================================= */
+
+app-accordion > .sidebar__link {
+  min-height: 50px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 16px;
+
+  border-radius: 8px;
+
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   ACCORDION ARROW
+   ========================================================= */
+
+app-accordion > .sidebar__link .chev,
+.sidebar__link .chev {
+  margin-left: auto;
+
+  width: 20px;
+  height: 20px;
+
+  font-size: 20px;
+
+  color: currentColor;
+
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   FIRST LEVEL
+   Inventory Management
+   Inventory Transactions
+   Vendor Order
+   Stock Count
+   ========================================================= */
+
+app-accordion > .sidebar__nav {
+  display: flex;
+  flex-direction: column;
+
+  padding: 4px 6px 8px;
+  gap: 2px;
+}
+
+/* First level accordion headers */
+
+app-accordion > .sidebar__nav > .sidebar__link {
+  min-height: 44px;
+
+  padding: 0 12px;
+
+  border-radius: 7px;
+
+  background: #f0f2fb;
+
+  color: #53677f;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  border: 1px solid transparent;
+
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
+}
+
+/* First level icons */
+
+app-accordion > .sidebar__nav > .sidebar__link .sidebar__link-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  color: #6f829a;
+}
+
+/* First level hover */
+
+app-accordion > .sidebar__nav > .sidebar__link:hover {
+  background: #e7ebf5;
+  color: #425a75;
+}
+
+/* Active first-level item */
+
+app-accordion > .sidebar__nav > .sidebar__link.active,
+app-accordion > .sidebar__nav > .sidebar__link.router-link-active {
+  background: #e9edf7;
+  border-color: #26384e;
+  color: #53677f;
+}
+
+/* =========================================================
+   LEAF ITEMS
+   Inventory Asset
+   Item Card
+   Inventory Item Balance
+   Item Stock
+   Asset Item Move
+   ========================================================= */
+
+app-accordion app-accordion .sidebar__nav {
+  display: flex;
+  flex-direction: column;
+
+  padding: 2px 6px 8px 34px;
+
+  gap: 0;
+}
+
+/* Leaf link */
+
+app-accordion app-accordion .sidebar__nav > .sidebar__link {
+  min-height: 38px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 8px;
+
+  background: transparent;
+
+  border-radius: 5px;
+
+  color: #60758d;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+
+  text-decoration: none;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+/* Leaf icon */
+
+app-accordion app-accordion
+.sidebar__nav > .sidebar__link .sidebar__link-icon {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  color: #7c8da2;
+}
+
+/* Leaf hover */
+
+app-accordion app-accordion
+.sidebar__nav > .sidebar__link:hover {
+  background: #f3f5fa;
+  color: #299c91;
+}
+
+/* Leaf active */
+
+app-accordion app-accordion
+.sidebar__nav > .sidebar__link.active,
+app-accordion app-accordion
+.sidebar__nav > .sidebar__link.router-link-active {
+  background: #f3f5fa;
+  color: #299c91;
+  font-weight: 500;
+}
+
+/* =========================================================
+   GLOBAL SIDEBAR TEXT - NO WRAP / NO ELLIPSIS
+   ========================================================= */
+
+.sidebar__link,
+.sidebar__link span,
+.sidebar__link > span:last-child,
+app-accordion,
+app-accordion * {
+  text-overflow: clip;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 760px) {
   .sidebar {
+    width: 290px;
+
     position: fixed;
+
     top: 0;
     left: 0;
     bottom: 0;
+
     z-index: 20;
+
+    padding: 24px 16px;
+
+    overflow-y: auto;
   }
+
   .sidebar-backdrop {
     display: block;
+
     position: fixed;
+
     inset: 0;
-    background: rgba(0, 0, 0, 0.45);
+
+    background: rgba(0, 0, 0, 0.35);
+
     z-index: 15;
   }
+
   .content {
     padding: 16px 16px 0;
   }
 
-  /* Drop the switch's text so the toolbar fits the viewport instead of
-     stretching .main and forcing the page to scroll sideways. */
+  /* Drop the switch's text so the toolbar fits the viewport. */
   .viewmode-label,
   .viewmode-toggle__text,
   .topbar__extra {
     display: none;
   }
+
   .topbar {
     padding: 0 10px !important;
+  }
+
+  .sidebar__nav > .sidebar__link,
+  .sidebar__nav > app-accordion > .sidebar__link {
+    min-height: 50px;
   }
 }

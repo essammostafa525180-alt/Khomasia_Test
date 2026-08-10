@@ -1,5 +1,10 @@
 import { Routes } from '@angular/router';
 import { MainLayoutComponent } from './core/layout/main-layout/main-layout.component';
+import { administrationRoutes } from './pages/Administration/administration.routes';
+import { procurementRoutes } from './pages/Procurement/procurement.routes';
+import { inventoryExtraRoutes } from './pages/inventory/inventory-extra.routes';
+import { reportsRoutes } from './pages/Reports/reports.routes';
+import { otherRoutes } from './pages/Other/other.routes';
 
 export const routes: Routes = [
   {
@@ -102,18 +107,53 @@ export const routes: Routes = [
       {
         path: 'inventory/asset-name',
         title: 'Asset Name',
-        data: { titleKey: 'MENU.ASSET_NAME', parentKey: 'MENU.INVENTORY_MANAGEMENT' },
         loadComponent: () =>
-          import('./pages/inventory/generic-list/generic-list.component').then(
-            (m) => m.GenericListComponent
+          import('./pages/inventory/asset-name/asset-name.component').then(
+            (m) => m.ViewAssetNameComponent
+          ),
+      },
+      {
+        path: 'inventory/asset-name/new',
+        title: 'New Asset Name',
+        data: { mode: 'create' },
+        loadComponent: () =>
+          import('./pages/inventory/asset-name/asset-name-form.component').then(
+            (m) => m.AssetFormComponent
+          ),
+      },
+      {
+        path: 'inventory/asset-name/:id/edit',
+        title: 'Edit Asset Name',
+        data: { mode: 'edit' },
+        loadComponent: () =>
+          import('./pages/inventory/asset-name/asset-name-form.component').then(
+            (m) => m.AssetFormComponent
           ),
       },
       {
         path: 'inventory/item-card',
         title: 'Item Card',
         loadComponent: () =>
-          import('./Feature/inventory/view-inventory/view-inventory.component').then(
-            (m) => m.ViewInventoryComponent
+          import('./pages/inventory/item-card/item-card.component').then(
+            (m) => m.ViewItemCardComponent
+          ),
+      },
+      {
+        path: 'inventory/item-card/new',
+        title: 'New Item Card',
+        data: { mode: 'create' },
+        loadComponent: () =>
+          import('./pages/inventory/item-card/item-card-form.component').then(
+            (m) => m.InventoryItemFormComponent
+          ),
+      },
+      {
+        path: 'inventory/item-card/:id/edit',
+        title: 'Edit Item Card',
+        data: { mode: 'edit' },
+        loadComponent: () =>
+          import('./pages/inventory/item-card/item-card-form.component').then(
+            (m) => m.InventoryItemFormComponent
           ),
       },
       {
@@ -121,7 +161,25 @@ export const routes: Routes = [
         title: 'Item Balance',
         loadComponent: () =>
           import('./pages/inventory/item-balance/item-balance.component').then(
-            (m) => m.ItemBalanceComponent
+            (m) => m.ViewItemBalanceComponent
+          ),
+      },
+      {
+        path: 'inventory/item-balance/new',
+        title: 'New Item Balance',
+        data: { mode: 'create' },
+        loadComponent: () =>
+          import('./pages/inventory/item-balance/item-balance-form.component').then(
+            (m) => m.InventoryItemLocationBatchSerialFormComponent
+          ),
+      },
+      {
+        path: 'inventory/item-balance/:id/edit',
+        title: 'Edit Item Balance',
+        data: { mode: 'edit' },
+        loadComponent: () =>
+          import('./pages/inventory/item-balance/item-balance-form.component').then(
+            (m) => m.InventoryItemLocationBatchSerialFormComponent
           ),
       },
       {
@@ -129,16 +187,51 @@ export const routes: Routes = [
         title: 'Item Stock',
         loadComponent: () =>
           import('./pages/inventory/item-stock/item-stock.component').then(
-            (m) => m.ItemStockComponent
+            (m) => m.ViewItemStockComponent
+          ),
+      },
+      {
+        path: 'inventory/item-stock/new',
+        title: 'New Item Stock',
+        data: { mode: 'create' },
+        loadComponent: () =>
+          import('./pages/inventory/item-stock/item-stock-form.component').then(
+            (m) => m.InventoryItemSerialFormComponent
+          ),
+      },
+      {
+        path: 'inventory/item-stock/:id/edit',
+        title: 'Edit Item Stock',
+        data: { mode: 'edit' },
+        loadComponent: () =>
+          import('./pages/inventory/item-stock/item-stock-form.component').then(
+            (m) => m.InventoryItemSerialFormComponent
           ),
       },
       {
         path: 'inventory/asset-move',
         title: 'Asset Item Move',
-        data: { titleKey: 'MENU.ASSET_MOVE', parentKey: 'MENU.INVENTORY_MANAGEMENT' },
         loadComponent: () =>
-          import('./pages/inventory/generic-list/generic-list.component').then(
-            (m) => m.GenericListComponent
+          import('./pages/inventory/asset-move/asset-move.component').then(
+            (m) => m.ViewAssetMoveComponent
+          ),
+      },
+      {
+        path: 'inventory/asset-move/new',
+        title: 'New Asset Move',
+        data: { mode: 'create' },
+        loadComponent: () =>
+          import('./pages/inventory/asset-move/asset-move-form.component').then(
+            (m) => m.AssetItemMoveFormComponent
+          ),
+      },
+      {
+        path: 'inventory/asset-move/:id/edit',
+        title: 'Edit Asset Move',
+        data: { mode: 'edit' },
+        loadComponent: () =>
+          import('./pages/inventory/asset-move/asset-move-form.component').then(
+            (m) => m.AssetItemMoveFormComponent
           ),
       },
 
@@ -148,16 +241,51 @@ export const routes: Routes = [
         title: 'Issue Request',
         loadComponent: () =>
           import('./pages/inventory/material-request/material-request.component').then(
-            (m) => m.MaterialRequestComponent
+            (m) => m.ViewMaterialRequestComponent
+          ),
+      },
+      {
+        path: 'inventory/issue-request/new',
+        title: 'New Issue Request',
+        data: { mode: 'create' },
+        loadComponent: () =>
+          import('./pages/inventory/material-request/material-request-form.component').then(
+            (m) => m.InventroyItemRequestWithdrawFormComponent
+          ),
+      },
+      {
+        path: 'inventory/issue-request/:id/edit',
+        title: 'Edit Issue Request',
+        data: { mode: 'edit' },
+        loadComponent: () =>
+          import('./pages/inventory/material-request/material-request-form.component').then(
+            (m) => m.InventroyItemRequestWithdrawFormComponent
           ),
       },
       {
         path: 'inventory/asset-issue-request',
         title: 'Asset Issue Request',
-        data: { titleKey: 'MENU.ASSET_ISSUE_REQUEST', parentKey: 'MENU.INVENTORY_TRANSACTIONS' },
         loadComponent: () =>
-          import('./pages/inventory/generic-list/generic-list.component').then(
-            (m) => m.GenericListComponent
+          import('./pages/inventory/asset-issue-request/asset-issue-request.component').then(
+            (m) => m.ViewAssetIssueRequestComponent
+          ),
+      },
+      {
+        path: 'inventory/asset-issue-request/new',
+        title: 'New Asset Issue Request',
+        data: { mode: 'create' },
+        loadComponent: () =>
+          import('./pages/inventory/asset-issue-request/asset-issue-request-form.component').then(
+            (m) => m.AssetCountIssueFormComponent
+          ),
+      },
+      {
+        path: 'inventory/asset-issue-request/:id/edit',
+        title: 'Edit Asset Issue Request',
+        data: { mode: 'edit' },
+        loadComponent: () =>
+          import('./pages/inventory/asset-issue-request/asset-issue-request-form.component').then(
+            (m) => m.AssetCountIssueFormComponent
           ),
       },
       {
@@ -165,7 +293,25 @@ export const routes: Routes = [
         title: 'Issue Out',
         loadComponent: () =>
           import('./pages/inventory/issue-out/issue-out.component').then(
-            (m) => m.IssueOutComponent
+            (m) => m.ViewIssueOutComponent
+          ),
+      },
+      {
+        path: 'inventory/issue-out/new',
+        title: 'New Issue Out',
+        data: { mode: 'create' },
+        loadComponent: () =>
+          import('./pages/inventory/issue-out/issue-out-form.component').then(
+            (m) => m.InventroyItemRequestWithdrawFormComponent
+          ),
+      },
+      {
+        path: 'inventory/issue-out/:id/edit',
+        title: 'Edit Issue Out',
+        data: { mode: 'edit' },
+        loadComponent: () =>
+          import('./pages/inventory/issue-out/issue-out-form.component').then(
+            (m) => m.InventroyItemRequestWithdrawFormComponent
           ),
       },
       {
@@ -173,7 +319,25 @@ export const routes: Routes = [
         title: 'Item Return',
         loadComponent: () =>
           import('./pages/inventory/item-return/item-return.component').then(
-            (m) => m.ItemReturnComponent
+            (m) => m.ViewItemReturnComponent
+          ),
+      },
+      {
+        path: 'inventory/item-return/new',
+        title: 'New Item Return',
+        data: { mode: 'create' },
+        loadComponent: () =>
+          import('./pages/inventory/item-return/item-return-form.component').then(
+            (m) => m.InventoryItemReturnFormComponent
+          ),
+      },
+      {
+        path: 'inventory/item-return/:id/edit',
+        title: 'Edit Item Return',
+        data: { mode: 'edit' },
+        loadComponent: () =>
+          import('./pages/inventory/item-return/item-return-form.component').then(
+            (m) => m.InventoryItemReturnFormComponent
           ),
       },
       {
@@ -181,7 +345,25 @@ export const routes: Routes = [
         title: 'Transfer',
         loadComponent: () =>
           import('./pages/inventory/transfer/transfer.component').then(
-            (m) => m.TransferComponent
+            (m) => m.ViewTransferComponent
+          ),
+      },
+      {
+        path: 'inventory/transfer/new',
+        title: 'New Transfer',
+        data: { mode: 'create' },
+        loadComponent: () =>
+          import('./pages/inventory/transfer/transfer-form.component').then(
+            (m) => m.InventoryTransfereFormComponent
+          ),
+      },
+      {
+        path: 'inventory/transfer/:id/edit',
+        title: 'Edit Transfer',
+        data: { mode: 'edit' },
+        loadComponent: () =>
+          import('./pages/inventory/transfer/transfer-form.component').then(
+            (m) => m.InventoryTransfereFormComponent
           ),
       },
 
@@ -191,21 +373,77 @@ export const routes: Routes = [
         title: 'GRN Quality',
         loadComponent: () =>
           import('./pages/inventory/grn-quality/grn-quality.component').then(
-            (m) => m.GrnQualityComponent
+            (m) => m.ViewGrnQualityComponent
+          ),
+      },
+      {
+        path: 'inventory/grn-quality/new',
+        title: 'New GRN Quality',
+        data: { mode: 'create' },
+        loadComponent: () =>
+          import('./pages/inventory/grn-quality/grn-quality-form.component').then(
+            (m) => m.VendorOrderQualityFormComponent
+          ),
+      },
+      {
+        path: 'inventory/grn-quality/:id/edit',
+        title: 'Edit GRN Quality',
+        data: { mode: 'edit' },
+        loadComponent: () =>
+          import('./pages/inventory/grn-quality/grn-quality-form.component').then(
+            (m) => m.VendorOrderQualityFormComponent
           ),
       },
       {
         path: 'inventory/grn',
         title: 'GRN',
         loadComponent: () =>
-          import('./pages/inventory/grn/grn.component').then((m) => m.GrnComponent),
+          import('./pages/inventory/grn/grn.component').then(
+            (m) => m.ViewGrnComponent
+          ),
+      },
+      {
+        path: 'inventory/grn/new',
+        title: 'New GRN',
+        data: { mode: 'create' },
+        loadComponent: () =>
+          import('./pages/inventory/grn/grn-form.component').then(
+            (m) => m.VendorOrderReceiveFormComponent
+          ),
+      },
+      {
+        path: 'inventory/grn/:id/edit',
+        title: 'Edit GRN',
+        data: { mode: 'edit' },
+        loadComponent: () =>
+          import('./pages/inventory/grn/grn-form.component').then(
+            (m) => m.VendorOrderReceiveFormComponent
+          ),
       },
       {
         path: 'inventory/supplier-return',
         title: 'Supplier Return',
         loadComponent: () =>
           import('./pages/inventory/supplier-return/supplier-return.component').then(
-            (m) => m.SupplierReturnComponent
+            (m) => m.ViewSupplierReturnComponent
+          ),
+      },
+      {
+        path: 'inventory/supplier-return/new',
+        title: 'New Supplier Return',
+        data: { mode: 'create' },
+        loadComponent: () =>
+          import('./pages/inventory/supplier-return/supplier-return-form.component').then(
+            (m) => m.VendorReturnFormComponent
+          ),
+      },
+      {
+        path: 'inventory/supplier-return/:id/edit',
+        title: 'Edit Supplier Return',
+        data: { mode: 'edit' },
+        loadComponent: () =>
+          import('./pages/inventory/supplier-return/supplier-return-form.component').then(
+            (m) => m.VendorReturnFormComponent
           ),
       },
 
@@ -215,7 +453,25 @@ export const routes: Routes = [
         title: 'Stock Count Adjustment',
         loadComponent: () =>
           import('./pages/inventory/stock-count-adjustment/stock-count-adjustment.component').then(
-            (m) => m.StockCountAdjustmentComponent
+            (m) => m.ViewStockCountAdjustmentComponent
+          ),
+      },
+      {
+        path: 'inventory/stock-count-adjustment/new',
+        title: 'New Stock Count Adjustment',
+        data: { mode: 'create' },
+        loadComponent: () =>
+          import('./pages/inventory/stock-count-adjustment/stock-count-adjustment-form.component').then(
+            (m) => m.InventoryStockCountFormComponent
+          ),
+      },
+      {
+        path: 'inventory/stock-count-adjustment/:id/edit',
+        title: 'Edit Stock Count Adjustment',
+        data: { mode: 'edit' },
+        loadComponent: () =>
+          import('./pages/inventory/stock-count-adjustment/stock-count-adjustment-form.component').then(
+            (m) => m.InventoryStockCountFormComponent
           ),
       },
       {
@@ -223,7 +479,25 @@ export const routes: Routes = [
         title: 'Stock Count List',
         loadComponent: () =>
           import('./pages/inventory/stock-count-list/stock-count-list.component').then(
-            (m) => m.StockCountListComponent
+            (m) => m.ViewStockCountListComponent
+          ),
+      },
+      {
+        path: 'inventory/stock-count-list/new',
+        title: 'New Stock Count List',
+        data: { mode: 'create' },
+        loadComponent: () =>
+          import('./pages/inventory/stock-count-list/stock-count-list-form.component').then(
+            (m) => m.InventoryStockCountFormComponent
+          ),
+      },
+      {
+        path: 'inventory/stock-count-list/:id/edit',
+        title: 'Edit Stock Count List',
+        data: { mode: 'edit' },
+        loadComponent: () =>
+          import('./pages/inventory/stock-count-list/stock-count-list-form.component').then(
+            (m) => m.InventoryStockCountFormComponent
           ),
       },
 
@@ -252,6 +526,21 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/reports/reports.component').then((m) => m.ReportsComponent),
       },
+
+      // ---- Generated Administration pages ----
+      ...administrationRoutes,
+
+      // ---- Generated Procurement pages ----
+      ...procurementRoutes,
+
+      // ---- Generated Inventory entities ----
+      ...inventoryExtraRoutes,
+
+      // ---- Generated Reports ----
+      ...reportsRoutes,
+
+      // ---- Generated Other entities ----
+      ...otherRoutes,
 
       { path: '**', redirectTo: 'dashboard' },
     ],

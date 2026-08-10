@@ -1,0 +1,80 @@
+<div class="page-card" [class.page-card--dialog]="isDialog">
+  <div class="banner" *ngIf="!isDialog">
+    <div class="banner__icon">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'category' }}</mat-icon>
+    </div>
+    <div class="banner__title">{{ title }}</div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="form-page">
+    <div class="form-page__header" *ngIf="isDialog">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'category' }}</mat-icon>
+      {{ title }}
+    </div>
+
+    <div class="form-page__loading" *ngIf="loading">Loading…</div>
+
+    <div class="field-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Request W</mat-label>
+        <input matInput type="number" formControlName="requestWfk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Inventory Item</mat-label>
+        <input matInput type="number" formControlName="inventoryItemFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Requested Quantity</mat-label>
+        <input matInput type="number" formControlName="requestedQuantity" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Picked Quantity</mat-label>
+        <input matInput type="number" formControlName="pickedQuantity" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Delivered Quantity</mat-label>
+        <input matInput type="number" formControlName="deliveredQuantity" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Returned Quantity</mat-label>
+        <input matInput type="number" formControlName="returnedQuantity" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Scraped Quantity</mat-label>
+        <input matInput type="number" formControlName="scrapedQuantity" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Request Line Item Status</mat-label>
+        <input matInput type="number" formControlName="requestLineItemStatusFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>From Serial</mat-label>
+        <input matInput type="number" formControlName="fromSerial" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>To Serial</mat-label>
+        <input matInput type="number" formControlName="toSerial" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Integration</mat-label>
+        <input matInput type="number" formControlName="integrationId" />
+      </mat-form-field>
+      <mat-checkbox formControlName="isSync">Is Sync</mat-checkbox>
+      <mat-form-field appearance="outline">
+        <mat-label>Last Purchase Price</mat-label>
+        <input matInput type="number" formControlName="lastPurchasePrice" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Avg Cost</mat-label>
+        <input matInput type="number" formControlName="avgCost" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-page__actions">
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
+      <button mat-flat-button type="submit" class="btn-primary" [disabled]="form.invalid || saving || loading">
+        {{ saving ? 'Saving…' : 'Save' }}
+      </button>
+    </div>
+  </form>
+</div>

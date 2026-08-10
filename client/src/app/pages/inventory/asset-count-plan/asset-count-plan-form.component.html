@@ -1,0 +1,59 @@
+<div class="page-card" [class.page-card--dialog]="isDialog">
+  <div class="banner" *ngIf="!isDialog">
+    <div class="banner__icon">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'category' }}</mat-icon>
+    </div>
+    <div class="banner__title">{{ title }}</div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="form-page">
+    <div class="form-page__header" *ngIf="isDialog">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'category' }}</mat-icon>
+      {{ title }}
+    </div>
+
+    <div class="form-page__loading" *ngIf="loading">Loading…</div>
+
+    <div class="field-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Plan Number</mat-label>
+        <input matInput formControlName="planNumber" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Name Ar</mat-label>
+        <input matInput formControlName="nameAr" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Asset Count Plan Type</mat-label>
+        <input matInput type="number" formControlName="assetCountPlanTypeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Asset Count Plan Status</mat-label>
+        <input matInput type="number" formControlName="assetCountPlanStatusFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Plane Date</mat-label>
+        <input matInput type="date" formControlName="planeDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Execution Date</mat-label>
+        <input matInput type="date" formControlName="executionDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Assigned To User</mat-label>
+        <input matInput type="number" formControlName="assignedToUserFk" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-page__actions">
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
+      <button mat-flat-button type="submit" class="btn-primary" [disabled]="form.invalid || saving || loading">
+        {{ saving ? 'Saving…' : 'Save' }}
+      </button>
+    </div>
+  </form>
+</div>

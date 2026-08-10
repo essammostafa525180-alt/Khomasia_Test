@@ -1,0 +1,48 @@
+<div class="page-card" [class.page-card--dialog]="isDialog">
+  <div class="banner" *ngIf="!isDialog">
+    <div class="banner__icon">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'category' }}</mat-icon>
+    </div>
+    <div class="banner__title">{{ title }}</div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="form-page">
+    <div class="form-page__header" *ngIf="isDialog">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'category' }}</mat-icon>
+      {{ title }}
+    </div>
+
+    <div class="form-page__loading" *ngIf="loading">Loading…</div>
+
+    <div class="field-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Request Wd</mat-label>
+        <input matInput type="number" formControlName="requestWdfk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Returned Quantity</mat-label>
+        <input matInput type="number" formControlName="returnedQuantity" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Picked Quantity</mat-label>
+        <input matInput type="number" formControlName="pickedQuantity" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Picked Date</mat-label>
+        <input matInput type="date" formControlName="pickedDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Batch</mat-label>
+        <input matInput type="number" formControlName="batchFk" />
+      </mat-form-field>
+      <mat-checkbox formControlName="axsynced">Axsynced</mat-checkbox>
+    </div>
+
+    <div class="form-page__actions">
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
+      <button mat-flat-button type="submit" class="btn-primary" [disabled]="form.invalid || saving || loading">
+        {{ saving ? 'Saving…' : 'Save' }}
+      </button>
+    </div>
+  </form>
+</div>

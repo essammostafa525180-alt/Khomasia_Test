@@ -1,4 +1,7 @@
-<div class="accordion__item" [class.accordion__item--expanded]="isOpen" [class.accordion__item--disabled]="disabled">
+<div class="accordion__item"
+  [class.accordion__item--expanded]="isOpen"
+  [class.accordion__item--disabled]="disabled"
+  [class.accordion__item--sidebar]="variant === 'sidebar'">
   <button
     class="accordion__header"
     (click)="toggle()"

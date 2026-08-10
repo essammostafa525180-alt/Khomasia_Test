@@ -1,0 +1,51 @@
+<div class="page-card" [class.page-card--dialog]="isDialog">
+  <div class="banner" *ngIf="!isDialog">
+    <div class="banner__icon">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'grid_view' }}</mat-icon>
+    </div>
+    <div class="banner__title">{{ title }}</div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="form-page">
+    <div class="form-page__header" *ngIf="isDialog">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'grid_view' }}</mat-icon>
+      {{ title }}
+    </div>
+
+    <div class="form-page__loading" *ngIf="loading">Loading…</div>
+
+    <div class="field-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Hadith Number</mat-label>
+        <input matInput type="number" formControlName="hadithNumber" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Bab</mat-label>
+        <input matInput type="number" formControlName="babId" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Book Sharh</mat-label>
+        <input matInput type="number" formControlName="bookSharhId" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Sharh With Sign</mat-label>
+        <input matInput formControlName="sharhWithSign" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Sharh With No Sign</mat-label>
+        <input matInput formControlName="sharhWithNoSign" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Hadith</mat-label>
+        <input matInput type="number" formControlName="hadithId" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-page__actions">
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
+      <button mat-flat-button type="submit" class="btn-primary" [disabled]="form.invalid || saving || loading">
+        {{ saving ? 'Saving…' : 'Save' }}
+      </button>
+    </div>
+  </form>
+</div>

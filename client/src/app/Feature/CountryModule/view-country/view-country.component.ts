@@ -67,12 +67,12 @@ ngOnInit(): void {
 
 }
   
-  loadData(): void {
-    this.countryService.getAll<CountryModel[]>().subscribe((data) => {
-      this.dataSource.data = data;
-      this.selection.clear();
-    });
-  }
+   loadData(): void {
+     this.countryService.getAll<CountryModel[]>().subscribe((data) => {
+       this.dataSource.data = (data || []).filter((r: any) => r?.isDeleted !== true && r?.IsDeleted !== true);
+       this.selection.clear();
+     });
+   }
 
 onSearch(): void {
   const query: Partial<CountryModel> = {};
@@ -126,16 +126,19 @@ onSearch(): void {
     this.dialog
       .open(ConfirmDialogComponent, {
         width: '400px',
-        data: { title: 'Delete Country', message: `Delete "${row.name}"? This action cannot be undone.` },
-      })
-      .afterClosed()
-      .subscribe((confirmed) => {
-        if (!confirmed) return;
-        this.countryService.delete(row.id).subscribe(() => {
-          this.notification.success('Country deleted.');
-          this.loadData();
-        });
-      });
+         data: { title: 'Delete Country', message: `Delete "${row.name}"? This action sets the record inactive (soft delete).` },
+       })
+       .afterClosed()
+       .subscribe((confirmed) => {
+         if (!confirmed) return;
+         this.countryService.softDelete(row.id).subscribe({
+           next: () => {
+             this.notification.success('Country removed (soft delete).');
+             this.loadData();
+           },
+           error: () => this.notification.error('Could not delete this country.'),
+         });
+       });
   }
 
   onExport(type: string): void {

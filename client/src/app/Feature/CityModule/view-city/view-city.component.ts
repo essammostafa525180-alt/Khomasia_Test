@@ -56,12 +56,12 @@ export class ViewCityComponent implements AfterViewInit {
     this.loadData();
   }
 
-  loadData(): void {
-    this.cityService.getAll<CityModel[]>().subscribe((data) => {
-      this.dataSource.data = data;
-      this.selection.clear();
-    });
-  }
+   loadData(): void {
+     this.cityService.getAll<CityModel[]>().subscribe((data) => {
+       this.dataSource.data = (data || []).filter((r: any) => r?.isDeleted !== true && r?.IsDeleted !== true);
+       this.selection.clear();
+     });
+   }
 
   private buildFilterPredicate() {
     return (row: CityModel, filter: string): boolean => {
@@ -121,16 +121,19 @@ onSearch(): void {
     this.dialog
       .open(ConfirmDialogComponent, {
         width: '400px',
-        data: { title: 'Delete City', message: `Delete "${row.name}"? This action cannot be undone.` },
-      })
-      .afterClosed()
-      .subscribe((confirmed) => {
-        if (!confirmed) return;
-        this.cityService.delete(row.id).subscribe(() => {
-          this.notification.success('City deleted.');
-          this.loadData();
-        });
-      });
+        data: { title: 'Delete City', message: `Delete "${row.name}"? This action sets the record inactive (soft delete).` },
+       })
+       .afterClosed()
+       .subscribe((confirmed) => {
+         if (!confirmed) return;
+         this.cityService.softDelete(row.id).subscribe({
+           next: () => {
+             this.notification.success('City removed (soft delete).');
+             this.loadData();
+           },
+           error: () => this.notification.error('Could not delete this city.'),
+         });
+       });
   }
 
   onExport(type: string): void {

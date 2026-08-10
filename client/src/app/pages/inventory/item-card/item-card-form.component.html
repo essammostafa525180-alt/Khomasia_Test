@@ -1,0 +1,171 @@
+<div class="page-card" [class.page-card--dialog]="isDialog">
+  <div class="banner" *ngIf="!isDialog">
+    <div class="banner__icon">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'edit' }}</mat-icon>
+    </div>
+    <div class="banner__title">{{ title }}</div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="form-page">
+    <div class="form-page__header" *ngIf="isDialog">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'edit' }}</mat-icon>
+      {{ title }}
+    </div>
+
+    <div class="form-page__loading" *ngIf="loading">Loading…</div>
+
+    <div class="field-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Item Number</mat-label>
+        <input matInput formControlName="itemNumber" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Name Ar</mat-label>
+        <input matInput formControlName="nameAr" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Item Type</mat-label>
+        <input matInput type="number" formControlName="itemTypeFK" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Chemical Group</mat-label>
+        <input matInput type="number" formControlName="chemicalGroupFK" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Asset Group</mat-label>
+        <input matInput type="number" formControlName="assetGroupFK" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Material Group</mat-label>
+        <input matInput type="number" formControlName="materialGroupFK" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Spare Part Group</mat-label>
+        <input matInput type="number" formControlName="sparePartGroupFK" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Total Quantity</mat-label>
+        <input matInput type="number" formControlName="totalQuantity" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Unit of Measure</mat-label>
+        <input matInput type="number" formControlName="unitOfMeasureFK" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Item Expiry Type</mat-label>
+        <input matInput type="number" formControlName="itemExpiryTypeFK" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Warranty Status</mat-label>
+        <input matInput type="number" formControlName="warrantyStatusFK" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>RFID</mat-label>
+        <input matInput formControlName="rfid" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>English Description</mat-label>
+        <input matInput formControlName="englishDescription" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Arabic Description</mat-label>
+        <input matInput formControlName="arabicDescription" />
+      </mat-form-field>
+      <mat-checkbox formControlName="autoReplenishment">Auto Replenishment</mat-checkbox>
+      <mat-checkbox formControlName="isMaintainable">Is Maintainable</mat-checkbox>
+      <mat-form-field appearance="outline">
+        <mat-label>Manufacture</mat-label>
+        <input matInput type="number" formControlName="manufactureFK" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Min Level</mat-label>
+        <input matInput type="number" formControlName="minLevel" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Max Level</mat-label>
+        <input matInput type="number" formControlName="maxLevel" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Auto Request Quantity</mat-label>
+        <input matInput type="number" formControlName="autoRequestQuantity" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Model</mat-label>
+        <input matInput formControlName="model" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Delivery Period Days</mat-label>
+        <input matInput type="number" formControlName="deliveryPeriodDays" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Concentration</mat-label>
+        <input matInput type="number" formControlName="concentration" />
+      </mat-form-field>
+      <mat-checkbox formControlName="isBatch">Is Batch</mat-checkbox>
+      <mat-checkbox formControlName="isSerial">Is Serial</mat-checkbox>
+      <mat-form-field appearance="outline">
+        <mat-label>Avg Cost</mat-label>
+        <input matInput type="number" formControlName="avgCost" />
+      </mat-form-field>
+      <mat-checkbox formControlName="axSynced">AX Synced</mat-checkbox>
+      <mat-form-field appearance="outline">
+        <mat-label>Idel Period</mat-label>
+        <input matInput type="number" formControlName="idelPeriod" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Last Purchase Price</mat-label>
+        <input matInput type="number" formControlName="lastPurchasePrice" />
+      </mat-form-field>
+      <mat-checkbox formControlName="isScrap">Is Scrap</mat-checkbox>
+      <mat-form-field appearance="outline">
+        <mat-label>Item Quantity Type</mat-label>
+        <input matInput type="number" formControlName="itemQuantityTypeFK" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Material Category</mat-label>
+        <input matInput type="number" formControlName="materialCategoryFK" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Material Sub Category</mat-label>
+        <input matInput type="number" formControlName="materialSubCategoryFK" />
+      </mat-form-field>
+      <mat-checkbox formControlName="isDisabled">Is Disabled</mat-checkbox>
+      <mat-form-field appearance="outline">
+        <mat-label>Density</mat-label>
+        <input matInput type="number" formControlName="density" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Volume Solid</mat-label>
+        <input matInput type="number" formControlName="volumeSolid" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Spreading Rate</mat-label>
+        <input matInput type="number" formControlName="spreadingRate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>DFT</mat-label>
+        <input matInput type="number" formControlName="dft" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Packing</mat-label>
+        <input matInput type="number" formControlName="packing" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Item Code</mat-label>
+        <input matInput formControlName="itemCode" />
+      </mat-form-field>
+      <mat-checkbox formControlName="isActive">Is Active</mat-checkbox>
+    </div>
+
+    <div class="form-page__actions">
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
+      <button mat-flat-button type="submit" class="btn-primary" [disabled]="form.invalid || saving || loading">
+        {{ saving ? 'Saving…' : 'Save' }}
+      </button>
+    </div>
+  </form>
+</div>

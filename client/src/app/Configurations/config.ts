@@ -18,10 +18,10 @@ export type ModuleEndpoints = {
 function endPoint(module: string) : ModuleEndpoints {
   return {
     GetAll: `${module}/get-all`,
-    GetById: (id: string | number) => `${module}/GetById/${id}`,
-    Create: `${module}/Create`,
-    Update: (id: string | number) => `${module}/Update/${id}`,
-    Delete: (id: string | number) => `${module}/Delete/${id}`,
+    GetById: (id: string | number) => `${module}/get-by-id/${id}`,
+    Create: `${module}/create`,
+    Update: (id: string | number) => `${module}/update/${id}`,
+    Delete: (id: string | number) => `${module}/delete/${id}`,
     LookUp: `${module}/LookUp`,
     Search: `${module}/Search`,
     SearchLookUp: `${module}/SearchLookUp`,
@@ -235,6 +235,7 @@ export abstract class Configurations {
   static readonly SecUserProperty = { ...endPoint('SecUserProperty') };
   static readonly SecUserSecurableValue = { ...endPoint('SecUserSecurableValue') };
   static readonly SecUserViewAction = { ...endPoint('SecUserViewAction') };
+  static readonly SecView = { ...endPoint('SecView') };
   static readonly SecViewAction = { ...endPoint('SecViewAction') };
   static readonly SecViewController = { ...endPoint('SecViewController') };
   static readonly Service = { ...endPoint('Service') };

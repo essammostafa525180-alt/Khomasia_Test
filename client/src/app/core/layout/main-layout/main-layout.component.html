@@ -11,14 +11,14 @@
             <span class="brand-name">INVENTORY</span>
         </div>
 
-        <div class="sidebar__dashboards">
+        <!-- <div class="sidebar__dashboards">
             <mat-icon>space_dashboard</mat-icon>
             <span>{{ 'LAYOUT.DASHBOARDS' | translate }}</span>
             <span class="badge-count">8</span>
             <mat-icon class="chev">chevron_right</mat-icon>
-        </div>
+        </div> -->
 
-         <div class="sidebar__section-label">{{ 'LAYOUT.APPS_PAGES' | translate }}</div>
+         <!-- <div class="sidebar__section-label">{{ 'LAYOUT.APPS_PAGES' | translate }}</div> -->
 
          <!-- Single ordered list: groups (accordion) and flat links interleaved. -->
          <nav class="sidebar__nav">
@@ -29,7 +29,8 @@
                  <!-- Flat link -->
                  <a *ngIf="item.kind === 'link'" class="sidebar__link" routerLinkActive="active"
                      [routerLink]="item.path" (click)="closeSidebarOnMobile()">
-                     <span class="sidebar__link-dot"></span>
+                     <mat-icon *ngIf="item.icon" class="sidebar__link-icon">{{ item.icon }}</mat-icon>
+                     <span class="sidebar__link-dot" *ngIf="!item.icon"></span>
                      <span>{{ item.label | translate }}</span>
                  </a>
 
@@ -39,7 +40,8 @@
                      <nav class="sidebar__nav" *ngIf="item.links && item.links.length > 0">
                          <a *ngFor="let link of item.links" class="sidebar__link" routerLinkActive="active"
                              [routerLink]="link.path" (click)="closeSidebarOnMobile()">
-                             <span class="sidebar__link-dot"></span>
+                             <mat-icon *ngIf="link.icon" class="sidebar__link-icon">{{ link.icon }}</mat-icon>
+                             <span class="sidebar__link-dot" *ngIf="!link.icon"></span>
                              <span>{{ link.label | translate }}</span>
                          </a>
                      </nav>
@@ -49,7 +51,8 @@
                          <nav class="sidebar__nav">
                              <a *ngFor="let link of sub.links" class="sidebar__link" routerLinkActive="active"
                                  [routerLink]="link.path" (click)="closeSidebarOnMobile()">
-                                 <span class="sidebar__link-dot"></span>
+                                 <mat-icon *ngIf="link.icon" class="sidebar__link-icon">{{ link.icon }}</mat-icon>
+                                 <span class="sidebar__link-dot" *ngIf="!link.icon"></span>
                                  <span>{{ link.label | translate }}</span>
                              </a>
                          </nav>

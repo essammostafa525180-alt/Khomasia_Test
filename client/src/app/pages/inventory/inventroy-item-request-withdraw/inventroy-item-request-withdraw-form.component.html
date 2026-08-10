@@ -1,0 +1,178 @@
+<div class="page-card" [class.page-card--dialog]="isDialog">
+  <div class="banner" *ngIf="!isDialog">
+    <div class="banner__icon">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'category' }}</mat-icon>
+    </div>
+    <div class="banner__title">{{ title }}</div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="form-page">
+    <div class="form-page__header" *ngIf="isDialog">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'category' }}</mat-icon>
+      {{ title }}
+    </div>
+
+    <div class="form-page__loading" *ngIf="loading">Loading…</div>
+
+    <div class="field-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Item Type</mat-label>
+        <input matInput type="number" formControlName="itemTypeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Request No</mat-label>
+        <input matInput formControlName="requestNo" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Request Date</mat-label>
+        <input matInput type="date" formControlName="requestDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description En</mat-label>
+        <input matInput formControlName="descriptionEn" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description Ar</mat-label>
+        <input matInput formControlName="descriptionAr" />
+      </mat-form-field>
+      <mat-checkbox formControlName="isApproved">Is Approved</mat-checkbox>
+      <mat-form-field appearance="outline">
+        <mat-label>Requested By</mat-label>
+        <input matInput type="number" formControlName="requestedByFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Requested By</mat-label>
+        <input matInput formControlName="requestedBy" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Assigned To User</mat-label>
+        <input matInput type="number" formControlName="assignedToUserFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Item Request Status</mat-label>
+        <input matInput type="number" formControlName="itemRequestStatusFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Work Order No</mat-label>
+        <input matInput formControlName="workOrderNo" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Store</mat-label>
+        <input matInput type="number" formControlName="storeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Sent Count</mat-label>
+        <input matInput type="number" formControlName="sentCount" />
+      </mat-form-field>
+      <mat-checkbox formControlName="axsynced">Axsynced</mat-checkbox>
+      <mat-form-field appearance="outline">
+        <mat-label>Project</mat-label>
+        <input matInput type="number" formControlName="projectFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Ou</mat-label>
+        <input matInput type="number" formControlName="oufk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Item Needed Date</mat-label>
+        <input matInput type="date" formControlName="itemNeededDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Scope</mat-label>
+        <input matInput type="number" formControlName="scopeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Company</mat-label>
+        <input matInput type="number" formControlName="companyFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Service Main Category</mat-label>
+        <input matInput type="number" formControlName="serviceMainCategoryFk" />
+      </mat-form-field>
+      <mat-checkbox formControlName="siteManagerApproval">Site Manager Approval</mat-checkbox>
+      <mat-form-field appearance="outline">
+        <mat-label>Site Manager Approval User</mat-label>
+        <input matInput type="number" formControlName="siteManagerApprovalUserId" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Site Manager Approval Date Time</mat-label>
+        <input matInput type="date" formControlName="siteManagerApprovalDateTime" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Warehouse Manager Approval User</mat-label>
+        <input matInput type="number" formControlName="warehouseManagerApprovalUserId" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Warehouse Manager Approval Date Time</mat-label>
+        <input matInput type="date" formControlName="warehouseManagerApprovalDateTime" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Location</mat-label>
+        <input matInput type="number" formControlName="locationFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Inventory Item Budget</mat-label>
+        <input matInput type="number" formControlName="inventoryItemBudgetFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Source Type</mat-label>
+        <input matInput type="number" formControlName="sourceTypeId" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Entity</mat-label>
+        <input matInput type="number" formControlName="entityId" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Entity Formula</mat-label>
+        <input matInput formControlName="entityFormula" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Received</mat-label>
+        <input matInput type="number" formControlName="receivedFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Vehicle</mat-label>
+        <input matInput type="number" formControlName="vehicleFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Line</mat-label>
+        <input matInput type="number" formControlName="lineFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Source Entity</mat-label>
+        <input matInput formControlName="sourceEntity" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Source</mat-label>
+        <input matInput type="number" formControlName="sourceId" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Sector</mat-label>
+        <input matInput type="number" formControlName="sectorFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Cost Center</mat-label>
+        <input matInput type="number" formControlName="costCenterFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Customer</mat-label>
+        <input matInput type="number" formControlName="customerFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Factory</mat-label>
+        <input matInput type="number" formControlName="factoryFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Factory Line</mat-label>
+        <input matInput type="number" formControlName="factoryLineFk" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-page__actions">
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
+      <button mat-flat-button type="submit" class="btn-primary" [disabled]="form.invalid || saving || loading">
+        {{ saving ? 'Saving…' : 'Save' }}
+      </button>
+    </div>
+  </form>
+</div>
