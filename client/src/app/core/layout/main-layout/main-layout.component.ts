@@ -178,7 +178,26 @@ export class MainLayoutComponent {
       ],
     },
     
-    { kind: 'link', label: 'MENU.PROCUREMENT', path: '/procurement', icon: 'shopping_cart' },
+    {
+      kind: 'group',
+      title: 'MENU.PROCUREMENT',
+      icon: 'shopping_cart',
+      children: [
+        {
+          title: 'MENU.VENDOR_ORDER',
+          icon: 'local_shipping',
+          links: [
+            { label: 'MENU.PURCHASE_REQUEST', path: '/procurement/purchase-request', icon: 'description' },
+            { label: 'MENU.PURCHASE_REQUEST_ASSIGN', path: '/procurement/purchase-request-assign', icon: 'assignment' },
+            { label: 'MENU.REQUEST_FOR_QUOTATION', path: '/procurement/request-for-quotation', icon: 'request_quote' },
+            { label: 'MENU.DELIVERY_ORDER', path: '/procurement/delivery-order', icon: 'local_shipping' },
+            { label: 'MENU.PURCHASE_ORDER', path: '/procurement/purchase-order', icon: 'shopping_cart' },
+            { label: 'MENU.SUPPLIER_ORDER_VARIANCE', path: '/procurement/supplier-order-variance', icon: 'compare_arrows' },
+            { label: 'MENU.PURCHASE_ORDER_CONSUMABLE', path: '/procurement/purchase-order-consumable', icon: 'inventory_2' },
+          ],
+        },
+      ],
+    },
     { kind: 'link', label: 'MENU.REPORTS', path: '/reports', icon: 'bar_chart' },
   ];
 

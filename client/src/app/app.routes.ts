@@ -527,6 +527,82 @@ export const routes: Routes = [
           import('./pages/reports/reports.component').then((m) => m.ReportsComponent),
       },
 
+      // ---- Procurement / Vendor Order ----
+      {
+        path: 'procurement/purchase-request',
+        title: 'Purchase Request',
+        loadComponent: () =>
+          import('./pages/Procurement/purchase-request/purchase-request.component').then(
+            (m) => m.ViewPurchaseRequestComponent
+          ),
+      },
+      {
+        path: 'procurement/purchase-request/new',
+        title: 'New Purchase Request',
+        data: { mode: 'create' },
+        loadComponent: () =>
+          import('./pages/Procurement/purchase-request/purchase-request.component').then(
+            (m) => m.ViewPurchaseRequestComponent
+          ),
+      },
+      {
+        path: 'procurement/purchase-request/:id/edit',
+        title: 'Edit Purchase Request',
+        data: { mode: 'edit' },
+        loadComponent: () =>
+          import('./pages/Procurement/purchase-request/purchase-request.component').then(
+            (m) => m.ViewPurchaseRequestComponent
+          ),
+      },
+      {
+        path: 'procurement/purchase-request-assign',
+        title: 'Purchase Request Assign',
+        loadComponent: () =>
+          import('./pages/Procurement/purchase-request-assign/purchase-request-assign.component').then(
+            (m) => m.ViewPurchaseRequestAssignComponent
+          ),
+      },
+      {
+        path: 'procurement/request-for-quotation',
+        title: 'Request For Quotation',
+        loadComponent: () =>
+          import('./pages/Procurement/request-for-quotation/request-for-quotation.component').then(
+            (m) => m.ViewRequestForQuotationComponent
+          ),
+      },
+      {
+        path: 'procurement/delivery-order',
+        title: 'Delivery Order',
+        loadComponent: () =>
+          import('./pages/Procurement/delivery-order/delivery-order.component').then(
+            (m) => m.ViewDeliveryOrderComponent
+          ),
+      },
+      {
+        path: 'procurement/purchase-order',
+        title: 'Purchase Order',
+        loadComponent: () =>
+          import('./pages/Procurement/purchase-order/purchase-order.component').then(
+            (m) => m.ViewPurchaseOrderComponent
+          ),
+      },
+      {
+        path: 'procurement/supplier-order-variance',
+        title: 'Supplier Order Variance',
+        loadComponent: () =>
+          import('./pages/Procurement/supplier-order-variance/supplier-order-variance.component').then(
+            (m) => m.ViewSupplierOrderVarianceComponent
+          ),
+      },
+      {
+        path: 'procurement/purchase-order-consumable',
+        title: 'Purchase Order Consumable',
+        loadComponent: () =>
+          import('./pages/Procurement/purchase-order-consumable/purchase-order-consumable.component').then(
+            (m) => m.ViewPurchaseOrderConsumableComponent
+          ),
+      },
+
       // ---- Generated Administration pages ----
       ...administrationRoutes,
 

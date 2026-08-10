@@ -2,6 +2,16 @@
   "HOME": "Home",
   "APP_NAME": "Feed Factory",
   "MENU": {
+
+
+  "INVENTORY_ITEM_BALANCE": "Inventory Item Balance",
+  "STOCK_COUNT_ADJUSTMENT": "Stock Count Adjustment",
+  "ITEM_STOCK": "Item Stock",
+  "MATERIAL_REQUEST": "Material Request",
+  "INVENTORY_TRANSFER": "Inventory Transfer",
+
+
+
     "DASHBOARD": "Dashboard",
     "INVENTORY": "Inventory",
     "INVENTORY_MANAGEMENT": "Inventory Management",
@@ -25,6 +35,13 @@
     "STOCK_COUNT_LIST": "Stock Count List",
     "ADMINISTRATION": "Administration",
     "PROCUREMENT": "Procurement",
+    "PURCHASE_REQUEST": "Purchase Request",
+    "PURCHASE_REQUEST_ASSIGN": "Purchase Request Assign",
+    "REQUEST_FOR_QUOTATION": "Request For Quotation",
+    "DELIVERY_ORDER": "Delivery Order",
+    "PURCHASE_ORDER": "Purchase Order",
+    "SUPPLIER_ORDER_VARIANCE": "Supplier Order Variance",
+    "PURCHASE_ORDER_CONSUMABLE": "Purchase Order Consumable",
     "REPORTS": "Reports",
     "HOME": "Home",
     "ADMIN_SECURITY": "Security & Users",

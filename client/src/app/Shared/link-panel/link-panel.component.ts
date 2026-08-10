@@ -1,18 +1,29 @@
-import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
-import { TranslatePipe } from '@ngx-translate/core';
-import { LinkPanelData } from './link-panel.model';
+import { Component, Input } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+import { LinkPanelLink } from './link-panel.model';
 
 @Component({
   selector: 'app-link-panel',
   standalone: true,
-  imports: [CommonModule, RouterLink, TranslatePipe],
+
+  imports: [
+    CommonModule,
+    RouterModule
+  ],
+
   templateUrl: './link-panel.component.html',
   styleUrl: './link-panel.component.css'
 })
 export class LinkPanelComponent {
-  @Input() title = '';
-  @Input() icon = '';
-  @Input() links: LinkPanelData['links'] = [];
+
+  @Input({ required: true })
+  title!: string;
+
+  @Input()
+  icon = '';
+
+  @Input()
+  links: LinkPanelLink[] = [];
 }

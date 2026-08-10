@@ -12,7 +12,11 @@ import { LinkPanelData } from '../../shared/link-panel/link-panel.model';
     <app-page-header title="MENU.INVENTORY" [breadcrumbs]="[{ label: 'MENU.INVENTORY' }]"></app-page-header>
     <div class="row g-3">
       <div class="col-lg-3 col-md-6" *ngFor="let panel of panels">
-        <app-link-panel [title]="panel.title" [icon]="panel.icon" [links]="panel.links"></app-link-panel>
+<app-link-panel
+  [title]="panel.title"
+  [icon]="panel.icon"
+  [links]="panel.links ?? []">
+</app-link-panel>
       </div>
     </div>
   `,

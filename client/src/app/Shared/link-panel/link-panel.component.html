@@ -1,17 +1,58 @@
-<div class="card">
-  <div class="card-header d-flex align-items-center gap-2">
-    <i class="bi {{ icon }}" *ngIf="icon"></i>
-    <h3 class="card-title mb-0">{{ title | translate }}</h3>
+<div class="link-panel">
+
+  <!-- Header -->
+  <div class="link-panel__header">
+
+    <div class="link-panel__icon">
+      <i
+        *ngIf="icon"
+        class="bi"
+        [ngClass]="icon">
+      </i>
+    </div>
+
+    <div class="link-panel__heading">
+
+      <h3>
+        {{ title }}
+      </h3>
+
+      <span>
+        {{ links.length }}
+        {{ links.length === 1 ? 'Service' : 'Services' }}
+      </span>
+
+    </div>
+
   </div>
-  <div class="card-body p-0">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item" *ngFor="let link of links">
-        <a [routerLink]="link.link" class="d-flex align-items-center text-decoration-none lp-link">
-          <i class="bi {{ link.icon }} me-2" *ngIf="link.icon"></i>
-          <span>{{ link.label | translate }}</span>
-          <i class="bi bi-chevron-right ms-auto"></i>
-        </a>
-      </li>
-    </ul>
+
+
+  <!-- Body -->
+  <div class="link-panel__body">
+
+    <a
+      *ngFor="let link of links"
+      [routerLink]="link.link"
+      class="link-panel__link">
+
+      <div class="link-panel__link-icon">
+
+        <i
+          *ngIf="link.icon"
+          class="bi"
+          [ngClass]="link.icon">
+        </i>
+
+      </div>
+
+      <span class="link-panel__link-text">
+        {{ link.label }}
+      </span>
+
+      <i class="bi bi-arrow-right link-panel__arrow"></i>
+
+    </a>
+
   </div>
+
 </div>

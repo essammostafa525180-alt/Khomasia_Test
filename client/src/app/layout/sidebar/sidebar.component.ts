@@ -131,7 +131,21 @@ export class SidebarComponent {
       ]
     },
     {
-      label: 'MENU.PROCUREMENT', icon: 'bi-basket3-fill', link: '/procurement',
+      label: 'MENU.PROCUREMENT', icon: 'bi-basket3-fill',
+      children: [
+        {
+          label: 'MENU.VENDOR_ORDER', icon: 'bi-truck',
+          children: [
+            { label: 'MENU.PURCHASE_REQUEST', link: '/procurement/purchase-request', icon: 'bi-file-earmark-text' },
+            { label: 'MENU.PURCHASE_REQUEST_ASSIGN', link: '/procurement/purchase-request-assign', icon: 'bi-clipboard-check' },
+            { label: 'MENU.REQUEST_FOR_QUOTATION', link: '/procurement/request-for-quotation', icon: 'bi-question-circle' },
+            { label: 'MENU.DELIVERY_ORDER', link: '/procurement/delivery-order', icon: 'bi-truck' },
+            { label: 'MENU.PURCHASE_ORDER', link: '/procurement/purchase-order', icon: 'bi-cart-check' },
+            { label: 'MENU.SUPPLIER_ORDER_VARIANCE', link: '/procurement/supplier-order-variance', icon: 'bi-arrow-left-right' },
+            { label: 'MENU.PURCHASE_ORDER_CONSUMABLE', link: '/procurement/purchase-order-consumable', icon: 'bi-box-seam' },
+          ],
+        },
+      ],
     },
     {
       label: 'MENU.REPORTS', icon: 'bi-file-earmark-text-fill', link: '/reports',
