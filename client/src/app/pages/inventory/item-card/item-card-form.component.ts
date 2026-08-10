@@ -102,7 +102,6 @@ export class InventoryItemFormComponent implements OnInit {
   }
 
   save(): void {
-    debugger
     if (this.form.invalid || this.saving) {
       this.form.markAllAsTouched();
       return;
@@ -110,6 +109,10 @@ export class InventoryItemFormComponent implements OnInit {
 
     this.saving = true;
     const value = this.form.getRawValue() as CreateInventoryItem;
+
+    if (this.mode === 'edit') {
+      value.id = this.item!.id;
+    }
 
     const request$ =
       this.mode === 'create'

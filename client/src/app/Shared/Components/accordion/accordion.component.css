@@ -31,7 +31,7 @@
 
 .accordion__header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   padding: 12px 5px;
   border: none;
@@ -61,6 +61,7 @@
   background: var(--page-accent-soft);
   flex-shrink: 0;
   transition: all 0.2s ease;
+  margin-top: 2px;
 }
 
 .accordion__item--expanded .accordion__icon-wrapper {
@@ -78,7 +79,7 @@
 }
 
 .accordion__item--expanded .accordion__icon {
-  color: #fff;
+  color: var(--page-accent) !important;
 }
 
 .accordion__title {
@@ -89,9 +90,10 @@
   letter-spacing: 0.01em;
   margin-left: 5px;
   line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: visible;
+  overflow-wrap: break-word;
+  text-overflow: clip;
 
 }
 
@@ -108,6 +110,8 @@
   height: 22px;
   color: var(--app-muted);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .accordion__item--expanded .accordion__chevron {
@@ -166,7 +170,7 @@
 .accordion__item--sidebar .accordion__icon {
   font-size: 16px;
   width: 16px;
-  height: 16px;
+  height: 30px !important;
 }
 .accordion__item--sidebar .accordion__title {
   margin-left: 4px;

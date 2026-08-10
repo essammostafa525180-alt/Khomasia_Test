@@ -38,7 +38,7 @@ export abstract class BaseService<TEntity, TResponse> {
   }
 
   update<TResult = TResponse>(id: number, model: TEntity): Observable<TResult> {
-    return this.http.put<TResult>(Configurations.build(this.endPoints.Update(id)), model);
+    return this.http.put<TResult>(Configurations.build(this.endPoints.Update(id)), { ...model, id });
   }
 
    delete<TResult = TResponse>(id: number): Observable<TResult> {

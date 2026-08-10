@@ -4,7 +4,7 @@
      [routerLink]="item.link"
      routerLinkActive="active"
      class="nav-link">
-    <i class="nav-icon bi {{ item.icon | translate }}" *ngIf="item.icon"></i>
+    <i class="nav-icon bi {{ item.icon}}" *ngIf="item.icon"></i>
     <p>{{ item.label | translate }}</p>
   </a>
 
@@ -13,7 +13,7 @@
      class="nav-link"
      [class.parent-active]="item.expanded"
      (click)="toggle(); $event.preventDefault()">
-    <i class="nav-icon bi {{ item.icon | translate }}" *ngIf="item.icon"></i>
+    <i class="nav-icon bi {{ item.icon }}" *ngIf="item.icon"></i>
     <p>
       {{ item.label | translate}}
       <i class="bi ms-auto" [class.bi-chevron-down]="item.expanded" [class.bi-chevron-left]="!item.expanded"></i>

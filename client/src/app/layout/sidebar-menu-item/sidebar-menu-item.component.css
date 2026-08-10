@@ -1,0 +1,76 @@
+/* ==============================
+   Sidebar menu item
+   ============================== */
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ==============================
+   Menu icon
+   ============================== */
+
+.nav-link > .nav-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px !important;
+  min-width: 24px !important;
+  height: 24px;
+
+  flex: 0 0 24px !important;
+
+  margin-right: 12px;
+
+  color: #0099b8 !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Expanded parent */
+.nav-link.parent-active > .nav-icon {
+  display: inline-flex !important;
+  width: 24px !important;
+  min-width: 24px !important;
+  flex: 0 0 24px !important;
+
+  color: #0099b8 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Active item */
+.nav-link.active > .nav-icon {
+  display: inline-flex !important;
+  color: #0099b8 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ==============================
+   Text
+   ============================== */
+
+.nav-link > p {
+  display: flex;
+  align-items: center;
+
+  flex: 1;
+  min-width: 0;
+
+  margin: 0;
+}
+
+/* ==============================
+   Arrow
+   ============================== */
+
+.nav-link > p > .ms-auto {
+  margin-left: auto !important;
+  flex-shrink: 0;
+}
