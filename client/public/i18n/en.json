@@ -333,7 +333,17 @@
     "OTHER_COMPANY": "Company Structure",
     "OTHER_LEGACY": "Legacy"
   },
+    "VALIDATION": {
+    "REQUIRED": "This field is required."
+  },
+
   "COMMON": {
+      
+    "SAVING": "Saving...",
+    "STATUS": "Status",
+    "ACTIVE": "Active",
+    "INACTIVE": "Inactive",
+    "LOADING": "Loading...",
     "SEARCH": "Search...",
     "NEW": "New",
     "EDIT": "Edit",
@@ -437,5 +447,73 @@
     "NEW_COUNTRY": "New Country",
     "NEW_CITY": "New City",
     "NEW_TEST": "New Test"
-  }
+  },
+   "INVENTORY_ITEM": {
+    "TITLE": "Item Cards",
+    "SUBTITLE": "Manage inventory item master data.",
+    "NEW": "New Item",
+    "EDIT": "Edit Item",
+    "FILTER": "Filter",
+    "SEARCH_PLACEHOLDER": "Search by item number, code, name or RFID...",
+    "NO_RECORDS": "No Item Card records found.",
+
+    "BASIC_INFORMATION": "Basic Information",
+    "CLASSIFICATION": "Classification",
+    "STOCK": "Stock Information",
+    "PURCHASING": "Purchasing Information",
+    "PHYSICAL_PROPERTIES": "Physical Properties",
+    "DESCRIPTION": "Descriptions",
+    "OPTIONS": "Options",
+    
+    "ITEM_NUMBER": "Item Number",
+    "ITEM_CODE": "Item Code",
+    "NAME": "Name",
+    "NAME_AR": "Arabic Name",
+    "RFID": "RFID","ITEM_TYPE": "Item Type",
+    "CHEMICAL_GROUP": "Chemical Group",
+    "ASSET_GROUP": "Asset Group",
+    "MATERIAL_GROUP": "Material Group",
+    "SPARE_PART_GROUP": "Spare Part Group",
+    "MATERIAL_CATEGORY": "Material Category",
+    "MATERIAL_SUB_CATEGORY": "Material Sub Category",
+    "UNIT_OF_MEASURE": "Unit of Measure",
+
+    "TOTAL_QUANTITY": "Total Quantity",
+    "MIN_LEVEL": "Minimum Level",
+    "MAX_LEVEL": "Maximum Level",
+    "AUTO_REQUEST_QUANTITY": "Auto Request Quantity",
+    "ITEM_QUANTITY_TYPE": "Item Quantity Type",
+    "ITEM_EXPIRY_TYPE": "Item Expiry Type",
+
+    "AVG_COST": "Average Cost",
+    "LAST_PURCHASE_PRICE": "Last Purchase Price",
+    "DELIVERY_PERIOD": "Delivery Period (Days)",
+    "WARRANTY_STATUS": "Warranty Status",
+    "MANUFACTURE": "Manufacturer",
+
+    "MODEL": "Model",
+
+    "CONCENTRATION": "Concentration",
+    "DENSITY": "Density",
+    "VOLUME_SOLID": "Volume Solid",
+    "SPREADING_RATE": "Spreading Rate",
+    "DFT": "DFT","PACKING": "Packing",
+
+    "ENGLISH_DESCRIPTION": "English Description",
+    "ARABIC_DESCRIPTION": "Arabic Description",
+
+    "IS_ACTIVE": "Active",
+    "IS_DISABLED": "Disabled",
+    "IS_BATCH": "Batch Controlled",
+    "IS_SERIAL": "Serial Controlled",
+    "IS_SCRAP": "Scrap",
+    "IS_MAINTAINABLE": "Maintainable",
+    "AUTO_REPLENISHMENT": "Auto Replenishment",
+    "AX_SYNCED": "AX Synced",
+
+    "BATCH": "Batch",
+    "SERIAL": "Serial",
+
+    "FORM_SUBTITLE": "Enter the inventory item master data."
+   }
 }

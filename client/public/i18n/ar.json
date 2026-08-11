@@ -1,5 +1,82 @@
-{
+{ "INVENTORY_ITEM": {
+    "TITLE": "أصناف المخزون",
+    "SUBTITLE": "إدارة البيانات الأساسية لأصناف المخزون.",
+    "NEW": "صنف جديد",
+    "EDIT": "تعديل الصنف",
+    "FILTER": "بحث وتصفية",
+    "SEARCH_PLACEHOLDER": "ابحث برقم الصنف أو الكود أو الاسم أو RFID...",
+    "NO_RECORDS": "لا توجد أصناف مخزون.",
+
+    "BASIC_INFORMATION": "البيانات الأساسية",
+    "CLASSIFICATION": "التصنيف",
+    "STOCK": "بيانات المخزون",
+    "PURCHASING": "بيانات الشراء",
+    "PHYSICAL_PROPERTIES": "الخصائص الفيزيائية",
+    "DESCRIPTION": "الوصف",
+    "OPTIONS": "الخيارات",
+
+    "ITEM_NUMBER": "رقم الصنف",
+    "ITEM_CODE": "كود الصنف",
+    "NAME": "اسم الصنف",
+    "NAME_AR": "الاسم بالعربية", "RFID": "RFID",
+
+    "ITEM_TYPE": "نوع الصنف",
+    "CHEMICAL_GROUP": "المجموعة الكيميائية",
+    "ASSET_GROUP": "مجموعة الأصول",
+    "MATERIAL_GROUP": "مجموعة المواد",
+    "SPARE_PART_GROUP": "مجموعة قطع الغيار",
+    "MATERIAL_CATEGORY": "تصنيف المادة",
+    "MATERIAL_SUB_CATEGORY": "التصنيف الفرعي للمادة",
+    "UNIT_OF_MEASURE": "وحدة القياس",
+
+    "TOTAL_QUANTITY": "إجمالي الكمية",
+    "MIN_LEVEL": "الحد الأدنى",
+    "MAX_LEVEL": "الحد الأقصى",
+    "AUTO_REQUEST_QUANTITY": "كمية الطلب التلقائي",
+    "ITEM_QUANTITY_TYPE": "نوع كمية الصنف",
+    "ITEM_EXPIRY_TYPE": "نوع انتهاء الصلاحية",
+
+    "AVG_COST": "متوسط التكلفة",
+    "LAST_PURCHASE_PRICE": "آخر سعر شراء",
+    "DELIVERY_PERIOD": "مدة التوريد بالأيام",
+    "WARRANTY_STATUS": "حالة الضمان",
+    "MANUFACTURE": "الشركة المصنعة",
+
+    "MODEL": "الموديل",    "CONCENTRATION": "التركيز",
+    "DENSITY": "الكثافة",
+    "VOLUME_SOLID": "المواد الصلبة بالحجم",
+    "SPREADING_RATE": "معدل الانتشار",
+    "DFT": "DFT",
+    "PACKING": "التعبئة",
+
+    "ENGLISH_DESCRIPTION": "الوصف بالإنجليزية",
+    "ARABIC_DESCRIPTION": "الوصف بالعربية",
+
+    "IS_ACTIVE": "نشط",
+    "IS_DISABLED": "معطل",
+    "IS_BATCH": "يستخدم Batch",
+    "IS_SERIAL": "يستخدم Serial",
+    "IS_SCRAP": "خردة",
+    "IS_MAINTAINABLE": "قابل للصيانة",
+    "AUTO_REPLENISHMENT": "إعادة التزويد تلقائياً",
+    "AX_SYNCED": "متزامن مع AX",
+
+    "BATCH": "Batch",
+    "SERIAL": "Serial",
+
+    "FORM_SUBTITLE": "أدخل البيانات الأساسية لصنف المخزون."
+  },
+
+  "VALIDATION": {
+    "REQUIRED": "هذا الحقل مطلوب."
+  },
+
   "COMMON": {
+    "SAVING": "جاري الحفظ...",
+    "STATUS": "الحالة",
+    "ACTIVE": "نشط",
+    "INACTIVE": "غير نشط",
+    "LOADING": "جاري التحميل...",
     "LANGUAGE": "اللغة",
     "SEARCH": "بحث",
     "RESET": "إعادة ضبط",
