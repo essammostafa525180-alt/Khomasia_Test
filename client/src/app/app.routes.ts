@@ -3,8 +3,8 @@ import { MainLayoutComponent } from './core/layout/main-layout/main-layout.compo
 import { administrationRoutes } from './pages/Administration/administration.routes';
 import { procurementRoutes } from './pages/Procurement/procurement.routes';
 import { inventoryExtraRoutes } from './pages/inventory/inventory-extra.routes';
-import { reportsRoutes } from './pages/Reports/reports.routes';
 import { otherRoutes } from './pages/Other/other.routes';
+import { reportsRoutes } from './pages/reports/reports.routes';
 
 export const routes: Routes = [
   {
@@ -13,15 +13,7 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 
-      // ---- Test ----
-      {
-        path: 'test',
-        title: 'Test Operations',
-        loadComponent: () =>
-          import('./Feature/TestModule/view-test/view-test.component').then(
-            (m) => m.ViewTestComponent
-          ),
-      },
+     
 
       // ---- Country ----
       {

@@ -30,24 +30,5 @@ namespace Application.Common
 
         public static string aa = "ss";
 
-        //public static string Normalize(string text)
-        //{
-        //    if (string.IsNullOrWhiteSpace(text))
-        //        return text;
-
-        //    return text
-        //        .Replace("أ", "ا")
-        //        .Replace("إ", "ا")
-        //        .Replace("آ", "ا")
-        //        .Replace("ى", "ي")
-        //        .Replace("ة", "ه")
-        //        .Replace("ؤ", "و")
-        //        .Replace("ئ", "ي")
-        //        .Replace("ء", "")
-        //        .Replace("ـ", "")
-        //        .RemoveDiacritics();
-        //}
-
-
     }
 }

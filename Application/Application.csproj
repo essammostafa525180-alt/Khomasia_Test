@@ -8,15 +8,12 @@
 
   <ItemGroup>
     <Compile Remove="Commons\**" />
-    <Compile Remove="CQRS\Partations\REQ-RES\**" />
     <Compile Remove="CQRS\Shared\Request-Response\**" />
     <Compile Remove="Services\**" />
     <EmbeddedResource Remove="Commons\**" />
-    <EmbeddedResource Remove="CQRS\Partations\REQ-RES\**" />
     <EmbeddedResource Remove="CQRS\Shared\Request-Response\**" />
     <EmbeddedResource Remove="Services\**" />
     <None Remove="Commons\**" />
-    <None Remove="CQRS\Partations\REQ-RES\**" />
     <None Remove="CQRS\Shared\Request-Response\**" />
     <None Remove="Services\**" />
   </ItemGroup>
@@ -44,8 +41,6 @@
     <Folder Include="CQRS\Auth\Commands\" />
     <Folder Include="CQRS\Auth\Queries\" />
     <Folder Include="CQRS\ContactMessages\Queries\" />
-    <Folder Include="CQRS\Narrators\Commands\" />
-    <Folder Include="CQRS\Takhreej\Commands\" />
   </ItemGroup>
 
 </Project>

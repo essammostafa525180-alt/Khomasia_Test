@@ -2100,5 +2100,24 @@
         public const string StorageUnitNotDeleted = "StorageUnitNotDeleted";
         #endregion
 
+
+        #region EmailMessages
+        public const string Message = "Message";
+        public const string MessageNotFound = "Message Not Found";
+        public const string MessageNotInserted = "Message Not Inserted";
+        public const string MessageNotUpdated = "Message Not Updated";
+        public const string MessageNotDeleted = "Message Not Deleted";
+        #endregion
+
+        #region Legacy
+        public const string Legacy = "Legacy";
+        public const string LegacyNotFound = "Legacy Not Found";
+        public const string LegacyNotInserted = "Legacy Not Inserted";
+        public const string LegacyNotUpdated = "Legacy Not Updated";
+        public const string LegacyNotDeleted = "Legacy Not Deleted";
+        #endregion
+
+
+        
     }
 }

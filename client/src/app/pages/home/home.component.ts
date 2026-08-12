@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LinkPanelData } from '../../shared/link-panel/link-panel.model';
-import { LinkPanelComponent } from '../../shared/link-panel/link-panel.component';
-import { PageHeaderComponent } from '../../shared/page-header/page-header.component';
+import { LinkPanelData } from '../../Shared/link-panel/link-panel.model';
+import { LinkPanelComponent } from '../../Shared/link-panel/link-panel.component';
+import { PageHeaderComponent } from '../../Shared/page-header/page-header.component';
 
 @Component({
   selector: 'app-home',

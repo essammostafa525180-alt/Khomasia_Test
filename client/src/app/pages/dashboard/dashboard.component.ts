@@ -104,11 +104,11 @@
 
 
 import { Component } from '@angular/core';
-import { StatBoxComponent } from '../../shared/stat-box/stat-box.component';
-import { LineChartComponent } from '../../shared/line-chart/line-chart.component';
-import { TopItemsComponent } from '../../shared/top-items/top-items.component';
-import { DonutChartComponent } from '../../shared/donut-chart/donut-chart.component';
-import { TopItem } from '../../shared/top-items/top-items.model';
+import { StatBoxComponent } from '../../Shared/stat-box/stat-box.component';
+import { LineChartComponent } from '../../Shared/line-chart/line-chart.component';
+import { TopItemsComponent } from '../../Shared/top-items/top-items.component';
+import { DonutChartComponent } from '../../Shared/donut-chart/donut-chart.component';
+import { TopItem } from '../../Shared/top-items/top-items.model';
 
 @Component({
   selector: 'app-dashboard',

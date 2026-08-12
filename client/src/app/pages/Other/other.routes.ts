@@ -24,26 +24,7 @@ export const otherRoutes: Routes = [
     loadComponent: () =>
       import('./air-filter-type/air-filter-type-form.component').then((m) => m.AirFilterTypeFormComponent),
   },
-  {
-    path: 'other/babs',
-    title: 'Babs',
-    loadComponent: () =>
-      import('./babs/babs.component').then((m) => m.ViewBabsComponent),
-  },
-  {
-    path: 'other/babs/new',
-    title: 'New Babs',
-    data: { mode: 'create' },
-    loadComponent: () =>
-      import('./babs/babs-form.component').then((m) => m.BabsFormComponent),
-  },
-  {
-    path: 'other/babs/:id/edit',
-    title: 'Edit Babs',
-    data: { mode: 'edit' },
-    loadComponent: () =>
-      import('./babs/babs-form.component').then((m) => m.BabsFormComponent),
-  },
+  
   {
     path: 'other/battery-type',
     title: 'Battery Type',
@@ -63,26 +44,6 @@ export const otherRoutes: Routes = [
     data: { mode: 'edit' },
     loadComponent: () =>
       import('./battery-type/battery-type-form.component').then((m) => m.BatteryTypeFormComponent),
-  },
-  {
-    path: 'other/books',
-    title: 'Books',
-    loadComponent: () =>
-      import('./books/books.component').then((m) => m.ViewBooksComponent),
-  },
-  {
-    path: 'other/books/new',
-    title: 'New Books',
-    data: { mode: 'create' },
-    loadComponent: () =>
-      import('./books/books-form.component').then((m) => m.BooksFormComponent),
-  },
-  {
-    path: 'other/books/:id/edit',
-    title: 'Edit Books',
-    data: { mode: 'edit' },
-    loadComponent: () =>
-      import('./books/books-form.component').then((m) => m.BooksFormComponent),
   },
   {
     path: 'other/commission-condition',
@@ -223,66 +184,6 @@ export const otherRoutes: Routes = [
     data: { mode: 'edit' },
     loadComponent: () =>
       import('./factory-line/factory-line-form.component').then((m) => m.FactoryLineFormComponent),
-  },
-  {
-    path: 'other/hadith-collections',
-    title: 'Hadith Collections',
-    loadComponent: () =>
-      import('./hadith-collections/hadith-collections.component').then((m) => m.ViewHadithCollectionsComponent),
-  },
-  {
-    path: 'other/hadith-collections/new',
-    title: 'New Hadith Collections',
-    data: { mode: 'create' },
-    loadComponent: () =>
-      import('./hadith-collections/hadith-collections-form.component').then((m) => m.HadithCollectionsFormComponent),
-  },
-  {
-    path: 'other/hadith-collections/:id/edit',
-    title: 'Edit Hadith Collections',
-    data: { mode: 'edit' },
-    loadComponent: () =>
-      import('./hadith-collections/hadith-collections-form.component').then((m) => m.HadithCollectionsFormComponent),
-  },
-  {
-    path: 'other/hadith-sharh-missing',
-    title: 'Hadith Sharh Missing',
-    loadComponent: () =>
-      import('./hadith-sharh-missing/hadith-sharh-missing.component').then((m) => m.ViewHadithSharhMissingComponent),
-  },
-  {
-    path: 'other/hadith-sharh-missing/new',
-    title: 'New Hadith Sharh Missing',
-    data: { mode: 'create' },
-    loadComponent: () =>
-      import('./hadith-sharh-missing/hadith-sharh-missing-form.component').then((m) => m.HadithSharhMissingFormComponent),
-  },
-  {
-    path: 'other/hadith-sharh-missing/:id/edit',
-    title: 'Edit Hadith Sharh Missing',
-    data: { mode: 'edit' },
-    loadComponent: () =>
-      import('./hadith-sharh-missing/hadith-sharh-missing-form.component').then((m) => m.HadithSharhMissingFormComponent),
-  },
-  {
-    path: 'other/hadiths',
-    title: 'Hadiths',
-    loadComponent: () =>
-      import('./hadiths/hadiths.component').then((m) => m.ViewHadithsComponent),
-  },
-  {
-    path: 'other/hadiths/new',
-    title: 'New Hadiths',
-    data: { mode: 'create' },
-    loadComponent: () =>
-      import('./hadiths/hadiths-form.component').then((m) => m.HadithsFormComponent),
-  },
-  {
-    path: 'other/hadiths/:id/edit',
-    title: 'Edit Hadiths',
-    data: { mode: 'edit' },
-    loadComponent: () =>
-      import('./hadiths/hadiths-form.component').then((m) => m.HadithsFormComponent),
   },
   {
     path: 'other/line',
@@ -525,26 +426,6 @@ export const otherRoutes: Routes = [
       import('./service-type/service-type-form.component').then((m) => m.ServiceTypeFormComponent),
   },
   {
-    path: 'other/sharhs',
-    title: 'Sharhs',
-    loadComponent: () =>
-      import('./sharhs/sharhs.component').then((m) => m.ViewSharhsComponent),
-  },
-  {
-    path: 'other/sharhs/new',
-    title: 'New Sharhs',
-    data: { mode: 'create' },
-    loadComponent: () =>
-      import('./sharhs/sharhs-form.component').then((m) => m.SharhsFormComponent),
-  },
-  {
-    path: 'other/sharhs/:id/edit',
-    title: 'Edit Sharhs',
-    data: { mode: 'edit' },
-    loadComponent: () =>
-      import('./sharhs/sharhs-form.component').then((m) => m.SharhsFormComponent),
-  },
-  {
     path: 'other/state',
     title: 'State',
     loadComponent: () =>
@@ -583,26 +464,6 @@ export const otherRoutes: Routes = [
     data: { mode: 'edit' },
     loadComponent: () =>
       import('./sub-section/sub-section-form.component').then((m) => m.SubSectionFormComponent),
-  },
-  {
-    path: 'other/takheejs',
-    title: 'Takheejs',
-    loadComponent: () =>
-      import('./takheejs/takheejs.component').then((m) => m.ViewTakheejsComponent),
-  },
-  {
-    path: 'other/takheejs/new',
-    title: 'New Takheejs',
-    data: { mode: 'create' },
-    loadComponent: () =>
-      import('./takheejs/takheejs-form.component').then((m) => m.TakheejsFormComponent),
-  },
-  {
-    path: 'other/takheejs/:id/edit',
-    title: 'Edit Takheejs',
-    data: { mode: 'edit' },
-    loadComponent: () =>
-      import('./takheejs/takheejs-form.component').then((m) => m.TakheejsFormComponent),
   },
   {
     path: 'other/transmission-type',

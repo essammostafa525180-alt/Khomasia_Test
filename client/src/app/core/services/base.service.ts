@@ -5,22 +5,12 @@ import { map } from 'rxjs/operators';
 import { Configurations, ModuleEndpoints } from '../../Configurations/config';
 import { LookUpItemModel } from '../Models/BaseModel/look-up-item.model';
 
-
-/**
- * Shared CRUD calls for a module. Not injectable on its own: concrete
- * services extend it and pass their own endpoint map to super().
- */
 @Injectable()
 export abstract class BaseService<TEntity, TResponse> {
 
   constructor(protected http: HttpClient, protected endPoints: ModuleEndpoints) { }
 
-  /**
-   * The CQRS controllers wrap responses in Result<T> (and paged lists in
-   * Result<PagingSortingFiltering<T>>), so getAll/getById unwrap the envelope
-   * and hand back the inner data (or the inner items array). Plain-array
-   * endpoints are returned unchanged.
-   */
+
   getAll<TResult = TResponse>(): Observable<TResult> {
     return this.http
       .get<any>(Configurations.build(this.endPoints.GetAll))
@@ -45,11 +35,7 @@ export abstract class BaseService<TEntity, TResponse> {
      return this.http.delete<TResult>(Configurations.build(this.endPoints.Delete(id)));
    }
 
-   /**
-    * Soft-delete: the backend DELETE handler sets the entity's `IsDeleted` flag
-    * (it never hard-removes the row), so the record stays in the DB but must no
-    * longer appear in grids — see `filtersDeleted` in the generated list views.
-    */
+
    softDelete<TResult = TResponse>(id: number): Observable<TResult> {
      return this.http.delete<TResult>(Configurations.build(this.endPoints.Delete(id)));
    }

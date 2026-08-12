@@ -17,11 +17,7 @@ export interface CountryFormDialogData {
   item?: CountryModel;
 }
 
-/**
- * Create/edit form for a country. The same component is used in both
- * presentations: opened through MatDialog (data supplied via MAT_DIALOG_DATA)
- * or rendered as a routed page (mode from route data, id from route params).
- */
+
 @Component({
   selector: 'app-country-form',
   standalone: true,

@@ -127,10 +127,7 @@ export class ThemeService {
     root.style.setProperty('--page-accent-shadow', theme.accentShadow);
     root.style.setProperty('--page-row-hover', theme.rowHover);
     root.style.setProperty('--page-banner', theme.banner);
-     root.style.setProperty('--mat-sys-primary', theme.accent);
-
-     // Sidebar background is the theme's light/soft accent tone, so
-      // switching themes repaints the whole sidebar with a matching light shade.
-     root.style.setProperty('--sidebar-bg', theme.accentSoft);
+    root.style.setProperty('--mat-sys-primary', theme.accent);
+    root.style.setProperty('--sidebar-bg', theme.accentSoft);
    }
 }

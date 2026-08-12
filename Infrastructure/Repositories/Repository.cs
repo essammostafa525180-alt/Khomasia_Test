@@ -56,7 +56,7 @@ namespace Infrastructure.Repositories
         public void SoftDelete(TEntity entity)
         {
             entity.IsDeleted = true;
-            //entity.DeletedAt = DateTime.Now;
+            entity.DeletedAt = DateTime.Now;
         }
 
         public void SoftDeleteRange(IEnumerable<TEntity> entities)

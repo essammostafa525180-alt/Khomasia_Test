@@ -1,11 +1,7 @@
 using Application.Abstractions;
 using Domain.Aggregates.AssetAggregate;
 using Domain.Aggregates.AuditAggregate;
-using Domain.Aggregates.BookAggregate;
-using Domain.Aggregates.BookSharhAggregate;
-using Domain.Aggregates.ClassificationAggregate;
 using Domain.Aggregates.CompanyAggregate;
-using Domain.Aggregates.HadithAggregate;
 using Domain.Aggregates.InventoryItemAggregate;
 using Domain.Aggregates.InventoryStockCountAggregate;
 using Domain.Aggregates.InventoryTransfereAggregate;
@@ -17,7 +13,6 @@ using Domain.Aggregates.SalesAggregate;
 using Domain.Aggregates.SecurityAggregate;
 using Domain.Aggregates.SiteAggregate;
 using Domain.Aggregates.StoreAggregate;
-using Domain.Aggregates.TakhreejAggregate;
 using Domain.Aggregates.UserAggregate;
 using Domain.Aggregates.VehicleAggregate;
 using Domain.Aggregates.VendorAggregate;
@@ -40,33 +35,8 @@ public sealed class ApplicationDbContext : IdentityDbContext<ApplicationUser>,
     {
         //this.Database.SetCommandTimeout(900);
     }
-
-
-    //public DbSet<Partation> Partations { get; set; }
-    //public DbSet<HadithCollection> HadithCollections { get; set; }
-    //public DbSet<NarratorStudent> NarratorStudents { get; set; }
-    //public DbSet<NarratorsCriticism> NarratorsCriticisms { get; set; }
-    //public DbSet<Classification> Classifications { get; set; }
-    //public DbSet<Book> Books { get; set; }
-    //public DbSet<Bab> Babs { get; set; }
-    //public DbSet<Hadith> Hadiths { get; set; }
-    //public DbSet<HadithSharh> HadithSharhs { get; set; }
-    //public DbSet<HadithTakhreej> HadithTakhreejs { get; set; }
-    //public DbSet<SharhBook> SharhBooks { get; set; }
-    //public DbSet<Narrator> Narrators { get; set; }
-    //public DbSet<NarratorTeacher> NarratorTeachers { get; set; }
-    //public DbSet<HadithLanguages> HadithLanguages { get; set; }
-    //public DbSet<HadithTranslations> HadithTranslations { get; set; }
-
-    //public DbSet<HadithTranslationsMissing> HadithTranslationsMissings { get; set; }
-
-    //public DbSet<HadithMissing> HadithMissings { get; set; }
-    //public DbSet<HadithTakhreejMessing> HadithTakhreejMessings { get; set; }
-    //public DbSet<ContactMessage> ContactMessages { get; set; }
-
-
-
-
+   
+    public DbSet<ContactMessage> ContactMessages { get; set; }
     public DbSet<AdUser> AdUsers { get; set; }
     public DbSet<AirFilterType> AirFilterTypes { get; set; }
     public DbSet<AllowedCompany> AllowedCompanys { get; set; }
@@ -324,11 +294,6 @@ public sealed class ApplicationDbContext : IdentityDbContext<ApplicationUser>,
     public DbSet<Zone> Zones { get; set; }
     public DbSet<ZoneStatus> ZoneStatus { get; set; }
 
-    //هيتشال لم الداتا تتصلح
-    public DbSet<HadithSharhMissing> hadithSharhMissings { get; set; }
-    public DbSet<HadithNarrator> HadithNarrators { get; set; }
-
-
     public DbSet<_20230515CairoOpeningBalance> _20230515CairoOpeningBalances { get; set; }
     public DbSet<_20230515HebaOpeningBalance> _20230515HebaOpeningBalances { get; set; }
     public DbSet<Cairo202320240721> Cairo202320240721s { get; set; }
@@ -499,108 +464,8 @@ public sealed class ApplicationDbContext : IdentityDbContext<ApplicationUser>,
             e.ToTable("TempBatch");
         });
 
-        modelBuilder.Entity<Bab>()
-            .HasOne(x => x.Book)
-            .WithMany(x => x.Babs)
-            .HasForeignKey(x => x.BookId);
 
-        modelBuilder.Entity<Book>()
-            .HasOne(x => x.Classification)
-            .WithMany(x => x.Books)
-            .HasForeignKey(x => x.ClassificationId);
-
-        modelBuilder.Entity<NarratorStudent>()
-            .HasOne(x => x.Narrator)
-            .WithMany(x => x.NarratorStudents)
-            .HasForeignKey(x => x.NarratorId);
-
-        modelBuilder.Entity<NarratorTeacher>()
-            .HasOne(x => x.Narrator)
-            .WithMany(x => x.NarratorTeachers)
-            .HasForeignKey(x => x.NarratorId);
-
-        modelBuilder.Entity<NarratorsCriticism>()
-            .HasOne(x => x.Narrator)
-            .WithMany(x => x.NarratorsCriticisms)
-            .HasForeignKey(x => x.NarratorId);
-
-        modelBuilder.Entity<HadithSharh>()
-            .HasOne(x => x.SharhBook)
-            .WithMany(x => x.HadithSharhs)
-            .HasForeignKey(x => x.BookSharhId);
-
-        modelBuilder.Entity<HadithSharh>()
-            .HasOne(x => x.Hadith)
-            .WithMany(x => x.HadithSharh)
-            .HasForeignKey(x => x.HadithId)
-            .OnDelete(DeleteBehavior.Cascade)
-            .IsRequired();
-
-        modelBuilder.Entity<HadithSharhMissing>()
-            .HasOne(x => x.SharhBook)
-            .WithMany()
-            .HasForeignKey(x => x.BookSharhId);
-
-        modelBuilder.Entity<SharhBook>()
-            .HasOne(x => x.Classification)
-            .WithMany(x => x.SharhBook)
-            .HasForeignKey(x => x.ClassificationId)
-            .OnDelete(DeleteBehavior.Restrict);
-
-        modelBuilder.Entity<SharhBook>()
-            .HasOne(x => x.ClassificationRefrenace)
-            .WithMany()
-            .HasForeignKey(x => x.ClassificationRefrenaceId)
-            .OnDelete(DeleteBehavior.Restrict);
-
-        modelBuilder.Entity<Classification>()
-            .HasOne(x => x.HadithCollection)
-            .WithMany(x => x.Classifications)
-            .HasForeignKey(x => x.HadithCollectionId);
-
-        modelBuilder.Entity<Hadith>()
-            .HasOne(x => x.Bab)
-            .WithMany(x => x.Hadiths)
-            .HasForeignKey(x => x.BabId);
-
-        modelBuilder.Entity<HadithCollection>()
-            .HasOne(x => x.Partation)
-            .WithMany(x => x.HadithCollections)
-            .HasForeignKey(x => x.PartationId)
-            .OnDelete(DeleteBehavior.Cascade)
-            .IsRequired();
-
-        modelBuilder.Entity<HadithTranslations>()
-            .HasOne(x => x.Hadith)
-            .WithMany(x => x.HadithTranslations)
-            .HasForeignKey(x => x.HadithId);
-
-        modelBuilder.Entity<HadithTranslations>()
-            .HasOne(x => x.HadithLanguages)
-            .WithMany()
-            .HasForeignKey(x => x.LanguageId)
-            .OnDelete(DeleteBehavior.Cascade)
-            .IsRequired();
-
-        modelBuilder.Entity<HadithTakhreej>()
-            .HasOne(x => x.Bab)
-            .WithMany(x => x.HadithTakhreej)
-            .HasForeignKey(x => x.BabId);
-
-        modelBuilder.Entity<HadithTakhreej>()
-            .HasOne(x => x.HadithFrom)
-            .WithMany(x => x.TakhreejFrom)
-            .HasForeignKey(x => x.HadithIdFrom)
-            .OnDelete(DeleteBehavior.Restrict)
-            .IsRequired();
-
-        modelBuilder.Entity<HadithTakhreej>()
-            .HasOne(x => x.HadithTo)
-            .WithMany(x => x.TakhreejTo)
-            .HasForeignKey(x => x.HadithIdTo)
-            .OnDelete(DeleteBehavior.Restrict)
-            .IsRequired();
-
+     
         var keepNamespaces = new[]
         {
             "Domain.Aggregates.BookAggregate",

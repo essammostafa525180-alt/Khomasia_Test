@@ -11,6 +11,4 @@ export class CityService extends BaseService<CreateCityModel, CityModel> {
     super(http, Configurations.City);
   }
 
-
-
 }

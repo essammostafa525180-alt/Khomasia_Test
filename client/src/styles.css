@@ -1,11 +1,4 @@
-/* ============================================================
-   Global application styles
 
-   Layout/atom classes shared by every CRUD screen live here so a
-   feature only has to declare its accent colour and its own
-   one-off pieces. Feature components override the --page-* tokens
-   on :host.
-   ============================================================ */
 
 html,
 body {

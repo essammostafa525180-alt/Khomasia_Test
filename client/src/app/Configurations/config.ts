@@ -35,7 +35,6 @@ export abstract class Configurations {
     return `${Configurations.Url}/${path}`;
   }
 
-  static readonly Test = { ...endPoint('TestDemo') };
   static readonly Country = { ...endPoint('Country') };
   static readonly City = { ...endPoint('City') };
   static readonly InventoryItem =
@@ -92,9 +91,7 @@ export abstract class Configurations {
   static readonly AssignVendorSpecialization = { ...endPoint('AssignVendorSpecialization') };
   static readonly AuditTrail = { ...endPoint('AuditTrail') };
   static readonly AuditTrailDetail = { ...endPoint('AuditTrailDetail') };
-  static readonly Babs = { ...endPoint('Babs') };
   static readonly BatteryType = { ...endPoint('BatteryType') };
-  static readonly Books = { ...endPoint('Books') };
   static readonly ChemicalGroup = { ...endPoint('ChemicalGroup') };
   static readonly Classifications = { ...endPoint('Classifications') };
   static readonly CommissionCondition = { ...endPoint('CommissionCondition') };
@@ -113,9 +110,6 @@ export abstract class Configurations {
   static readonly Factory = { ...endPoint('Factory') };
   static readonly FactoryLine = { ...endPoint('FactoryLine') };
   static readonly Gender = { ...endPoint('Gender') };
-  static readonly HadithCollections = { ...endPoint('HadithCollections') };
-  static readonly Hadiths = { ...endPoint('Hadiths') };
-  static readonly HadithSharhMissing = { ...endPoint('HadithSharhMissing') };
   static readonly InsuranceVendor = { ...endPoint('InsuranceVendor') };
   static readonly InventoryCurrency = { ...endPoint('InventoryCurrency') };
   static readonly InventoryItemAsset = { ...endPoint('InventoryItemAsset') };
@@ -255,7 +249,6 @@ export abstract class Configurations {
   static readonly StoreSequence = { ...endPoint('StoreSequence') };
   static readonly SubSection = { ...endPoint('SubSection') };
   static readonly SysKeyValue = { ...endPoint('SysKeyValue') };
-  static readonly Takheejs = { ...endPoint('Takheejs') };
   static readonly TermsAndCondition = { ...endPoint('TermsAndCondition') };
   static readonly ToolsType = { ...endPoint('ToolsType') };
   static readonly TransfereType = { ...endPoint('TransfereType') };

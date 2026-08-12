@@ -1,10 +1,6 @@
 using Domain.Aggregates.AssetAggregate;
 using Domain.Aggregates.AuditAggregate;
-using Domain.Aggregates.BookAggregate;
-using Domain.Aggregates.BookSharhAggregate;
-using Domain.Aggregates.ClassificationAggregate;
 using Domain.Aggregates.CompanyAggregate;
-using Domain.Aggregates.HadithAggregate;
 using Domain.Aggregates.InventoryItemAggregate;
 using Domain.Aggregates.InventoryStockCountAggregate;
 using Domain.Aggregates.InventoryTransfereAggregate;
@@ -16,7 +12,6 @@ using Domain.Aggregates.SalesAggregate;
 using Domain.Aggregates.SecurityAggregate;
 using Domain.Aggregates.SiteAggregate;
 using Domain.Aggregates.StoreAggregate;
-using Domain.Aggregates.TakhreejAggregate;
 using Domain.Aggregates.UserAggregate;
 using Domain.Aggregates.VehicleAggregate;
 using Domain.Aggregates.VendorAggregate;
@@ -30,23 +25,8 @@ public interface IUnitOfWork
 {
 
 
-    public IRepository<Partation, int> PartitionRepository { get; set; }
-    public IRepository<HadithCollection, int> HadithCollectionRepository { get; set; }
-    public IRepository<Classification, int> ClassificationRepository { get; set; }
-    public IRepository<HadithTakhreej, int> HadithTakhreejRepository { get; set; }
-    public IRepository<Hadith, int> HadithRepository { get; set; }
-    // Ã™â€¡Ã˜ÂªÃ˜ÂªÃ˜Â´Ã˜Â§Ã™â€ž Ã™â€šÃ˜Â¯Ã˜Â§Ã™â€¦ Ã™â€žÃ™â€¦ Ã˜Â§Ã™â€žÃ˜Â¯Ã˜Â§Ã˜ÂªÃ˜Â§ Ã˜ÂªÃ˜ÂªÃ˜ÂµÃ™â€žÃ˜Â­
-    public IRepository<HadithMissing, int> HadithMissingRepository { get; set; }
-    public IRepository<HadithTranslations, int> HadithTranslationRepository { get; set; }
-
-    public IRepository<HadithSharh, int> HadithSharhRepository { get; set; }
-    public IRepository<Bab, int> BabRepository { get; set; }
-    public IRepository<Book, int> BookRepository { get; set; }
-    public IRepository<Narrator, int> NarratorRepository { get; set; }
-    public IRepository<SharhBook, int> SharhBookRepository { get; set; }
+   
     public IRepository<ContactMessage, int> ContactMessageRepository { get; set; }
-    public IRepository<HadithSharhMissing, int> HadithSharhMissingRepository { get; set; }
-
     public IRepository<AdUser, int> AdUserRepository { get; set; }
     public IRepository<AirFilterType, int> AirFilterTypeRepository { get; set; }
     public IRepository<AllowedCompany, int> AllowedCompanyRepository { get; set; }
@@ -170,9 +150,7 @@ public interface IUnitOfWork
     public IRepository<MaterialGroup, int> MaterialGroupRepository { get; set; }
     public IRepository<MaterialSubCategory, int> MaterialSubCategoryRepository { get; set; }
     public IRepository<ModuleSetting, int> ModuleSettingRepository { get; set; }
-    public IRepository<NarratorsCriticism, int> NarratorsCriticismRepository { get; set; }
-    public IRepository<NarratorStudent, int> NarratorStudentRepository { get; set; }
-    public IRepository<NarratorTeacher, int> NarratorTeacherRepository { get; set; }
+  
     public IRepository<Notification, int> NotificationRepository { get; set; }
     public IRepository<NotificationLog, int> NotificationLogRepository { get; set; }
     public IRepository<NotificationPlaceHolder, int> NotificationPlaceHolderRepository { get; set; }

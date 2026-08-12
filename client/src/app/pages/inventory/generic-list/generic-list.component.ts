@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { PageHeaderComponent } from '../../../shared/page-header/page-header.component';
-import { DataGridComponent } from '../../../shared/data-grid/data-grid.component';
-import { BreadcrumbItem } from '../../../shared/page-header/breadcrumb-item.model';
-import { GridColumn } from '../../../shared/data-grid/data-grid/grid-column.model';
+import { PageHeaderComponent } from '../../../Shared/page-header/page-header.component';
+import { DataGridComponent } from '../../../Shared/data-grid/data-grid.component';
+import { BreadcrumbItem } from '../../../Shared/page-header/breadcrumb-item.model';
+import { GridColumn } from '../../../Shared/data-grid/data-grid/grid-column.model';
 import { PdfExportService } from '../../../services/pdf-export.service';
 
 @Component({

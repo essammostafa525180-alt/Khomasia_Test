@@ -1664,26 +1664,7 @@ export const inventoryExtraRoutes: Routes = [
     loadComponent: () =>
       import('./material-sub-category/material-sub-category-form.component').then((m) => m.MaterialSubCategoryFormComponent),
   },
-  {
-    path: 'inventory/partitions',
-    title: 'Partitions',
-    loadComponent: () =>
-      import('./partitions/partitions.component').then((m) => m.ViewPartitionsComponent),
-  },
-  {
-    path: 'inventory/partitions/new',
-    title: 'New Partitions',
-    data: { mode: 'create' },
-    loadComponent: () =>
-      import('./partitions/partitions-form.component').then((m) => m.PartitionsFormComponent),
-  },
-  {
-    path: 'inventory/partitions/:id/edit',
-    title: 'Edit Partitions',
-    data: { mode: 'edit' },
-    loadComponent: () =>
-      import('./partitions/partitions-form.component').then((m) => m.PartitionsFormComponent),
-  },
+  
   {
     path: 'inventory/possession-type',
     title: 'Possession Type',
