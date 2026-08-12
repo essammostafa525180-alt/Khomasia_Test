@@ -1,0 +1,59 @@
+<div class="page-card" [class.page-card--dialog]="isDialog">
+  <div class="banner" *ngIf="!isDialog">
+    <div class="banner__icon">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'bar_chart' }}</mat-icon>
+    </div>
+    <div class="banner__title">{{ title }}</div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="form-page">
+    <div class="form-page__header" *ngIf="isDialog">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'bar_chart' }}</mat-icon>
+      {{ title }}
+    </div>
+
+    <div class="form-page__loading" *ngIf="loading">Loading…</div>
+
+    <div class="field-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Sales Invoice</mat-label>
+        <input matInput type="number" formControlName="salesInvoiceId" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Product</mat-label>
+        <input matInput type="number" formControlName="productId" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Quantity</mat-label>
+        <input matInput type="number" formControlName="quantity" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" formControlName="price" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Discount</mat-label>
+        <input matInput type="number" formControlName="discount" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Net Amount</mat-label>
+        <input matInput type="number" formControlName="netAmount" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Updated On</mat-label>
+        <input matInput type="date" formControlName="updatedOn" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Updated By</mat-label>
+        <input matInput type="number" formControlName="updatedBy" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-page__actions">
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
+      <button mat-flat-button type="submit" class="btn-primary" [disabled]="form.invalid || saving || loading">
+        {{ saving ? 'Saving…' : 'Save' }}
+      </button>
+    </div>
+  </form>
+</div>

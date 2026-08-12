@@ -1,0 +1,119 @@
+<div class="page-card">
+  <!-- ---- Banner ---- -->
+  <div class="banner">
+    <div class="banner__icon">
+      <mat-icon>public</mat-icon>
+    </div>
+    <div class="banner__title">{{ 'PAGES.COUNTRY_MANAGEMENT' | translate }}</div>
+  </div>
+
+  <!-- ---- Filter bar ---- -->
+  <app-accordion [item]="{ title: 'PAGES.FILTER', icon: 'filter_list' }">
+    <div class="filter-bar">
+      <!-- filter-bar__row__3  for 3 col and  filter-bar__row for 2 col -->
+      <div class="filter-bar__row">
+
+        <mat-form-field appearance="outline">
+          <mat-label>{{ 'COMMON.NAME' | translate }}</mat-label>
+          <input matInput [(ngModel)]="modelFilter.name" [placeholder]="'COMMON.SEARCH_PLACEHOLDER' | translate"
+            (keyup.enter)="onSearch()" />
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+        <app-autocomplete [label]="'COMMON.COUNTRY_NAME' | translate" displayKey="name" [minLength]="2"
+          [apiSearch]="inventoryItemService" (selectionChange)="onSelectedAutoComplete($event)" [(ngModel)]="modelFilter.nameAr">
+        </app-autocomplete>
+
+      </div>
+      <div class="filter-bar__search-row">
+        <button mat-flat-button class="btn-primary" (click)="onSearch()">
+          <mat-icon>search</mat-icon> {{ 'COMMON.SEARCH' | translate }}
+        </button>
+        <button mat-stroked-button (click)="onReset()">
+          <mat-icon>refresh</mat-icon> {{ 'COMMON.RESET' | translate }}
+        </button>
+      </div>
+    </div>
+  </app-accordion>
+
+  <!-- ---- Table actions + export toolbar (one line) ---- -->
+  <div class="table-header">
+    <div class="table-actions">
+      <button mat-flat-button class="btn-primary" (click)="onNew()">
+        <mat-icon>add</mat-icon> {{ 'PAGES.NEW_COUNTRY' | translate }}
+      </button>
+    </div>
+
+    <div class="table-toolbar">
+      <div class="table-toolbar__exports">
+        <button *ngFor="let btn of exportButtons" mat-stroked-button class="export-btn" (click)="onExport(btn.type)"
+          [matTooltip]="btn.type">
+          <mat-icon>{{ btn.icon }}</mat-icon>
+          <span class="export-btn__label">{{ btn.type }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---- Table ---- -->
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSource" class="data-table">
+      <!-- Checkbox -->
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? toggleAllRows() : null" [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()"></mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)"></mat-checkbox>
+        </td>
+      </ng-container>
+
+      <!-- ID -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>{{ 'COMMON.ID' | translate }}</th>
+        <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+      </ng-container>
+
+      <!-- Name -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>{{ 'COMMON.NAME' | translate }}</th>
+        <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+      </ng-container>
+
+      <!-- Code -->
+      <ng-container matColumnDef="nameAr">
+        <th mat-header-cell *matHeaderCellDef>{{ 'COMMON.NAME_AR' | translate }}</th>
+        <td mat-cell *matCellDef="let row">
+          <span class="code-badge">{{ row.nameAr }}</span>
+        </td>
+      </ng-container>
+
+      <!-- Actions -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>{{ 'COMMON.ACTIONS' | translate }}</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button class="action-btn action-btn--edit" [matTooltip]="'COMMON.EDIT' | translate"
+            (click)="onEdit(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button class="action-btn action-btn--delete" [matTooltip]="'COMMON.DELETE' | translate"
+            (click)="onDelete(row)">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <div class="table-empty" *ngIf="!dataSource.filteredData.length">
+      {{ 'COMMON.NO_COUNTRIES' | translate }}
+    </div>
+
+    <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 25, 100]" (page)="onPageChange($event)" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

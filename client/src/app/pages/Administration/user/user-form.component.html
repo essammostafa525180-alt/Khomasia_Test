@@ -1,0 +1,106 @@
+<div class="page-card" [class.page-card--dialog]="isDialog">
+  <div class="banner" *ngIf="!isDialog">
+    <div class="banner__icon">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'admin_panel_settings' }}</mat-icon>
+    </div>
+    <div class="banner__title">{{ title }}</div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="form-page">
+    <div class="form-page__header" *ngIf="isDialog">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'admin_panel_settings' }}</mat-icon>
+      {{ title }}
+    </div>
+
+    <div class="form-page__loading" *ngIf="loading">Loading…</div>
+
+    <div class="field-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Updated On</mat-label>
+        <input matInput type="date" formControlName="updatedOn" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Code</mat-label>
+        <input matInput formControlName="code" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>User</mat-label>
+        <input matInput formControlName="userId" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Contact</mat-label>
+        <input matInput type="number" formControlName="contact" />
+      </mat-form-field>
+      <mat-checkbox formControlName="active">Active</mat-checkbox>
+      <mat-form-field appearance="outline">
+        <mat-label>Ouid</mat-label>
+        <input matInput type="number" formControlName="ouid" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Name Ar</mat-label>
+        <input matInput formControlName="nameAr" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Branch</mat-label>
+        <input matInput type="number" formControlName="branchId" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Last Login</mat-label>
+        <input matInput type="date" formControlName="lastLogin" />
+      </mat-form-field>
+      <mat-checkbox formControlName="forcePasswordChange">Force Password Change</mat-checkbox>
+      <mat-form-field appearance="outline">
+        <mat-label>Employee</mat-label>
+        <input matInput type="number" formControlName="employeeId" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Max Discount</mat-label>
+        <input matInput type="number" formControlName="maxDiscount" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Password Creation Date</mat-label>
+        <input matInput type="date" formControlName="passwordCreationDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="fullName" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Ad User</mat-label>
+        <input matInput type="number" formControlName="adUserId" />
+      </mat-form-field>
+      <mat-checkbox formControlName="isPda">Is Pda</mat-checkbox>
+      <mat-form-field appearance="outline">
+        <mat-label>Single Session</mat-label>
+        <input matInput type="number" formControlName="singleSession" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-page__actions">
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
+      <button mat-flat-button type="submit" class="btn-primary" [disabled]="form.invalid || saving || loading">
+        {{ saving ? 'Saving…' : 'Save' }}
+      </button>
+    </div>
+  </form>
+</div>

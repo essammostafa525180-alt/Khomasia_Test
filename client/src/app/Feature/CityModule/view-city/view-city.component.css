@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+
+/* Country chip — uses theme tokens set by ThemeService */
+.country-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--page-accent-soft);
+  color: var(--page-accent-dark);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.chip-icon {
+  font-size: 14px !important;
+  width: 14px !important;
+  height: 14px !important;
+  color: var(--page-accent);
+}

@@ -1,4 +1,3 @@
-
 using Application.Abstractions;
 using Infrastructure.Settings;
 using MailKit.Net.Smtp;

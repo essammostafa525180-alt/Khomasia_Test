@@ -1,0 +1,20 @@
+<aside class="app-sidebar shadow" data-bs-theme="light">
+  <div class="sidebar-brand">
+    <a routerLink="/dashboard" class="brand-link">
+      <span class="brand-text fw-light">مصنع الأعلاف</span>
+    </a>
+  </div>
+
+  <div class="sidebar-wrapper">
+    <nav class="mt-2">
+      <ul class="nav sidebar-menu flex-column" role="menu">
+        <app-sidebar-menu-item
+          *ngFor="let item of filteredMenu"
+          [item]="item"
+          [siblings]="filteredMenu"
+          [level]="0">
+        </app-sidebar-menu-item>
+      </ul>
+    </nav>
+  </div>
+</aside>

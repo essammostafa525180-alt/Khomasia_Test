@@ -1,0 +1,130 @@
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CreateSecViewAction, SecViewAction } from '../../../Shared/Model/-sec-view-action.model';
+import { SecViewActionService } from './sec-view-action.service';
+import { NotificationService } from '../../../core/services/notification.service';
+import { FormMode } from '../../../Shared/Model/FormMode';
+import { MATERIAL_IMPORTS } from '../../../Shared/materail-imports';
+
+export interface SecViewActionFormDialogData {
+  mode: FormMode;
+  item?: SecViewAction;
+}
+
+@Component({
+  selector: 'app-sec-view-action-form',
+  standalone: true,
+  imports: [MATERIAL_IMPORTS],
+  templateUrl: './sec-view-action-form.component.html',
+  styleUrl: './sec-view-action-form.component.css',
+})
+export class SecViewActionFormComponent implements OnInit {
+  private readonly fb = inject(FormBuilder);
+  private readonly service = inject(SecViewActionService);
+  private readonly notification = inject(NotificationService);
+  private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
+
+  private readonly dialogRef = inject(MatDialogRef, { optional: true });
+  private readonly data = inject<SecViewActionFormDialogData | null>(MAT_DIALOG_DATA, { optional: true });
+
+  readonly isDialog = !!this.dialogRef;
+
+  form!: FormGroup;
+  mode: FormMode = 'create';
+  item?: SecViewAction;
+  saving = false;
+  loading = false;
+
+  get title(): string {
+    return this.mode === 'create' ? 'New Sec View Action' : 'Edit Sec View Action';
+  }
+
+  ngOnInit(): void {
+    this.form = this.fb.group({
+
+    });
+
+    if (this.data) {
+      this.mode = this.data.mode;
+      this.item = this.data.item;
+      this.patchForm();
+      return;
+    }
+
+    this.mode = this.route.snapshot.data['mode'] === 'edit' ? 'edit' : 'create';
+    if (this.mode === 'edit') {
+      this.loadItem();
+    }
+  }
+
+  save(): void {
+    if (this.form.invalid || this.saving) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    this.saving = true;
+    const value = this.form.getRawValue() as CreateSecViewAction;
+
+    const request$ =
+      this.mode === 'create'
+        ? this.service.create(value)
+        : this.service.update(this.item!.id, value);
+
+    request$.subscribe({
+      next: () => {
+        this.saving = false;
+        this.notification.success(
+          this.mode === 'create' ? 'Sec View Action created.' : 'Sec View Action updated.'
+        );
+        this.close(true);
+      },
+      error: () => {
+        this.saving = false;
+      },
+    });
+  }
+
+  cancel(): void {
+    this.close(false);
+  }
+
+  private loadItem(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    if (!Number.isInteger(id) || id <= 0) {
+      this.notification.error('Invalid record identifier.');
+      this.close(false);
+      return;
+    }
+
+    this.loading = true;
+    this.service.getById(id).subscribe({
+      next: (item) => {
+        this.loading = false;
+        this.item = item;
+        this.patchForm();
+      },
+      error: () => {
+        this.loading = false;
+        this.close(false);
+      },
+    });
+  }
+
+  private patchForm(): void {
+    this.form.patchValue({
+
+    });
+  }
+
+  private close(saved: boolean): void {
+    if (this.dialogRef) {
+      this.dialogRef.close(saved);
+      return;
+    }
+    this.router.navigate(['/administration/sec-view-action']);
+  }
+}

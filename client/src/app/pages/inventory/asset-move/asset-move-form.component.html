@@ -1,0 +1,83 @@
+<div class="page-card" [class.page-card--dialog]="isDialog">
+  <div class="banner" *ngIf="!isDialog">
+    <div class="banner__icon">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'edit' }}</mat-icon>
+    </div>
+    <div class="banner__title">{{ title }}</div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="form-page">
+    <div class="form-page__header" *ngIf="isDialog">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'edit' }}</mat-icon>
+      {{ title }}
+    </div>
+
+    <div class="form-page__loading" *ngIf="loading">Loading…</div>
+
+    <div class="field-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Code</mat-label>
+        <input matInput formControlName="code" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Asset Item</mat-label>
+        <input matInput type="number" formControlName="assetItemFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Asset Move Type</mat-label>
+        <input matInput type="number" formControlName="assetMoveTypeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>From Project</mat-label>
+        <input matInput type="number" formControlName="fromProjectFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>From Asset Location</mat-label>
+        <input matInput type="number" formControlName="fromAssetLocationFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>To Project</mat-label>
+        <input matInput type="number" formControlName="toProjectFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>To Asset Location</mat-label>
+        <input matInput type="number" formControlName="toAssetLocationFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Employee</mat-label>
+        <input matInput type="number" formControlName="employeeFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Owner Approved</mat-label>
+        <input matInput type="number" formControlName="ownerApprovedFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Is Owner Approved</mat-label>
+        <input matInput type="number" formControlName="isOwnerApprovedFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Owner Approved Date</mat-label>
+        <input matInput type="date" formControlName="ownerApprovedDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Manager Approved</mat-label>
+        <input matInput type="number" formControlName="managerApprovedFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Is Manager Approved</mat-label>
+        <input matInput type="number" formControlName="isManagerApprovedFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Manager Approved Date</mat-label>
+        <input matInput type="date" formControlName="managerApprovedDate" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-page__actions">
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
+      <button mat-flat-button type="submit" class="btn-primary" [disabled]="form.invalid || saving || loading">
+        {{ saving ? 'Saving…' : 'Save' }}
+      </button>
+    </div>
+  </form>
+</div>

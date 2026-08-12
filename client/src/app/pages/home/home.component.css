@@ -1,0 +1,38 @@
+.home-page {
+  padding: 8px 0 24px;
+}
+
+.home-page .row {
+  margin-top: 4px;
+}
+
+
+/* =========================================================
+   CARD HEIGHT
+========================================================= */
+
+.home-page app-link-panel {
+  display: block;
+  height: 100%;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .home-page {
+    padding: 4px 0 20px;
+  }
+
+}
+
+@media (max-width: 576px) {
+
+  .home-page .row {
+    --bs-gutter-y: 1rem;
+  }
+
+}

@@ -3,7 +3,7 @@
     public enum DetectedLanguage
     {
         Arabic,   // Arabic + Urdu
-        Latin,          // EN / FR / TR / ID
+        Latin,    // EN / FR / TR / ID
         Unknown
     }
 

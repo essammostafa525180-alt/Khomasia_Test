@@ -1,0 +1,33 @@
+<li class="nav-item">
+
+  <a *ngIf="!item.children?.length"
+     [routerLink]="item.link"
+     routerLinkActive="active"
+     class="nav-link">
+    <i class="nav-icon bi {{ item.icon}}" *ngIf="item.icon"></i>
+    <p>{{ item.label | translate }}</p>
+  </a>
+
+  <a *ngIf="item.children?.length"
+     href="#"
+     class="nav-link"
+     [class.parent-active]="item.expanded"
+     (click)="toggle(); $event.preventDefault()">
+    <i class="nav-icon bi {{ item.icon }}" *ngIf="item.icon"></i>
+    <p>
+      {{ item.label | translate}}
+      <i class="bi ms-auto" [class.bi-chevron-down]="item.expanded" [class.bi-chevron-left]="!item.expanded"></i>
+    </p>
+  </a>
+
+<ul class="nav flex-column"
+    *ngIf="item.children?.length && item.expanded">
+  <app-sidebar-menu-item
+    *ngFor="let child of item.children"
+    [item]="child"
+    [siblings]="item.children ?? []"
+    [level]="level + 1">
+  </app-sidebar-menu-item>
+</ul>
+
+</li>

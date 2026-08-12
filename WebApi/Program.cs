@@ -35,8 +35,8 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Hadith API", Version = "v1" });
-    c.SwaggerDoc("v2", new OpenApiInfo { Title = "Hadith API", Version = "v2" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Inventory API", Version = "v1" });
+    c.SwaggerDoc("v2", new OpenApiInfo { Title = "Inventory API", Version = "v2" });
 
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
@@ -81,12 +81,13 @@ builder.Services.AddApiVersioning(options =>
 
 var corsOrigins = builder.Configuration
     .GetSection("Cors:AllowedOrigins")
-    .Get<string[]>();
+    .Get<string[]>()
+    ?? new[] { "http://localhost:4200", "http://localhost:5221" };
 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngular", policy =>
-        policy.WithOrigins(corsOrigins!)
+        policy.WithOrigins(corsOrigins)
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials()

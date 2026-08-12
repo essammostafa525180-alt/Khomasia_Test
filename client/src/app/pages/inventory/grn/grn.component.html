@@ -1,0 +1,96 @@
+<div class="page-card">
+  <!-- ---- Banner ---- -->
+  <div class="banner">
+    <div class="banner__icon">
+      <mat-icon>inventory_2</mat-icon>
+    </div>
+    <div class="banner__title">GRN</div>
+  </div>
+
+  <!-- ---- Filter bar ---- -->
+  <app-accordion [item]="{ title: 'Filter', icon: 'filter_list' }">
+    <div class="filter-bar">
+      <div class="filter-bar__row">
+        <mat-form-field appearance="outline">
+          <mat-label>Search</mat-label>
+          <input matInput [(ngModel)]="searchText" placeholder="Search..." (keyup.enter)="onSearch()" />
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="filter-bar__search-row">
+        <button mat-flat-button class="btn-primary" (click)="onSearch()">
+          <mat-icon>search</mat-icon> Search
+        </button>
+        <button mat-stroked-button (click)="onReset()">
+          <mat-icon>refresh</mat-icon> Reset
+        </button>
+      </div>
+    </div>
+  </app-accordion>
+
+  <!-- ---- Table actions + export toolbar ---- -->
+  <div class="table-header">
+    <div class="table-actions">
+      <button mat-flat-button class="btn-primary" (click)="onNew()">
+        <mat-icon>add</mat-icon> New GRN
+      </button>
+    </div>
+
+    <div class="table-toolbar">
+      <div class="table-toolbar__exports">
+        <button *ngFor="let btn of exportButtons" mat-stroked-button class="export-btn" (click)="onExport(btn.type)"
+          [matTooltip]="btn.type">
+          <mat-icon>{{ btn.icon }}</mat-icon>
+          <span class="export-btn__label">{{ btn.type }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---- Table ---- -->
+  <div class="table-wrapper">
+    <table mat-table [dataSource]="dataSource" class="data-table">
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? toggleAllRows() : null" [checked]="selection.hasValue() && isAllSelected()"
+            [indeterminate]="selection.hasValue() && !isAllSelected()" [aria-label]="checkboxLabel()"></mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)"></mat-checkbox>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+      </ng-container>
+
+
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button class="action-btn action-btn--edit" [matTooltip]="'Edit'"
+            (click)="onEdit(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button class="action-btn action-btn--delete" [matTooltip]="'Delete'"
+            (click)="onDelete(row)">
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <div class="table-empty" *ngIf="!dataSource.filteredData.length">
+      No GRN records found.
+    </div>
+
+    <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 25, 100]" (page)="onPageChange($event)" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

@@ -9,7 +9,7 @@ where TId : struct, IEquatable<TId>
     public DateTime? ModifiedAt { get; set; }
     public DateTime? DeletedAt { get; set; }
     public string? DeletedBy { get; set; }
-    //public byte[]? RowVersion { get; set; }
+    public byte[]? RowVersion { get; set; }
     public override void SoftDelete()
     {
         DeletedAt = DateTime.Now;

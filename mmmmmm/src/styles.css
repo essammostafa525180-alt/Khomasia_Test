@@ -1,0 +1,472 @@
+/* ============================================================
+   Global application styles
+
+   Layout/atom classes shared by every CRUD screen live here so a
+   feature only has to declare its accent colour and its own
+   one-off pieces. Feature components override the --page-* tokens
+   on :host.
+   ============================================================ */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+:root {
+  /* Neutrals */
+  --app-ink: #1e2233;
+  --app-muted: #8a90a6;
+  --app-border: #eceef4;
+  --app-border-strong: #e4e7ef;
+  --app-surface: #ffffff;
+  --app-surface-alt: #fafbfe;
+  --app-surface-head: #f4f5fa;
+  --app-danger: #e53935;
+
+  /* Theme tokens — ThemeService overrides these at runtime via document.documentElement */
+  --page-accent: #2563eb;
+  --page-accent-dark: #1d4ed8;
+  --page-accent-light: #3b82f6;
+  --page-accent-soft: #eff6ff;
+  --page-accent-hover: #dbeafe;
+  --page-accent-shadow: rgba(37, 99, 235, 0.25);
+  --page-row-hover: #f0f7ff;
+  --page-banner: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #93c5fd 100%);
+}
+
+/* ===================== PAGE SHELL ===================== */
+.page-card {
+  background: var(--app-surface);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--app-border);
+}
+/* Inside a dialog the overlay panel already provides the surface. */
+.page-card--dialog {
+  border: none;
+  border-radius: 0;
+}
+
+.banner {
+  position: relative;
+  height: 150px;
+  background: var(--page-banner);
+  display: flex;
+  align-items: flex-end;
+  padding: 0 28px 20px;
+  margin-bottom: 10px;
+}
+.banner__icon {
+  position: absolute;
+  left: 28px;
+  top: 90px;
+  width: 68px;
+  height: 68px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--page-accent), var(--page-accent-dark));
+  box-shadow: 0 10px 24px var(--page-accent-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid #fff;
+}
+.banner__icon mat-icon {
+  color: #fff;
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+.banner__title {
+  margin-left: 90px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--app-ink);
+}
+
+/* ===================== FIELD GRID ===================== */
+/*
+   Two equal columns in a desktop browser, one on a narrow screen.
+   Used by both filter bars and create/edit forms so every field is the
+   same width. Add .field-grid__full to a field to make it span the row.
+*/
+.field-grid,
+.filter-bar__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: 4px;
+  align-items: start;
+}
+.filter-bar__row__3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: 4px;
+  align-items: start;
+}
+.field-grid > *,
+.filter-bar__row > *,
+.filter-bar__row__3 > *{
+  width: 100%;
+}
+.field-grid__full {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 760px) {
+  .field-grid,
+  .filter-bar__row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .field-grid__full {
+    grid-column: auto;
+  }
+}
+
+/* ===================== FILTER BAR ===================== */
+.filter-bar {
+  padding: 8px 28px;
+}
+.filter-bar__row {
+  margin-bottom: 4px;
+}
+.filter-bar__search-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  justify-content: end;
+}
+
+/* ===================== ACTIONS / BUTTONS =====================
+   .table-header keeps the primary action and the export buttons on one
+   line; it wraps them onto separate lines when there isn't room. */
+.table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 12px 28px 0;
+}
+.table-actions {
+  display: flex;
+}
+
+.btn-primary {
+  background: var(--page-accent) !important;
+  color: #fff !important;
+  white-space: nowrap;
+  height: 40px;
+  border-radius: 10px;
+}
+.btn-primary mat-icon {
+  margin-right: 4px;
+}
+.btn-primary[disabled] {
+  opacity: 0.6;
+}
+
+/* ===================== EXPORT TOOLBAR ===================== */
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.table-toolbar__exports {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: #f7f8fb;
+  border: 1px solid var(--app-border-strong);
+  border-radius: 10px;
+  padding: 3px;
+  flex-direction: row-reverse;
+}
+.export-btn {
+  height: 30px;
+  min-width: 30px;
+  border-radius: 7px !important;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a4f63;
+  border: none !important;
+  padding: 0 15px !important;
+  background: transparent !important;
+  transition: all 0.15s ease;
+  gap: 10px;
+}
+.export-btn mat-icon {
+  font-size: 15px;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  color: var(--page-accent);
+}
+.export-btn:hover {
+  background: #fff !important;
+  box-shadow: 0 1px 4px var(--page-accent-shadow);
+}
+.export-btn__label {
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+
+/* ===================== DATA TABLE ===================== */
+.table-wrapper {
+  padding: 16px 28px 0;
+  overflow-x: auto;
+}
+.data-table {
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--app-border-strong);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(30, 34, 51, 0.04);
+}
+.data-table .mat-mdc-header-cell {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--app-ink);
+  letter-spacing: 0.04em;
+  background: var(--app-surface-head);
+  border-bottom: 2px solid #e0e3eb;
+  border-right: 1px solid var(--app-border);
+  white-space: nowrap;
+  padding: 14px 16px;
+  text-transform: uppercase;
+}
+.data-table .mat-mdc-header-cell:last-child {
+  border-right: none;
+}
+.data-table .mat-mdc-cell {
+  font-size: 13.5px;
+  color: var(--app-ink);
+  border-bottom: 1px solid var(--app-border);
+  padding: 12px 16px;
+}
+.data-table .mat-mdc-row:nth-child(even) .mat-mdc-cell {
+  background: var(--app-surface-alt);
+}
+.data-table .mat-mdc-row:hover .mat-mdc-cell {
+  background: var(--page-row-hover);
+  transition: background 0.15s ease;
+}
+.data-table .mat-mdc-row:last-child .mat-mdc-cell {
+  border-bottom: none;
+}
+.data-table__name {
+  font-weight: 600;
+  color: var(--page-accent);
+}
+
+.table-empty {
+  padding: 28px 16px;
+  text-align: center;
+  font-size: 13.5px;
+  color: var(--app-muted);
+}
+
+/* Row action buttons */
+.action-btn {
+  width: 32px;
+  height: 32px;
+}
+.action-btn--edit mat-icon {
+  color: var(--page-accent);
+  font-size: 18px;
+}
+.action-btn--delete mat-icon {
+  color: var(--app-danger);
+  font-size: 18px;
+}
+
+/* ===================== NARROW SCREENS =====================
+   Trim the padding and drop the export labels so a page fits a phone
+   viewport instead of scrolling sideways. */
+@media (max-width: 760px) {
+  .banner,
+  .filter-bar,
+  .table-header,
+  .table-wrapper,
+  .form-page {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  /* Not enough room to share a line — give the exports their own row. */
+  .table-toolbar {
+    flex: 1 1 100%;
+  }
+  .banner {
+    height: 120px;
+  }
+  .export-btn {
+    padding: 0 10px !important;
+  }
+  .export-btn__label {
+    display: none;
+  }
+  .export-btn mat-icon {
+    margin-right: 0;
+  }
+
+  .table-toolbar__exports {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ===================== PAGINATOR ===================== */
+.mat-mdc-paginator {
+  border-radius: 0 0 14px 14px;
+  background: #fafafe;
+  border-top: 1px solid var(--app-border);
+}
+.mat-mdc-paginator .mat-mdc-paginator-container {
+  min-height: 52px;
+}
+.mat-mdc-paginator .mat-mdc-paginator-range-label {
+  font-size: 13px;
+  color: var(--app-muted);
+}
+
+/* ===================== FORMS (page + dialog) ===================== */
+.form-page {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 28px 24px;
+}
+/* Title row used instead of the banner when the form is shown in a dialog. */
+.form-page__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--app-ink);
+  margin-bottom: 8px;
+}
+.form-page__header mat-icon {
+  color: var(--page-accent);
+}
+.form-page__loading {
+  font-size: 13.5px;
+  color: var(--app-muted);
+  padding-bottom: 8px;
+}
+.form-page__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+.field-error {
+  font-size: 12px;
+  color: var(--app-danger);
+  margin: -8px 0 8px;
+  padding-left: 16px;
+}
+
+/* ===================== NOTIFICATIONS ===================== */
+.notify--success {
+  --mdc-snackbar-container-color: #1f7a4d;
+  --mdc-snackbar-supporting-text-color: #fff;
+  --mat-snack-bar-button-color: #fff;
+}
+.notify--error {
+  --mdc-snackbar-container-color: #ef4444;
+  --mdc-snackbar-supporting-text-color: #fff;
+  --mat-snack-bar-button-color: #fff;
+}
+
+/* ===================== THEME PICKER ===================== */
+.theme-picker-menu .mat-mdc-menu-content {
+  padding: 0 !important;
+}
+
+.theme-picker {
+  padding: 16px;
+  width: 240px;
+  background: #fff;
+}
+
+.theme-picker__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--app-ink);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--app-border);
+}
+
+.theme-picker__title mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: var(--page-accent);
+}
+
+.theme-picker__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.theme-swatch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.theme-swatch:hover {
+  background: var(--app-surface-alt);
+  border-color: var(--app-border);
+}
+
+.theme-swatch--active {
+  background: var(--page-accent-soft, #eff6ff);
+  border-color: var(--page-accent) !important;
+}
+
+.theme-swatch__dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.theme-swatch__name {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--app-ink);
+}
+
+.theme-swatch__check {
+  font-size: 16px !important;
+  width: 16px !important;
+  height: 16px !important;
+  color: var(--page-accent);
+}

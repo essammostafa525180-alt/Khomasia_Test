@@ -1,0 +1,65 @@
+<div class="page-card" [class.page-card--dialog]="isDialog">
+  <div class="banner" *ngIf="!isDialog">
+    <div class="banner__icon">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'category' }}</mat-icon>
+    </div>
+    <div class="banner__title">{{ title }}</div>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="form-page">
+    <div class="form-page__header" *ngIf="isDialog">
+      <mat-icon>{{ mode === 'create' ? 'add_circle' : 'category' }}</mat-icon>
+      {{ title }}
+    </div>
+
+    <div class="form-page__loading" *ngIf="loading">Loading…</div>
+
+    <div class="field-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>Request Withdraw</mat-label>
+        <input matInput type="number" formControlName="requestWithdrawFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Return No</mat-label>
+        <input matInput formControlName="returnNo" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Return Date</mat-label>
+        <input matInput type="date" formControlName="returnDate" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Returned By</mat-label>
+        <input matInput type="number" formControlName="returnedByFk" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Returned By</mat-label>
+        <input matInput formControlName="returnedBy" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description En</mat-label>
+        <input matInput formControlName="descriptionEn" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description Ar</mat-label>
+        <input matInput formControlName="descriptionAr" />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Item Return Status</mat-label>
+        <input matInput type="number" formControlName="itemReturnStatusFk" />
+      </mat-form-field>
+      <mat-checkbox formControlName="isAprove">Is Aprove</mat-checkbox>
+      <mat-checkbox formControlName="axsynced">Axsynced</mat-checkbox>
+      <mat-form-field appearance="outline">
+        <mat-label>Source</mat-label>
+        <input matInput type="number" formControlName="sourceId" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-page__actions">
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
+      <button mat-flat-button type="submit" class="btn-primary" [disabled]="form.invalid || saving || loading">
+        {{ saving ? 'Saving…' : 'Save' }}
+      </button>
+    </div>
+  </form>
+</div>

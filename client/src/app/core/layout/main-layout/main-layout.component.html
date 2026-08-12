@@ -1,0 +1,149 @@
+<div class="app-shell">
+    <!-- Only shown on mobile, where the sidebar overlays the content. -->
+    <div class="sidebar-backdrop" *ngIf="sidebarOpen" (click)="closeSidebarOnMobile()"></div>
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <aside class="sidebar" [class.sidebar--collapsed]="!sidebarOpen">
+        <div class="sidebar__brand">
+            <span class="dot dot--red"></span>
+            <span class="dot dot--blue"></span>
+            <span class="dot dot--green"></span>
+            <span class="brand-name">INVENTORY</span>
+        </div>
+
+        <!-- <div class="sidebar__dashboards">
+            <mat-icon>space_dashboard</mat-icon>
+            <span>{{ 'LAYOUT.DASHBOARDS' | translate }}</span>
+            <span class="badge-count">8</span>
+            <mat-icon class="chev">chevron_right</mat-icon>
+        </div> -->
+
+         <!-- <div class="sidebar__section-label">{{ 'LAYOUT.APPS_PAGES' | translate }}</div> -->
+
+         <!-- Single ordered list: groups (accordion) and flat links interleaved. -->
+         <nav class="sidebar__nav">
+             <ng-container *ngFor="let item of sidebar; let i = index">
+                 <!-- Elegant divider between the Inventory group and the rest -->
+                 <div *ngIf="i === 1" class="sidebar__divider"></div>
+
+                 <!-- Flat link -->
+                 <a *ngIf="item.kind === 'link'" class="sidebar__link" routerLinkActive="active"
+                     [routerLink]="item.path" (click)="closeSidebarOnMobile()">
+                     <mat-icon *ngIf="item.icon" class="sidebar__link-icon">{{ item.icon }}</mat-icon>
+                     <span class="sidebar__link-dot" *ngIf="!item.icon"></span>
+                     <span>{{ item.label | translate }}</span>
+                 </a>
+
+                 <!-- Accordion group (with optional flat links and/or child groups) -->
+                 <app-accordion *ngIf="item.kind === 'group'" [item]="item" variant="sidebar"
+                     [expanded]="isGroupActive(item)">
+                     <nav class="sidebar__nav" *ngIf="item.links && item.links.length > 0">
+                         <a *ngFor="let link of item.links" class="sidebar__link" routerLinkActive="active"
+                             [routerLink]="link.path" (click)="closeSidebarOnMobile()">
+                             <mat-icon *ngIf="link.icon" class="sidebar__link-icon">{{ link.icon }}</mat-icon>
+                             <span class="sidebar__link-dot" *ngIf="!link.icon"></span>
+                             <span>{{ link.label | translate }}</span>
+                         </a>
+                     </nav>
+
+                     <app-accordion *ngFor="let sub of item.children" [item]="sub" variant="sidebar"
+                         [expanded]="isGroupActive(sub)">
+                         <nav class="sidebar__nav">
+                             <a *ngFor="let link of sub.links" class="sidebar__link" routerLinkActive="active"
+                                 [routerLink]="link.path" (click)="closeSidebarOnMobile()">
+                                 <mat-icon *ngIf="link.icon" class="sidebar__link-icon">{{ link.icon }}</mat-icon>
+                                 <span class="sidebar__link-dot" *ngIf="!link.icon"></span>
+                                 <span>{{ link.label | translate }}</span>
+                             </a>
+                         </nav>
+                     </app-accordion>
+                 </app-accordion>
+             </ng-container>
+         </nav>
+    </aside>
+
+    <!-- ===================== MAIN ===================== -->
+    <div class="main">
+        <!-- ---- Top bar ---- -->
+        <mat-toolbar class="topbar">
+
+            <button mat-icon-button class="topbar__menu-btn" (click)="toggleSidebar()"
+                [matTooltip]="sidebarOpen ? 'Collapse menu' : 'Expand menu'" aria-label="Toggle menu">
+                <mat-icon>{{ sidebarOpen ? 'menu_open' : 'menu' }}</mat-icon>
+            </button>
+
+            <span class="topbar__spacer"></span>
+
+            <!-- Create / edit presentation switch -->
+            <span class="viewmode-label">{{ 'LAYOUT.ADD_EDIT_IN' | translate }}</span>
+            <mat-button-toggle-group class="viewmode-toggle" hideSingleSelectionIndicator
+                [value]="viewMode.mode()" (change)="onViewModeChange($event)"
+                aria-label="Create and edit form presentation">
+                <mat-button-toggle value="page" matTooltip="Create &amp; edit on a full page">
+                    <mat-icon>article</mat-icon>
+                    <span class="viewmode-toggle__text">{{ 'LAYOUT.PAGE' | translate }}</span>
+                </mat-button-toggle>
+                <mat-button-toggle value="dialog" matTooltip="Create &amp; edit in a dialog">
+                    <mat-icon>web_asset</mat-icon>
+                    <span class="viewmode-toggle__text">{{ 'LAYOUT.DIALOG' | translate }}</span>
+                </mat-button-toggle>
+            </mat-button-toggle-group>
+
+
+            <!-- Theme Picker -->
+            <button mat-icon-button class="topbar__extra" matTooltip="Change Theme"
+                [matMenuTriggerFor]="themeMenu">
+                <mat-icon>palette</mat-icon>
+            </button>
+
+            <mat-menu #themeMenu="matMenu" xPosition="before" class="theme-picker-menu">
+                <div class="theme-picker" (click)="$event.stopPropagation()">
+                    <div class="theme-picker__title">
+                        <mat-icon>palette</mat-icon>
+                        <span>{{ 'LAYOUT.CHOOSE_THEME' | translate }}</span>
+                    </div>
+                    <div class="theme-picker__grid">
+                        <button
+                            *ngFor="let theme of themeService.themes"
+                            class="theme-swatch"
+                            [class.theme-swatch--active]="themeService.currentThemeId() === theme.id"
+                            [matTooltip]="theme.name"
+                            (click)="selectTheme(theme.id)">
+                            <span class="theme-swatch__dot"
+                                [style.background]="theme.accent">
+                            </span>
+                            <span class="theme-swatch__name">{{ theme.name }}</span>
+                            <mat-icon *ngIf="themeService.currentThemeId() === theme.id"
+                                class="theme-swatch__check">check_circle</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </mat-menu>
+
+            <button mat-icon-button class="topbar__extra" [matMenuTriggerFor]="langMenu"
+                [matTooltip]="'COMMON.LANGUAGE' | translate">
+                <mat-icon>language</mat-icon>
+            </button>
+
+            <mat-menu #langMenu="matMenu" xPosition="before">
+                <button mat-menu-item (click)="setLang('en')" [disabled]="i18n.getCurrentLang() === 'en'">
+                    English
+                </button>
+                <button mat-menu-item (click)="setLang('ar')" [disabled]="i18n.getCurrentLang() === 'ar'">
+                    العربية
+                </button>
+            </mat-menu>
+
+            <button mat-icon-button matTooltip="Refresh"><mat-icon>refresh</mat-icon></button>
+            <div class="topbar__avatar">M</div>
+        </mat-toolbar>
+
+        <!-- ---- Routed page content ---- -->
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+
+        <!-- ---- Shared footer ---- -->
+        <app-footer></app-footer>
+    </div>
+</div>

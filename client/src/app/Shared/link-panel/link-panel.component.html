@@ -1,0 +1,58 @@
+<div class="link-panel">
+
+  <!-- Header -->
+  <div class="link-panel__header">
+
+    <div class="link-panel__icon">
+      <i
+        *ngIf="icon"
+        class="bi"
+        [ngClass]="icon">
+      </i>
+    </div>
+
+    <div class="link-panel__heading">
+
+      <h3>
+        {{ title }}
+      </h3>
+
+      <span>
+        {{ links.length }}
+        {{ links.length === 1 ? 'Service' : 'Services' }}
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <!-- Body -->
+  <div class="link-panel__body">
+
+    <a
+      *ngFor="let link of links"
+      [routerLink]="link.link"
+      class="link-panel__link">
+
+      <div class="link-panel__link-icon">
+
+        <i
+          *ngIf="link.icon"
+          class="bi"
+          [ngClass]="link.icon">
+        </i>
+
+      </div>
+
+      <span class="link-panel__link-text">
+        {{ link.label }}
+      </span>
+
+      <i class="bi bi-arrow-right link-panel__arrow"></i>
+
+    </a>
+
+  </div>
+
+</div>

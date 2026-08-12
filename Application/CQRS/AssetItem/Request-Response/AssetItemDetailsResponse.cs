@@ -1,0 +1,37 @@
+﻿namespace Application.CQRS.AssetItem;
+
+public record AssetItemDetailsResponse
+(
+    int Id,
+    bool IsActive,
+    bool IsDeleted,
+    int? AssetStatusFk,
+    decimal? PurchaseValue,
+    DateOnly? PurchaseDate,
+    int? DepartmentFk,
+    int? ProjectFk,
+    int? AssetLocationFk,
+    int? EmployeeFk,
+    DateTime? MoveDate,
+    int? AssetWarrantyStatusFk,
+    DateOnly? EndWarrantyDate,
+    bool IsOperational,
+    DateOnly? OperationDate,
+    DateOnly? ScrapDate,
+    DateOnly? MaintenanceDate,
+    decimal? DepreciationRate,
+    decimal? DepreciationDuration,
+    DateOnly? FirstDepreciationDate,
+    string? FixedAssetAccountCode,
+    string? DepreciationAccountCode,
+    int? InsuranceVendorFk,
+    string? InsuranceAccountCode,
+    string? PolicyNumber,
+    DateOnly? PolicyDate,
+    DateOnly? PolicyExpiryDate,
+    decimal? PolicyAmount,
+    string? ModelName,
+    DateOnly? ManufactureDate,
+    string? Description,
+    byte[]? AssetRowVersion
+);
