@@ -5,7 +5,9 @@ public record ShelfDetailsResponse
     int Id,
     bool IsActive,
     bool IsDeleted,
+    int IsleFk,
+    string? Code,
     string? Name,
-    string? NameAr,
-    int? RackFk
+    int Level,
+    decimal? MaxWeight
 );

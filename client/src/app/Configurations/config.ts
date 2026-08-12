@@ -306,6 +306,9 @@ export abstract class Configurations {
   static readonly ViewRequestStatus = { ...endPoint('ViewRequestStatus') };
   static readonly Visit = { ...endPoint('Visit') };
   static readonly WarrantyStatus = { ...endPoint('WarrantyStatus') };
+  static readonly Warehouse = { ...endPoint('Warehouse') };
+  static readonly WarehouseType = { ...endPoint('WarehouseType') };
+  static readonly StorageUnit = { ...endPoint('StorageUnit') };
   static readonly WorkerType = { ...endPoint('WorkerType') };
   static readonly WsLastSyncTable = { ...endPoint('WsLastSyncTable') };
   static readonly Zone = { ...endPoint('Zone') };

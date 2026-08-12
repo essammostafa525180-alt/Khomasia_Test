@@ -5,33 +5,37 @@ namespace Domain.Entities
 {
     public class Isle : AuditableEntityBase<int>
     {
+        public int StorageUnitFk { get; private set; }
+        public StorageUnit? StorageUnitFkNavigation { get; private set; }
+        public string? Code { get; private set; }
         public string? Name { get; private set; }
-        public string? NameAr { get; private set; }
+        public int Sequence { get; private set; }
 
-        private List<Rack> _racks = new List<Rack>();
-        public IReadOnlyCollection<Rack> Racks => _racks;
+        private List<Shelf> _shelves = new List<Shelf>();
+        public IReadOnlyCollection<Shelf> Shelves => _shelves;
 
-        private Isle()
+        private Isle() { }
+
+        public Isle(int storageUnitFk, string? code, string? name, int sequence, bool isActive) : this()
         {
-        }
-
-        public Isle(string? name, string? nameAr, bool isActive) : this()
-        {
+            StorageUnitFk = storageUnitFk;
+            Code = code;
             Name = name;
-            NameAr = nameAr;
+            Sequence = sequence;
             IsActive = isActive;
         }
 
-        public static Isle Create(string? name, string? nameAr, bool isActive)
+        public static Isle Create(int storageUnitFk, string? code, string? name, int sequence, bool isActive)
         {
-
-            return new Isle(name, nameAr, isActive);
+            return new Isle(storageUnitFk, code, name, sequence, isActive);
         }
 
-        public void Update(string? name, string? nameAr, bool isActive)
+        public void Update(int storageUnitFk, string? code, string? name, int sequence, bool isActive)
         {
+            StorageUnitFk = storageUnitFk;
+            Code = code;
             Name = name;
-            NameAr = nameAr;
+            Sequence = sequence;
             IsActive = isActive;
         }
     }

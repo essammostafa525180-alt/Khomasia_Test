@@ -2164,4 +2164,64 @@ export const inventoryExtraRoutes: Routes = [
     loadComponent: () =>
       import('./warranty-status/warranty-status-form.component').then((m) => m.WarrantyStatusFormComponent),
   },
+  {
+    path: 'inventory/warehouse-type',
+    title: 'Warehouse Type',
+    loadComponent: () =>
+      import('./warehouse-type/warehouse-type.component').then((m) => m.ViewWarehouseTypeComponent),
+  },
+  {
+    path: 'inventory/warehouse-type/new',
+    title: 'New Warehouse Type',
+    data: { mode: 'create' },
+    loadComponent: () =>
+      import('./warehouse-type/warehouse-type-form.component').then((m) => m.WarehouseTypeFormComponent),
+  },
+  {
+    path: 'inventory/warehouse-type/:id/edit',
+    title: 'Edit Warehouse Type',
+    data: { mode: 'edit' },
+    loadComponent: () =>
+      import('./warehouse-type/warehouse-type-form.component').then((m) => m.WarehouseTypeFormComponent),
+  },
+  {
+    path: 'inventory/warehouse',
+    title: 'Warehouse',
+    loadComponent: () =>
+      import('./warehouse/warehouse.component').then((m) => m.ViewWarehouseComponent),
+  },
+  {
+    path: 'inventory/warehouse/new',
+    title: 'New Warehouse',
+    data: { mode: 'create' },
+    loadComponent: () =>
+      import('./warehouse/warehouse-form.component').then((m) => m.WarehouseFormComponent),
+  },
+  {
+    path: 'inventory/warehouse/:id/edit',
+    title: 'Edit Warehouse',
+    data: { mode: 'edit' },
+    loadComponent: () =>
+      import('./warehouse/warehouse-form.component').then((m) => m.WarehouseFormComponent),
+  },
+  {
+    path: 'inventory/storage-unit',
+    title: 'Storage Unit',
+    loadComponent: () =>
+      import('./storage-unit/storage-unit.component').then((m) => m.ViewStorageUnitComponent),
+  },
+  {
+    path: 'inventory/storage-unit/new',
+    title: 'New Storage Unit',
+    data: { mode: 'create' },
+    loadComponent: () =>
+      import('./storage-unit/storage-unit-form.component').then((m) => m.StorageUnitFormComponent),
+  },
+  {
+    path: 'inventory/storage-unit/:id/edit',
+    title: 'Edit Storage Unit',
+    data: { mode: 'edit' },
+    loadComponent: () =>
+      import('./storage-unit/storage-unit-form.component').then((m) => m.StorageUnitFormComponent),
+  },
 ];

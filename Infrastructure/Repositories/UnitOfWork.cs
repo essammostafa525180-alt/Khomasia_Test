@@ -319,6 +319,9 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     public IRepository<WsLastSyncTable, int> WsLastSyncTableRepository { get; set; }
     public IRepository<Zone, int> ZoneRepository { get; set; }
     public IRepository<ZoneStatus, int> ZoneStatusRepository { get; set; }
+    public IRepository<WarehouseType, int> WarehouseTypeRepository { get; set; }
+    public IRepository<Warehouse, int> WarehouseRepository { get; set; }
+    public IRepository<StorageUnit, int> StorageUnitRepository { get; set; }
 
     public UnitOfWork(ApplicationDbContext context, IMediator mediator)
     {
@@ -598,6 +601,9 @@ public class UnitOfWork : IUnitOfWork, IDisposable
         WsLastSyncTableRepository = new Repository<WsLastSyncTable, int>(context);
         ZoneRepository = new Repository<Zone, int>(context);
         ZoneStatusRepository = new Repository<ZoneStatus, int>(context);
+        WarehouseTypeRepository = new Repository<WarehouseType, int>(context);
+        WarehouseRepository = new Repository<Warehouse, int>(context);
+        StorageUnitRepository = new Repository<StorageUnit, int>(context);
     }
     public void Dispose()
     {

@@ -4,9 +4,11 @@ namespace Application.CQRS.Shelf.Commands;
 
 public class CreateShelfCommand : ICommand<Result<int>>
 {
+        public int IsleFk { get; set; }
+        public string? Code { get; set; }
         public string? Name { get; set; }
-        public string? NameAr { get; set; }
-        public int? RackFk { get; set; }
+        public int Level { get; set; }
+        public decimal? MaxWeight { get; set; }
         public bool IsActive { get; set; }
 }
 internal class CreateShelfCommandHandler : ICommandHandler<CreateShelfCommand, Result<int>>
@@ -20,7 +22,7 @@ internal class CreateShelfCommandHandler : ICommandHandler<CreateShelfCommand, R
 
     public async Task<Result<int>> Handle(CreateShelfCommand request, CancellationToken cancellationToken)
     {
-        var entity = Domain.Entities.Shelf.Create(request.Name, request.NameAr, request.RackFk, request.IsActive);
+        var entity = Domain.Entities.Shelf.Create(request.IsleFk, request.Code, request.Name, request.Level, request.MaxWeight, request.IsActive);
 
         await _unitOfWork.ShelfRepository.AddAsync(entity);
         var result = await _unitOfWork.SaveChangesAsync(cancellationToken);

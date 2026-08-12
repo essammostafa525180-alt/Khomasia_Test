@@ -17,3 +17,5 @@ public partial class _20230515CairoOpeningBalance
 
     public double? AverageCostPerUnit { get; set; }
 }
+
+

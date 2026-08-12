@@ -44,7 +44,12 @@ export class RackFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-
+      shelfFk: [null],
+      code: [''],
+      name: [''],
+      capacity: [null],
+      maxWeight: [null],
+      isActive: [true],
     });
 
     if (this.data) {
@@ -116,7 +121,12 @@ export class RackFormComponent implements OnInit {
 
   private patchForm(): void {
     this.form.patchValue({
-
+      shelfFk: this.item?.shelfFk ?? null,
+      code: this.item?.code ?? '',
+      name: this.item?.name ?? '',
+      capacity: this.item?.capacity ?? null,
+      maxWeight: this.item?.maxWeight ?? null,
+      isActive: this.item?.isActive ?? true,
     });
   }
 

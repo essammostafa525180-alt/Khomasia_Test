@@ -5,8 +5,10 @@ namespace Application.CQRS.Isle.Commands;
 public class UpdateIsleCommand : ICommand<Result>
 {
         public int Id { get; set; }
+        public int StorageUnitFk { get; set; }
+        public string? Code { get; set; }
         public string? Name { get; set; }
-        public string? NameAr { get; set; }
+        public int Sequence { get; set; }
         public bool IsActive { get; set; }
 }
 internal class UpdateIsleCommandHandler : ICommandHandler<UpdateIsleCommand, Result>
@@ -25,7 +27,7 @@ internal class UpdateIsleCommandHandler : ICommandHandler<UpdateIsleCommand, Res
         if (entity is null || entity.IsDeleted)
             return Result.Failure(Errors.IsleNotFound);
 
-        entity.Update(request.Name, request.NameAr, request.IsActive);
+        entity.Update(request.StorageUnitFk, request.Code, request.Name, request.Sequence, request.IsActive);
 
         var result = await _unitOfWork.SaveChangesAsync(cancellationToken);
 

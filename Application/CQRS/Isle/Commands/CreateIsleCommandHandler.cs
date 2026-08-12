@@ -4,8 +4,10 @@ namespace Application.CQRS.Isle.Commands;
 
 public class CreateIsleCommand : ICommand<Result<int>>
 {
+        public int StorageUnitFk { get; set; }
+        public string? Code { get; set; }
         public string? Name { get; set; }
-        public string? NameAr { get; set; }
+        public int Sequence { get; set; }
         public bool IsActive { get; set; }
 }
 internal class CreateIsleCommandHandler : ICommandHandler<CreateIsleCommand, Result<int>>
@@ -19,7 +21,7 @@ internal class CreateIsleCommandHandler : ICommandHandler<CreateIsleCommand, Res
 
     public async Task<Result<int>> Handle(CreateIsleCommand request, CancellationToken cancellationToken)
     {
-        var entity = Domain.Entities.Isle.Create(request.Name, request.NameAr, request.IsActive);
+        var entity = Domain.Entities.Isle.Create(request.StorageUnitFk, request.Code, request.Name, request.Sequence, request.IsActive);
 
         await _unitOfWork.IsleRepository.AddAsync(entity);
         var result = await _unitOfWork.SaveChangesAsync(cancellationToken);

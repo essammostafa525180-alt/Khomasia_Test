@@ -1,6 +1,3 @@
-using Domain.Aggregates.InventoryItemAggregate;
-using Domain.Aggregates.InventoryTransfereAggregate;
-using Domain.Aggregates.VendorOrderAggregate;
 using Domain.Primitives;
 using System.Collections.Generic;
 
@@ -8,43 +5,40 @@ namespace Domain.Entities
 {
     public class Shelf : AuditableEntityBase<int>
     {
+        public int IsleFk { get; private set; }
+        public Isle? IsleFkNavigation { get; private set; }
+        public string? Code { get; private set; }
         public string? Name { get; private set; }
-        public string? NameAr { get; private set; }
-        public int? RackFk { get; private set; }
-        public Rack? RackFkNavigation { get; private set; }
+        public int Level { get; private set; }
+        public decimal? MaxWeight { get; private set; }
 
-        private List<InventoryItemLocationBatch> _inventoryItemLocationBatches = new List<InventoryItemLocationBatch>();
-        public IReadOnlyCollection<InventoryItemLocationBatch> InventoryItemLocationBatches => _inventoryItemLocationBatches;
+        private List<Rack> _racks = new List<Rack>();
+        public IReadOnlyCollection<Rack> Racks => _racks;
 
-        private List<InventoryTransfereDetailBatch> _inventoryTransfereDetailBatches = new List<InventoryTransfereDetailBatch>();
-        public IReadOnlyCollection<InventoryTransfereDetailBatch> InventoryTransfereDetailBatches => _inventoryTransfereDetailBatches;
+        private Shelf() { }
 
-        private List<VendorOrderReceiveDetailBatch> _vendorOrderReceiveDetailBatches = new List<VendorOrderReceiveDetailBatch>();
-        public IReadOnlyCollection<VendorOrderReceiveDetailBatch> VendorOrderReceiveDetailBatches => _vendorOrderReceiveDetailBatches;
-
-        private Shelf()
+        public Shelf(int isleFk, string? code, string? name, int level, decimal? maxWeight, bool isActive) : this()
         {
-        }
-
-        public Shelf(string? name, string? nameAr, int? rackFk, bool isActive) : this()
-        {
+            IsleFk = isleFk;
+            Code = code;
             Name = name;
-            NameAr = nameAr;
-            RackFk = rackFk;
+            Level = level;
+            MaxWeight = maxWeight;
             IsActive = isActive;
         }
 
-        public static Shelf Create(string? name, string? nameAr, int? rackFk, bool isActive)
+        public static Shelf Create(int isleFk, string? code, string? name, int level, decimal? maxWeight, bool isActive)
         {
-
-            return new Shelf(name, nameAr, rackFk, isActive);
+            return new Shelf(isleFk, code, name, level, maxWeight, isActive);
         }
 
-        public void Update(string? name, string? nameAr, int? rackFk, bool isActive)
+        public void Update(int isleFk, string? code, string? name, int level, decimal? maxWeight, bool isActive)
         {
+            IsleFk = isleFk;
+            Code = code;
             Name = name;
-            NameAr = nameAr;
-            RackFk = rackFk;
+            Level = level;
+            MaxWeight = maxWeight;
             IsActive = isActive;
         }
     }

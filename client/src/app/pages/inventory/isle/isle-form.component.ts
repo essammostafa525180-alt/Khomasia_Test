@@ -44,7 +44,11 @@ export class IsleFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-
+      storageUnitFk: [null],
+      code: [''],
+      name: [''],
+      sequence: [null],
+      isActive: [true],
     });
 
     if (this.data) {
@@ -116,7 +120,11 @@ export class IsleFormComponent implements OnInit {
 
   private patchForm(): void {
     this.form.patchValue({
-
+      storageUnitFk: this.item?.storageUnitFk ?? null,
+      code: this.item?.code ?? '',
+      name: this.item?.name ?? '',
+      sequence: this.item?.sequence ?? null,
+      isActive: this.item?.isActive ?? true,
     });
   }
 

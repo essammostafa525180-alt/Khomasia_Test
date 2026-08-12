@@ -5,9 +5,11 @@ namespace Application.CQRS.Shelf.Commands;
 public class UpdateShelfCommand : ICommand<Result>
 {
         public int Id { get; set; }
+        public int IsleFk { get; set; }
+        public string? Code { get; set; }
         public string? Name { get; set; }
-        public string? NameAr { get; set; }
-        public int? RackFk { get; set; }
+        public int Level { get; set; }
+        public decimal? MaxWeight { get; set; }
         public bool IsActive { get; set; }
 }
 internal class UpdateShelfCommandHandler : ICommandHandler<UpdateShelfCommand, Result>
@@ -26,7 +28,7 @@ internal class UpdateShelfCommandHandler : ICommandHandler<UpdateShelfCommand, R
         if (entity is null || entity.IsDeleted)
             return Result.Failure(Errors.ShelfNotFound);
 
-        entity.Update(request.Name, request.NameAr, request.RackFk, request.IsActive);
+        entity.Update(request.IsleFk, request.Code, request.Name, request.Level, request.MaxWeight, request.IsActive);
 
         var result = await _unitOfWork.SaveChangesAsync(cancellationToken);
 

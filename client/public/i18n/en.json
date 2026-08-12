@@ -318,6 +318,9 @@
     "VISIT": "Visit",
     "WORKER_TYPE": "Worker Type",
     "WS_LAST_SYNC_TABLE": "Ws Last Sync Table",
+    "WAREHOUSE_TYPE": "Warehouse Type",
+    "WAREHOUSE": "Warehouse",
+    "STORAGE_UNIT": "Storage Unit",
     "ZONE": "Zone",
     "ZONE_STATUS": "Zone Status",
     "INV_ASSET_MGMT": "Asset Management",
@@ -515,5 +518,16 @@
     "SERIAL": "Serial",
 
     "FORM_SUBTITLE": "Enter the inventory item master data."
-   }
+   },
+   "HTTP_ERRORS": {
+    "NO_CONNECTION": "Cannot reach the server. Check your connection and try again.",
+    "BAD_REQUEST": "The submitted data is not valid. Please review it and try again.",
+    "UNAUTHORIZED": "Your session has expired. Please sign in again.",
+    "FORBIDDEN": "You are not allowed to perform this action.",
+    "NOT_FOUND": "The requested record was not found.",
+    "CONFLICT": "This record conflicts with existing data.",
+    "UNPROCESSABLE": "The submitted data could not be processed.",
+    "SERVER_ERROR": "A server error occurred. Please try again later.",
+    "GENERIC": "The request could not be completed."
+  }
 }

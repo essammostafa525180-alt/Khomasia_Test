@@ -5,6 +5,8 @@ public record IsleDetailsResponse
     int Id,
     bool IsActive,
     bool IsDeleted,
+    int StorageUnitFk,
+    string? Code,
     string? Name,
-    string? NameAr
+    int Sequence
 );

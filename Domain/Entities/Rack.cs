@@ -1,41 +1,40 @@
 using Domain.Primitives;
-using System.Collections.Generic;
 
 namespace Domain.Entities
 {
     public class Rack : AuditableEntityBase<int>
     {
+        public int ShelfFk { get; private set; }
+        public Shelf? ShelfFkNavigation { get; private set; }
+        public string? Code { get; private set; }
         public string? Name { get; private set; }
-        public string? NameAr { get; private set; }
-        public int? IsleFk { get; private set; }
-        public Isle? IsleFkNavigation { get; private set; }
+        public decimal? Capacity { get; private set; }
+        public decimal? MaxWeight { get; private set; }
 
-        private List<Shelf> _shelves = new List<Shelf>();
-        public IReadOnlyCollection<Shelf> Shelves => _shelves;
+        private Rack() { }
 
-        private Rack()
+        public Rack(int shelfFk, string? code, string? name, decimal? capacity, decimal? maxWeight, bool isActive) : this()
         {
-        }
-
-        public Rack(string? name, string? nameAr, int? isleFk, bool isActive) : this()
-        {
+            ShelfFk = shelfFk;
+            Code = code;
             Name = name;
-            NameAr = nameAr;
-            IsleFk = isleFk;
+            Capacity = capacity;
+            MaxWeight = maxWeight;
             IsActive = isActive;
         }
 
-        public static Rack Create(string? name, string? nameAr, int? isleFk, bool isActive)
+        public static Rack Create(int shelfFk, string? code, string? name, decimal? capacity, decimal? maxWeight, bool isActive)
         {
-
-            return new Rack(name, nameAr, isleFk, isActive);
+            return new Rack(shelfFk, code, name, capacity, maxWeight, isActive);
         }
 
-        public void Update(string? name, string? nameAr, int? isleFk, bool isActive)
+        public void Update(int shelfFk, string? code, string? name, decimal? capacity, decimal? maxWeight, bool isActive)
         {
+            ShelfFk = shelfFk;
+            Code = code;
             Name = name;
-            NameAr = nameAr;
-            IsleFk = isleFk;
+            Capacity = capacity;
+            MaxWeight = maxWeight;
             IsActive = isActive;
         }
     }

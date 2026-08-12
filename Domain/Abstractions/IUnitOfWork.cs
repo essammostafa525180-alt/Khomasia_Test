@@ -306,6 +306,9 @@ public interface IUnitOfWork
     public IRepository<WsLastSyncTable, int> WsLastSyncTableRepository { get; set; }
     public IRepository<Zone, int> ZoneRepository { get; set; }
     public IRepository<ZoneStatus, int> ZoneStatusRepository { get; set; }
+    public IRepository<WarehouseType, int> WarehouseTypeRepository { get; set; }
+    public IRepository<Warehouse, int> WarehouseRepository { get; set; }
+    public IRepository<StorageUnit, int> StorageUnitRepository { get; set; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default);

@@ -446,6 +446,9 @@
     "VISIT": "Visit",
     "WORKER_TYPE": "Worker Type",
     "WS_LAST_SYNC_TABLE": "Ws Last Sync Table",
+    "WAREHOUSE_TYPE": "نوع المخزن",
+    "WAREHOUSE": "المخزن",
+    "STORAGE_UNIT": "وحدة التخزين",
     "ZONE": "Zone",
     "ZONE_STATUS": "Zone Status",
     "INV_ASSET_MGMT": "Asset Management",
@@ -502,5 +505,18 @@
     "FRIENDS": "الأصدقاء",
     "MY_PROFILE": "الملف الشخصي",
     "LOGOUT": "تسجيل الخروج"
+  },
+
+  "HTTP_ERRORS": {
+    "NO_CONNECTION": "تعذر الوصول إلى الخادم. تحقق من اتصالك بالإنترنت وحاول مرة أخرى.",
+    "BAD_REQUEST": "البيانات المُرسلة غير صحيحة. يرجى مراجعتها والمحاولة مرة أخرى.",
+    "UNAUTHORIZED": "انتهت صلاحية جلستك. يرجى تسجيل الدخول مرة أخرى.",
+    "FORBIDDEN": "غير مصرح لك بتنفيذ هذا الإجراء.",
+    "NOT_FOUND": "لم يتم العثور على السجل المطلوب.",
+    "CONFLICT": "هذا السجل يتعارض مع بيانات موجودة بالفعل.",
+    "UNPROCESSABLE": "تعذر معالجة البيانات المُرسلة.",
+    "SERVER_ERROR": "حدث خطأ في الخادم. يرجى المحاولة لاحقًا.",
+    "GENERIC": "تعذر إتمام الطلب."
   }
+
 }

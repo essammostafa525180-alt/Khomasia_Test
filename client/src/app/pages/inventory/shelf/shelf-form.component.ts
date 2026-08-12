@@ -44,7 +44,12 @@ export class ShelfFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-
+      isleFk: [null],
+      code: [''],
+      name: [''],
+      level: [null],
+      maxWeight: [null],
+      isActive: [true],
     });
 
     if (this.data) {
@@ -116,7 +121,12 @@ export class ShelfFormComponent implements OnInit {
 
   private patchForm(): void {
     this.form.patchValue({
-
+      isleFk: this.item?.isleFk ?? null,
+      code: this.item?.code ?? '',
+      name: this.item?.name ?? '',
+      level: this.item?.level ?? null,
+      maxWeight: this.item?.maxWeight ?? null,
+      isActive: this.item?.isActive ?? true,
     });
   }
 
