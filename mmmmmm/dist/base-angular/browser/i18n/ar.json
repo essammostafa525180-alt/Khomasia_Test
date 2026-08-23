@@ -1,0 +1,52 @@
+{
+  "COMMON": {
+    "LANGUAGE": "اللغة",
+    "SEARCH": "بحث",
+    "RESET": "إعادة ضبط",
+    "REFRESH": "تحديث",
+    "ID": "المعرّف",
+    "NAME": "الاسم",
+    "CODE": "الرمز",
+    "COUNTRY": "الدولة",
+    "COUNTRY_NAME": "اسم الدولة",
+    "CITY": "المدينة",
+    "CITY_NAME": "اسم المدينة",
+    "ACTIONS": "إجراءات",
+    "EDIT": "تعديل",
+    "DELETE": "حذف",
+    "INPUT": "إدخال",
+    "SELECT": "اختيار",
+    "TEXTAREA": "نص",
+    "FIRST_OPTION": "الخيار الأول",
+    "SECOND_OPTION": "الخيار الثاني",
+    "SEARCH_PLACEHOLDER": "ابحث…",
+    "SEARCH_CITY_PLACEHOLDER": "ابحث عن مدينة…",
+    "SEARCH_BY_COUNTRY_PLACEHOLDER": "ابحث حسب الدولة…",
+    "NO_COUNTRIES": "لا توجد دول للعرض.",
+    "NO_CITIES": "لا توجد مدن للعرض."
+  },
+  "NAV": {
+    "MASTER_DATA": "البيانات الأساسية",
+    "GEOGRAPHY": "الجغرافيا",
+    "COUNTRIES": "الدول",
+    "CITIES": "المدن",
+    "TEST": "اختبار"
+  },
+  "LAYOUT": {
+    "DASHBOARDS": "لوحات التحكم",
+    "APPS_PAGES": "التطبيقات والصفحات",
+    "ADD_EDIT_IN": "إضافة / تعديل داخل",
+    "PAGE": "صفحة",
+    "DIALOG": "نافذة",
+    "CHOOSE_THEME": "اختر الثيم"
+  },
+  "PAGES": {
+    "COUNTRY_MANAGEMENT": "إدارة الدول",
+    "CITY_MANAGEMENT": "إدارة المدن",
+    "TEST_MANAGEMENT": "إدارة الاختبار",
+    "FILTER": "فلتر",
+    "NEW_COUNTRY": "دولة جديدة",
+    "NEW_CITY": "مدينة جديدة",
+    "NEW_TEST": "اختبار جديد"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "COMMON": {
+    "LANGUAGE": "Language",
+    "SEARCH": "Search",
+    "RESET": "Reset",
+    "REFRESH": "Refresh",
+    "ID": "ID",
+    "NAME": "Name",
+    "CODE": "Code",
+    "COUNTRY": "Country",
+    "COUNTRY_NAME": "Country Name",
+    "CITY": "City",
+    "CITY_NAME": "City Name",
+    "ACTIONS": "Actions",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "INPUT": "Input",
+    "SELECT": "Select",
+    "TEXTAREA": "Textarea",
+    "FIRST_OPTION": "First option",
+    "SECOND_OPTION": "Second option",
+    "SEARCH_PLACEHOLDER": "Search…",
+    "SEARCH_CITY_PLACEHOLDER": "Search city…",
+    "SEARCH_BY_COUNTRY_PLACEHOLDER": "Search by country…",
+    "NO_COUNTRIES": "No countries to display.",
+    "NO_CITIES": "No cities to display."
+  },
+  "NAV": {
+    "MASTER_DATA": "Master Data",
+    "GEOGRAPHY": "Geography",
+    "COUNTRIES": "Countries",
+    "CITIES": "Cities",
+    "TEST": "Test"
+  },
+  "LAYOUT": {
+    "DASHBOARDS": "Dashboards",
+    "APPS_PAGES": "APPS & PAGES",
+    "ADD_EDIT_IN": "Add / Edit in",
+    "PAGE": "Page",
+    "DIALOG": "Dialog",
+    "CHOOSE_THEME": "Choose Theme"
+  },
+  "PAGES": {
+    "COUNTRY_MANAGEMENT": "Country Management",
+    "CITY_MANAGEMENT": "City Management",
+    "TEST_MANAGEMENT": "Test Management",
+    "FILTER": "Filter",
+    "NEW_COUNTRY": "New Country",
+    "NEW_CITY": "New City",
+    "NEW_TEST": "New Test"
+  }
+}
